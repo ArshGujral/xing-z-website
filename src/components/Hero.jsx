@@ -343,24 +343,21 @@ export default function Hero() {
             alt=""
             aria-hidden="true"
             {...LOGO}
-            className="invisible motion-reduce:visible w-[min(86vw,40rem,68vh)] h-auto"
+            className="invisible motion-reduce:visible w-[min(58vw,16rem,32vh)] h-auto"
           />
 
-          {/* A small lockup line under the logo: one line from tablets up, split after the first sentence on phones. */}
-          <h1 className="font-tagline mt-5 sm:mt-6 text-white/90 text-[0.7rem] sm:text-sm md:text-base uppercase tracking-[0.22em] leading-relaxed">
-            <span className="sr-only">{brand.name}: </span>
+          {/* The tagline sits under the logo as a two-line caption about the logo's width, so the pair reads as one lockup. */}
+          <p className="font-tagline mt-4 text-white/80 text-[0.66rem] sm:text-xs uppercase tracking-[0.26em] leading-[1.9]">
             {brand.tagline[0]}
-            <br className="sm:hidden" />{' '}
+            <br />
             <span className="text-accent">{brand.tagline[1]}</span>
-          </h1>
-
-          <span aria-hidden="true" className="block w-16 h-px mt-6 sm:mt-7 bg-gradient-to-r from-transparent via-[#e08a5f] to-transparent" />
-
-          <p className="max-w-xl mt-5 sm:mt-6 text-white/90 text-sm sm:text-base md:text-lg leading-relaxed text-balance">
-            {brand.claim}
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-7 sm:mt-9">
+          <h1 className="mt-10 sm:mt-12 max-w-4xl text-white text-[1.65rem] sm:text-4xl md:text-5xl leading-[1.1] tracking-[-0.02em] text-balance">
+            {brand.claim[0]} <span className="text-white/60">{brand.claim[1]}</span>
+          </h1>
+
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-8 sm:mt-10">
             <a
               href={whatsappLink()}
               {...external}

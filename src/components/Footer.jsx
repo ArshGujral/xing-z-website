@@ -17,7 +17,7 @@ export default function Footer() {
       <div className={`${container} py-14 md:py-20 grid gap-12 lg:grid-cols-[1.2fr_2fr]`}>
         <div>
           <XingZLogo />
-          <p className="mt-4 max-w-xs text-white/60 text-sm leading-relaxed">{brand.claim}</p>
+          <p className="mt-4 max-w-xs text-white/60 text-sm leading-relaxed">{brand.claim.join(' ')}</p>
           <ul className="mt-6 space-y-3 text-sm text-white/70">
             {details.map(({ icon: Icon, content, href, external: isExternal }, i) => (
               <li key={i} className="flex gap-3">
