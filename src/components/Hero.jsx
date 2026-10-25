@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { ChevronDown, Menu, Phone, X } from 'lucide-react'
 import CopperWires from './CopperWires.jsx'
 import { brand, contact, external, nav, whatsappLink } from '../content/site.js'
@@ -22,8 +22,9 @@ function useLogoDock(logoRef, heroSlotRef, navSlotRef) {
     const heroSlot = heroSlotRef.current
     const navSlot = navSlotRef.current
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    let start // hero slot, in page coordinates
-    let end // nav slot, in viewport coordinates (the bar is fixed)
+    // Both slots are kept relative to the logo's positioning box, the fixed header.
+    let start // hero slot, scrolling with the page
+    let end // nav slot, fixed with the bar
     let distance // scroll needed to dock
     let shown = 0 // progress currently drawn; it trails the scroll position a little so wheel steps glide
     let isDocked = false
@@ -68,8 +69,9 @@ function useLogoDock(logoRef, heroSlotRef, navSlotRef) {
     const measure = () => {
       const h = heroSlot.getBoundingClientRect()
       const n = navSlot.getBoundingClientRect()
-      start = { x: h.left, y: h.top + window.scrollY, w: h.width }
-      end = { x: n.left, y: n.top, w: n.width }
+      const o = logo.offsetParent.getBoundingClientRect()
+      start = { x: h.left - o.left, y: h.top - o.top + window.scrollY, w: h.width }
+      end = { x: n.left - o.left, y: n.top - o.top, w: n.width }
       // The slot reaches the bar after `rise` px of scroll. Stretch the flight past that for a calmer move,
       // but not so far that the tagline scrolling up underneath catches the still-shrinking logo.
       const rise = Math.max(1, start.y - end.y)
@@ -98,6 +100,34 @@ function useLogoDock(logoRef, heroSlotRef, navSlotRef) {
   }, [logoRef, heroSlotRef, navSlotRef])
 
   return docked
+}
+
+// In-page links scroll so a section's first line of text lands just under the floating bar. Measuring the
+// bar, rather than relying on CSS offsets, keeps the stop right on phones whose status bar overlaps the page.
+function useAnchorScroll(barRef) {
+  useEffect(() => {
+    const onClick = (event) => {
+      const link = event.target.closest?.('a[href^="#"]')
+      if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey) {
+        return
+      }
+      const id = decodeURIComponent(link.hash.slice(1))
+      const target = id === 'top' ? null : document.getElementById(id)
+      if (id !== 'top' && !target) return
+      event.preventDefault()
+
+      let top = 0
+      if (target) {
+        // Sections line up by their eyebrow; anything else, such as a product card, by its top edge.
+        const mark = (target.tagName === 'SECTION' && target.querySelector('p, h2')) || target
+        top = window.scrollY + mark.getBoundingClientRect().top - barRef.current.getBoundingClientRect().bottom - 20
+      }
+      history.pushState(null, '', link.hash)
+      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' })
+    }
+    document.addEventListener('click', onClick)
+    return () => document.removeEventListener('click', onClick)
+  }, [barRef])
 }
 
 function NavItem({ item, isOpen, onOpen, onClose }) {
@@ -146,12 +176,16 @@ export default function Hero() {
   const logoRef = useRef(null)
   const heroSlotRef = useRef(null)
   const navSlotRef = useRef(null)
+  const barRef = useRef(null)
   const docked = useLogoDock(logoRef, heroSlotRef, navSlotRef)
+  useAnchorScroll(barRef)
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 px-3 sm:px-4 pt-3">
-        <nav className="relative">
+      {/* Held off the top edge (and below the iPhone status bar) instead of padded down from it: Safari paints
+          the status bar area solid when a fixed element touches the top, and this way the page shows through. */}
+      <header className="fixed inset-x-0 top-[max(0.75rem,env(safe-area-inset-top))] z-50 px-3 sm:px-4">
+        <nav ref={barRef} className="relative">
           {/* The glass sits behind the bar's contents rather than around them, so dropdowns aren't clipped by it. */}
           <div aria-hidden="true" data-solid={docked} className="nav-glass liquid-glass !absolute inset-0 rounded-2xl" />
 
@@ -219,7 +253,7 @@ export default function Hero() {
 
         {/* Mobile menu */}
         <div
-          className={`lg:hidden absolute left-3 right-3 sm:left-4 sm:right-4 top-full mt-2 z-10 max-h-[calc(100svh-6rem)] overflow-y-auto bg-[#2C221C]/95 backdrop-blur-xl rounded-2xl p-6 transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          className={`lg:hidden absolute left-3 right-3 sm:left-4 sm:right-4 top-full mt-2 z-10 max-h-[calc(100svh-6rem-env(safe-area-inset-top))] overflow-y-auto bg-[#2C221C]/95 backdrop-blur-xl rounded-2xl p-6 transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] ${
             mobileOpen
               ? 'opacity-100 translate-y-0 pointer-events-auto'
               : 'opacity-0 -translate-y-4 pointer-events-none'
@@ -274,7 +308,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_45%_55%_at_50%_48%,rgba(5,3,2,0.7)_0%,rgba(5,3,2,0.35)_55%,transparent_100%)]" />
         <div className="absolute inset-0 bg-black/10" />
 
-        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-5 sm:px-6 md:px-12 lg:px-16 pt-24 pb-10">
+        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-5 sm:px-6 md:px-12 lg:px-16 pt-[calc(6rem+env(safe-area-inset-top))] pb-10">
           {/* Where the flying logo starts. Shown as-is only when motion is reduced and the logo stays docked. */}
           <img
             ref={heroSlotRef}

@@ -196,6 +196,38 @@ export const parts = [
   },
 ]
 
+// Dealers & OEM section. Check these points match your actual terms before launch.
+export const partnerOffers = [
+  {
+    icon: 'store',
+    title: 'For dealers & distributors',
+    points: [
+      'Dealer pricing across the full range',
+      'Pump, fan and blower motors from one supplier',
+      'Stock planned ahead of the summer rush',
+      'Orders and replacements handled on WhatsApp',
+    ],
+    cta: { label: 'Become a dealer', message: "Hi Xing-Z, I'd like to become a dealer." },
+  },
+  {
+    icon: 'factory',
+    title: 'For OEMs & cooler makers',
+    points: [
+      'Volume supply scheduled with your production',
+      'Mount, speed and finish matched to your cooler',
+      'The same copper-wound build, batch after batch',
+      'A direct line to our technical team',
+    ],
+    cta: { label: 'Discuss OEM supply', message: "Hi Xing-Z, I'd like to discuss OEM supply." },
+  },
+]
+
+export const partnerSteps = [
+  { title: 'Message us', text: 'Tell us your city, the motors you need and rough monthly volumes.' },
+  { title: 'Get your price list', text: 'We send dealer or OEM pricing for the range you stock.' },
+  { title: 'Place your order', text: 'Motors are tested on our line and dispatched to you.' },
+]
+
 // Replace with real, attributable quotes (with permission) before launch.
 export const testimonials = [
   {
