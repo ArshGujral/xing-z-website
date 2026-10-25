@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.claude/
+
+# Original photos the published images were made from; kept local, out of the public repo.
+assets-src/
