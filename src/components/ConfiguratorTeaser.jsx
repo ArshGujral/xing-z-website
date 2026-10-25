@@ -49,7 +49,7 @@ export default function ConfiguratorTeaser() {
           <div className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
             <a
               href={pages.configurator}
-              className="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-white text-gray-900 text-sm font-semibold rounded-full hover:bg-white/90 transition-colors"
+              className="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-white text-page text-sm font-semibold rounded-full hover:bg-white/90 transition-colors"
             >
               Try it
               <ArrowRight className="w-4 h-4" />
@@ -87,7 +87,7 @@ export default function ConfiguratorTeaser() {
               <div key={option.key} className="flex items-center justify-between gap-3">
                 <span
                   className={`text-xs sm:text-sm transition-colors duration-300 ${
-                    changed === option.key ? 'text-[#e39a73]' : 'text-white/60'
+                    changed === option.key ? 'text-accent' : 'text-white/60'
                   }`}
                 >
                   {option.label}
@@ -97,7 +97,7 @@ export default function ConfiguratorTeaser() {
                     <span
                       key={value}
                       className={`px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-medium transition-all duration-300 ${
-                        build[option.key] === value ? 'bg-white text-gray-900' : 'text-white/60'
+                        build[option.key] === value ? 'bg-white text-page' : 'text-white/60'
                       }`}
                     >
                       {value}

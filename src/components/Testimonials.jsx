@@ -11,7 +11,7 @@ export default function Testimonials() {
         <div className="mt-12 grid gap-4 sm:gap-5 md:grid-cols-3">
           {testimonials.map((t, i) => (
             <figure key={i} className="flex flex-col rounded-2xl border border-white/10 bg-white/[0.02] p-6">
-              <Quote className="w-6 h-6 text-[#d9774f]" />
+              <Quote className="w-6 h-6 text-accent" />
               <blockquote className="mt-4 flex-1 text-white/80 text-sm sm:text-base leading-relaxed">
                 {t.quote}
               </blockquote>

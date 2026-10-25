@@ -7,7 +7,8 @@ export const asset = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\//,
 
 export const brand = {
   name: 'Xing-Z',
-  logoSrc: asset('xingz-logo-white.png'), // 'xingz-logo-black.png' for light backgrounds
+  logoSrc: asset('xingz-logo-white.png'),
+  logoOnLight: asset('xingz-logo-black.png'), // used in light mode
   tagline: ["We don't just manufacture.", 'We engineer.'], // shown on two lines under the hero logo
   claim: "One of India's largest manufacturers of cooler motors and cooler pumps.",
 }

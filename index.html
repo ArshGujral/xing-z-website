@@ -6,8 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#0a0706" />
     <title>Xing-Z — Copper-wound cooler motors &amp; pumps</title>
+    <!-- Apply a saved light theme before first paint (see src/theme.jsx) -->
+    <script>
+      try {
+        if (localStorage.getItem('xingz-theme') === 'light') {
+          document.documentElement.dataset.theme = 'light'
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f8f4ef')
+        }
+      } catch (e) {}
+    </script>
   </head>
-  <body class="bg-[#0a0706]">
+  <body class="bg-page">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

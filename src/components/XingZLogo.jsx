@@ -1,13 +1,16 @@
 import { useId } from 'react'
 import { brand } from '../content/site.js'
+import { useTheme } from '../theme.jsx'
 
-// The real logo from brand.logoSrc; falls back to a drawn mark + wordmark if that's unset.
+// The real logo from brand.logoSrc (brand.logoOnLight in light mode); falls back to a drawn mark + wordmark if unset.
 export default function XingZLogo({ className = '' }) {
   const id = useId().replace(/:/g, '')
+  const { theme } = useTheme()
 
   if (brand.logoSrc) {
     // The bolt runs well above and below the letters, so the image is taller than the wordmark it replaces.
-    return <img src={brand.logoSrc} alt={brand.name} className={`h-9 sm:h-10 w-auto ${className}`} />
+    const src = theme === 'light' ? brand.logoOnLight : brand.logoSrc
+    return <img src={src} alt={brand.name} className={`h-9 sm:h-10 w-auto ${className}`} />
   }
 
   return (

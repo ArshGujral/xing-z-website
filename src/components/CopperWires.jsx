@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { useTheme } from '../theme.jsx'
 
 const rand = (a, b) => a + Math.random() * (b - a)
 const clamp = (v, a, b) => Math.min(b, Math.max(a, v))
@@ -250,23 +251,44 @@ function jagged(x1, y1, x2, y2, displace) {
   return jagged(x1, y1, mx, my, displace / 2).concat(jagged(mx, my, x2, y2, displace / 2).slice(1))
 }
 
-function strokeBolt(ctx, points, width, alpha) {
+// Electricity colours per theme. On the dark stage it glows white-blue; on the light one pale light would
+// vanish against the background, so it is drawn in deeper blues with orange sparks.
+const FX = {
+  dark: {
+    halo: '110, 190, 255',
+    core: '235, 248, 255',
+    glow: ['255, 255, 255', '150, 215, 255', '60, 140, 255'],
+    surge: ['90, 170, 255', '220, 240, 255'],
+    pulseHead: '210, 238, 255',
+    spark: (fade) => `255, ${190 + 60 * fade}, ${120 + 135 * fade}`,
+  },
+  light: {
+    halo: '80, 150, 255',
+    core: '35, 95, 225',
+    glow: ['90, 160, 255', '60, 130, 245', '40, 110, 235'],
+    surge: ['70, 140, 255', '40, 105, 235'],
+    pulseHead: '70, 140, 255',
+    spark: (fade) => `230, ${110 + 50 * fade}, ${30 + 40 * fade}`,
+  },
+}
+
+function strokeBolt(ctx, fx, points, width, alpha) {
   ctx.beginPath()
   ctx.moveTo(points[0][0], points[0][1])
   for (let i = 1; i < points.length; i++) ctx.lineTo(points[i][0], points[i][1])
-  ctx.strokeStyle = `rgba(110, 190, 255, ${0.35 * alpha})`
+  ctx.strokeStyle = `rgba(${fx.halo}, ${0.35 * alpha})`
   ctx.lineWidth = width * 4
   ctx.stroke()
-  ctx.strokeStyle = `rgba(235, 248, 255, ${alpha})`
+  ctx.strokeStyle = `rgba(${fx.core}, ${alpha})`
   ctx.lineWidth = width
   ctx.stroke()
 }
 
-function glow(ctx, x, y, r, alpha) {
+function glow(ctx, fx, x, y, r, alpha) {
   const g = ctx.createRadialGradient(x, y, 0, x, y, r)
-  g.addColorStop(0, `rgba(255, 255, 255, ${alpha})`)
-  g.addColorStop(0.25, `rgba(150, 215, 255, ${alpha * 0.6})`)
-  g.addColorStop(1, 'rgba(60, 140, 255, 0)')
+  g.addColorStop(0, `rgba(${fx.glow[0]}, ${alpha})`)
+  g.addColorStop(0.25, `rgba(${fx.glow[1]}, ${alpha * 0.6})`)
+  g.addColorStop(1, `rgba(${fx.glow[2]}, 0)`)
   ctx.fillStyle = g
   ctx.beginPath()
   ctx.arc(x, y, r, 0, Math.PI * 2)
@@ -275,6 +297,12 @@ function glow(ctx, x, y, r, alpha) {
 
 export default function CopperWires({ className = '' }) {
   const canvasRef = useRef(null)
+  const { theme } = useTheme()
+  // Read by the animation each frame, so switching theme recolours it without rebuilding the cables.
+  const fxRef = useRef(FX[theme])
+  useEffect(() => {
+    fxRef.current = FX[theme]
+  }, [theme])
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -366,6 +394,7 @@ export default function CopperWires({ className = '' }) {
         nextSurge = rand(0.9, 2.2)
       }
 
+      const fx = fxRef.current
       ctx.clearRect(0, 0, w, h)
       ctx.drawImage(wiresLayer, 0, 0, w, h)
       ctx.globalCompositeOperation = 'lighter'
@@ -377,10 +406,10 @@ export default function CopperWires({ className = '' }) {
         if (sg.age >= sg.life) return false
         const alpha = (1 - sg.age / sg.life) * (Math.random() < 0.3 ? 0.4 : 1)
         tracePath(sg.track, sg.from, sg.to)
-        ctx.strokeStyle = `rgba(90, 170, 255, ${0.25 * alpha})`
+        ctx.strokeStyle = `rgba(${fx.surge[0]}, ${0.25 * alpha})`
         ctx.lineWidth = sg.track.cable.r * 2 + 10
         ctx.stroke()
-        ctx.strokeStyle = `rgba(220, 240, 255, ${0.8 * alpha})`
+        ctx.strokeStyle = `rgba(${fx.surge[1]}, ${0.8 * alpha})`
         ctx.lineWidth = 1.6
         ctx.stroke()
         return true
@@ -399,17 +428,17 @@ export default function CopperWires({ className = '' }) {
         const g = ctx.createLinearGradient(tail.x, tail.y, head.x, head.y)
         g.addColorStop(0, 'rgba(255, 140, 60, 0)')
         g.addColorStop(0.6, 'rgba(255, 175, 110, 0.4)')
-        g.addColorStop(1, 'rgba(210, 238, 255, 0.95)')
+        g.addColorStop(1, `rgba(${fx.pulseHead}, 0.95)`)
         ctx.strokeStyle = g
         ctx.lineWidth = 3
         ctx.stroke()
 
         if (head.x < -20 || head.x > w + 20 || head.y < -20 || head.y > h + 20) return true
-        glow(ctx, head.x, head.y, rand(12, 22), 0.95)
+        glow(ctx, fx, head.x, head.y, rand(12, 22), 0.95)
         if (Math.random() < 0.4) {
           const a = rand(0, Math.PI * 2)
           const len = rand(8, 20)
-          strokeBolt(ctx, jagged(head.x, head.y, head.x + Math.cos(a) * len, head.y + Math.sin(a) * len, 4), 0.8, 0.8)
+          strokeBolt(ctx, fx, jagged(head.x, head.y, head.x + Math.cos(a) * len, head.y + Math.sin(a) * len, 4), 0.8, 0.8)
         }
         if (Math.random() < 0.04) burst(head.x, head.y, 3 + Math.floor(Math.random() * 4))
         return true
@@ -420,9 +449,9 @@ export default function CopperWires({ className = '' }) {
         if (arc.age >= arc.life) return false
         const alpha = Math.random() < 0.2 ? 0.25 : 1 - arc.age / arc.life
         const dist = Math.hypot(arc.b.x - arc.a.x, arc.b.y - arc.a.y)
-        strokeBolt(ctx, jagged(arc.a.x, arc.a.y, arc.b.x, arc.b.y, dist * 0.22), 1.1, alpha)
-        glow(ctx, arc.a.x, arc.a.y, 16, alpha * 0.8)
-        glow(ctx, arc.b.x, arc.b.y, 16, alpha * 0.8)
+        strokeBolt(ctx, fx, jagged(arc.a.x, arc.a.y, arc.b.x, arc.b.y, dist * 0.22), 1.1, alpha)
+        glow(ctx, fx, arc.a.x, arc.a.y, 16, alpha * 0.8)
+        glow(ctx, fx, arc.b.x, arc.b.y, 16, alpha * 0.8)
         if (arc.fresh) {
           burst(arc.b.x, arc.b.y, 5)
           arc.fresh = false
@@ -440,7 +469,7 @@ export default function CopperWires({ className = '' }) {
         sp.x += sp.vx * dt
         sp.y += sp.vy * dt
         const fade = 1 - sp.age / sp.life
-        ctx.strokeStyle = `rgba(255, ${190 + 60 * fade}, ${120 + 135 * fade}, ${fade})`
+        ctx.strokeStyle = `rgba(${fx.spark(fade)}, ${fade})`
         ctx.lineWidth = 1.2
         ctx.beginPath()
         ctx.moveTo(px, py)

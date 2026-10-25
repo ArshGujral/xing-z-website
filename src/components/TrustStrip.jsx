@@ -3,7 +3,7 @@ import { stats } from '../content/site.js'
 
 export default function TrustStrip() {
   return (
-    <section aria-label="Xing-Z in numbers" className="border-y border-white/10 bg-[#0d0907]">
+    <section aria-label="Xing-Z in numbers" className="border-y border-white/10 bg-page-2">
       <div className={`${container} grid grid-cols-2 md:grid-cols-4`}>
         {stats.map((stat, i) => (
           <div

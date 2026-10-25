@@ -13,7 +13,7 @@ export default function Footer() {
   ]
 
   return (
-    <footer id="contact" className="border-t border-white/10 bg-[#070504]">
+    <footer id="contact" className="border-t border-white/10 bg-page-3">
       <div className={`${container} py-14 md:py-20 grid gap-12 lg:grid-cols-[1.2fr_2fr]`}>
         <div>
           <XingZLogo />
@@ -21,7 +21,7 @@ export default function Footer() {
           <ul className="mt-6 space-y-3 text-sm text-white/70">
             {details.map(({ icon: Icon, content, href, external: isExternal }, i) => (
               <li key={i} className="flex gap-3">
-                <Icon className="w-4 h-4 mt-0.5 flex-none text-[#e39a73]" />
+                <Icon className="w-4 h-4 mt-0.5 flex-none text-accent" />
                 {href ? (
                   <a href={href} {...(isExternal ? external : {})} className="hover:text-white transition-colors">
                     {content}

@@ -14,12 +14,12 @@ function RangeCard({ category }) {
           <>
             {/* Spotlight and floor shadow so black housings read against the dark card */}
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_45%_55%_at_50%_45%,rgba(255,226,206,0.13),transparent_70%)]" />
-            <div className="absolute left-1/2 bottom-[7%] -translate-x-1/2 w-1/2 h-5 rounded-[50%] bg-black/80 blur-md" />
+            <div className="absolute left-1/2 bottom-[7%] -translate-x-1/2 w-1/2 h-5 rounded-[50%] bg-black/80 light:bg-black/25 blur-md" />
             <img
               src={category.image}
               alt={category.name}
               loading="lazy"
-              className="absolute inset-0 w-full h-full object-contain px-6 pt-6 pb-5 transition-transform duration-500 group-hover:scale-[1.04] drop-shadow-[0_14px_22px_rgba(0,0,0,0.55)]"
+              className="absolute inset-0 w-full h-full object-contain px-6 pt-6 pb-5 transition-transform duration-500 group-hover:scale-[1.04] drop-shadow-[0_14px_22px_rgba(0,0,0,0.55)] light:drop-shadow-[0_12px_16px_rgba(70,40,20,0.22)]"
             />
           </>
         ) : (
@@ -35,7 +35,7 @@ function RangeCard({ category }) {
         <a
           href={whatsappLink(`Hi Xing-Z, please share prices for your ${category.name.toLowerCase()}.`)}
           {...external}
-          className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-[#e39a73] hover:text-[#f6c3a4] transition-colors"
+          className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:text-accent-hi transition-colors"
         >
           Get prices on WhatsApp
           <ArrowUpRight className="w-4 h-4" />

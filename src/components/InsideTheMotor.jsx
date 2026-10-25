@@ -217,7 +217,7 @@ export default function InsideTheMotor() {
           />
           <a
             href={pages.inside}
-            className="inline-flex items-center gap-1.5 self-start md:self-auto text-sm font-medium text-[#e39a73] hover:text-[#f6c3a4] whitespace-nowrap transition-colors"
+            className="inline-flex items-center gap-1.5 self-start md:self-auto text-sm font-medium text-accent hover:text-accent-hi whitespace-nowrap transition-colors"
           >
             Full materials breakdown
             <ArrowRight className="w-4 h-4" />
@@ -372,8 +372,8 @@ export default function InsideTheMotor() {
                             opacity="0.7"
                           />
                           <circle cx={tx} cy={ty} r="7" fill="#f0ad87" />
-                          <circle cx={bx} cy={by} r="40" fill="#0a0706" stroke="#d9774f" strokeWidth="4" />
-                          <text x={bx} y={by + 14} textAnchor="middle" fontSize="40" fontWeight="600" fill="#f0ad87">
+                          <circle cx={bx} cy={by} r="40" stroke="#d9774f" strokeWidth="4" style={{ fill: 'rgb(var(--page))' }} />
+                          <text x={bx} y={by + 14} textAnchor="middle" fontSize="40" fontWeight="600" style={{ fill: 'rgb(var(--accent-soft))' }}>
                             {part + 1}
                           </text>
                         </g>
@@ -400,12 +400,12 @@ export default function InsideTheMotor() {
                 <img src={part.thumb} alt="" loading="lazy" className="w-14 h-14 flex-none rounded-lg object-cover" />
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2">
-                    <span className="w-5 h-5 flex-none rounded-full border border-[#d9774f]/70 text-[#f0ad87] text-[10px] font-semibold flex items-center justify-center">
+                    <span className="w-5 h-5 flex-none rounded-full border border-[#d9774f]/70 text-accent-soft text-[10px] font-semibold flex items-center justify-center">
                       {i + 1}
                     </span>
                     <h3 className="text-white text-sm font-medium leading-snug">{part.name}</h3>
                     {part.brand ? (
-                      <span className="ml-auto flex-none rounded-full bg-[#d9774f]/15 border border-[#d9774f]/40 px-2 py-0.5 text-[10px] text-[#f0ad87]">
+                      <span className="ml-auto flex-none rounded-full bg-[#d9774f]/15 border border-[#d9774f]/40 px-2 py-0.5 text-[10px] text-accent-soft">
                         {part.brand}
                       </span>
                     ) : (

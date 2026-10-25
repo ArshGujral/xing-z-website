@@ -1,7 +1,8 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { ChevronDown, Menu, Phone, X } from 'lucide-react'
+import { ChevronDown, Menu, Moon, Phone, Sun, X } from 'lucide-react'
 import CopperWires from './CopperWires.jsx'
 import { brand, contact, external, nav, whatsappLink } from '../content/site.js'
+import { useTheme } from '../theme.jsx'
 
 const tel = `tel:${contact.phone.replace(/\s/g, '')}`
 
@@ -152,7 +153,7 @@ function NavItem({ item, isOpen, onOpen, onClose }) {
       </a>
 
       {hasDropdown && isOpen && (
-        <div className="liquid-glass !absolute !bg-[#0a0706]/60 top-full left-0 z-50 rounded-xl py-3 px-2 min-w-[220px] shadow-xl animate-dropdown">
+        <div className="liquid-glass !absolute !bg-page/60 top-full left-0 z-50 rounded-xl py-3 px-2 min-w-[220px] shadow-xl animate-dropdown">
           {item.items.map((sub) => (
             <a
               key={sub.label}
@@ -168,10 +169,33 @@ function NavItem({ item, isOpen, onOpen, onClose }) {
   )
 }
 
+// Switches between the dark and light themes; shows the theme it switches to.
+function ThemeToggle() {
+  const { theme, toggle } = useTheme()
+  const toLight = theme !== 'light'
+  const label = toLight ? 'Switch to light mode' : 'Switch to dark mode'
+  const icon = (shown) =>
+    `absolute w-[18px] h-[18px] transition-all duration-500 ${shown ? 'rotate-0 scale-100 opacity-100' : '-rotate-90 scale-50 opacity-0'}`
+
+  return (
+    <button
+      onClick={toggle}
+      aria-label={label}
+      title={label}
+      className="liquid-glass w-9 h-9 flex-none rounded-full flex items-center justify-center text-white hover:bg-white/10 transition-colors"
+    >
+      <Sun className={icon(toLight)} />
+      <Moon className={icon(!toLight)} />
+    </button>
+  )
+}
+
 export default function Hero() {
   const [openDropdown, setOpenDropdown] = useState(null)
   const [mobileOpen, setMobileOpen] = useState(false)
   const closeMobile = () => setMobileOpen(false)
+  const { theme } = useTheme()
+  const logoSrc = theme === 'light' ? brand.logoOnLight : brand.logoSrc
 
   const logoRef = useRef(null)
   const heroSlotRef = useRef(null)
@@ -205,6 +229,7 @@ export default function Hero() {
             </div>
 
             <div className="hidden lg:flex items-center gap-5">
+              <ThemeToggle />
               <a
                 href={tel}
                 className="hidden xl:inline-flex items-center gap-1.5 text-white/90 hover:text-white text-sm font-medium whitespace-nowrap transition-colors"
@@ -221,39 +246,42 @@ export default function Hero() {
               </a>
             </div>
 
-            <button
-              className="lg:hidden relative w-9 h-9 flex items-center justify-center text-white"
-              onClick={() => setMobileOpen((open) => !open)}
-              aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-              aria-expanded={mobileOpen}
-            >
-              <Menu
-                className={`absolute w-6 h-6 transition-all duration-300 ${
-                  mobileOpen ? 'rotate-90 scale-50 opacity-0' : 'rotate-0 scale-100 opacity-100'
-                }`}
-              />
-              <X
-                className={`absolute w-6 h-6 transition-all duration-300 ${
-                  mobileOpen ? 'rotate-0 scale-100 opacity-100' : '-rotate-90 scale-50 opacity-0'
-                }`}
-              />
-            </button>
+            <div className="lg:hidden flex items-center gap-3">
+              <ThemeToggle />
+              <button
+                className="relative w-9 h-9 flex items-center justify-center text-white"
+                onClick={() => setMobileOpen((open) => !open)}
+                aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+                aria-expanded={mobileOpen}
+              >
+                <Menu
+                  className={`absolute w-6 h-6 transition-all duration-300 ${
+                    mobileOpen ? 'rotate-90 scale-50 opacity-0' : 'rotate-0 scale-100 opacity-100'
+                  }`}
+                />
+                <X
+                  className={`absolute w-6 h-6 transition-all duration-300 ${
+                    mobileOpen ? 'rotate-0 scale-100 opacity-100' : '-rotate-90 scale-50 opacity-0'
+                  }`}
+                />
+              </button>
+            </div>
           </div>
         </nav>
 
-        {/* Positioned and scaled by useLogoDock; the header is fixed at the viewport's top-left, so its coordinates are the viewport's. */}
+        {/* Positioned and scaled by useLogoDock, in the header's coordinates. */}
         <a
           ref={logoRef}
           href="#top"
           aria-label={`${brand.name} home`}
           className="absolute left-0 top-0 block origin-top-left opacity-0 transition-opacity duration-700"
         >
-          <img src={brand.logoSrc} alt={brand.name} {...LOGO} draggable="false" className="block w-full h-auto" />
+          <img src={logoSrc} alt={brand.name} {...LOGO} draggable="false" className="block w-full h-auto" />
         </a>
 
         {/* Mobile menu */}
         <div
-          className={`lg:hidden absolute left-3 right-3 sm:left-4 sm:right-4 top-full mt-2 z-10 max-h-[calc(100svh-6rem-env(safe-area-inset-top))] overflow-y-auto bg-[#2C221C]/95 backdrop-blur-xl rounded-2xl p-6 transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          className={`lg:hidden absolute left-3 right-3 sm:left-4 sm:right-4 top-full mt-2 z-10 max-h-[calc(100svh-6rem-env(safe-area-inset-top))] overflow-y-auto bg-panel/95 backdrop-blur-xl rounded-2xl p-6 transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] ${
             mobileOpen
               ? 'opacity-100 translate-y-0 pointer-events-auto'
               : 'opacity-0 -translate-y-4 pointer-events-none'
@@ -303,16 +331,15 @@ export default function Hero() {
       </header>
 
       <section id="top" className="relative h-svh min-h-[580px] w-full overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,#1a110b_0%,#0b0706_55%,#050303_100%)]" />
+        <div className="absolute inset-0 bg-stage" />
         <CopperWires className="absolute inset-0 w-full h-full" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_45%_55%_at_50%_48%,rgba(5,3,2,0.7)_0%,rgba(5,3,2,0.35)_55%,transparent_100%)]" />
-        <div className="absolute inset-0 bg-black/10" />
+        <div className="absolute inset-0 bg-hush" />
 
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-5 sm:px-6 md:px-12 lg:px-16 pt-[calc(6rem+env(safe-area-inset-top))] pb-10">
           {/* Where the flying logo starts. Shown as-is only when motion is reduced and the logo stays docked. */}
           <img
             ref={heroSlotRef}
-            src={brand.logoSrc}
+            src={logoSrc}
             alt=""
             aria-hidden="true"
             {...LOGO}
@@ -324,7 +351,7 @@ export default function Hero() {
             <span className="sr-only">{brand.name}: </span>
             {brand.tagline[0]}
             <br className="sm:hidden" />{' '}
-            <span className="text-[#e39a73]">{brand.tagline[1]}</span>
+            <span className="text-accent">{brand.tagline[1]}</span>
           </h1>
 
           <span aria-hidden="true" className="block w-16 h-px mt-6 sm:mt-7 bg-gradient-to-r from-transparent via-[#e08a5f] to-transparent" />
@@ -337,7 +364,7 @@ export default function Hero() {
             <a
               href={whatsappLink()}
               {...external}
-              className="px-5 sm:px-6 py-2.5 sm:py-3 bg-white text-gray-900 text-sm font-semibold rounded-full hover:bg-white/90 transition-colors"
+              className="px-5 sm:px-6 py-2.5 sm:py-3 bg-white text-page text-sm font-semibold rounded-full hover:bg-white/90 transition-colors"
             >
               Get a quote on WhatsApp
             </a>
