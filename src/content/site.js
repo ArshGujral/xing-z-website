@@ -8,10 +8,8 @@ export const asset = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\//,
 export const brand = {
   name: 'Xing-Z',
   logoSrc: asset('xingz-logo-white.png'),
-  logoOnLight: asset('xingz-logo-copper.png'), // on the light ground (light mode)
-  logoBlack: asset('xingz-logo-black.png'), // on the copper and paper chapters
+  logoOnLight: asset('xingz-logo-copper.png'), // used in light mode; xingz-logo-black.png is the plain alternative
   tagline: ["We don't just manufacture.", 'We engineer.'], // shown on two lines under the hero logo
-  headline: "One of India's largest cooler motor and pump makers.", // the hero's h1; two lines at every width
   claim: ["One of India's largest manufacturers", 'of cooler motors and cooler pumps.'], // hero headline; the second part is muted
 }
 
@@ -41,71 +39,78 @@ export const pages = {
   contact: '/contact',
 }
 
-// The range. `short` is the name set large in the range list; `image`, when there is a real
-// photograph, puts the line in the product picker too.
+// Real figures only — these stay as XX until confirmed.
+export const stats = [
+  { value: 'XX+', label: 'Years manufacturing' },
+  { value: 'XX lakh+', label: 'Motors made' },
+  { value: 'XX+', label: 'Cities served' },
+  { value: 'XX,000+', label: 'Test hours logged' },
+]
+
+// `image`: path to a real product photo in /public. Until then an illustration is drawn from `motor`.
 export const categories = [
   {
     slug: 'cooler-pump-motors',
     name: 'Cooler pump motors',
-    short: 'Cooler pump',
-    use: 'Keeps the cooler pads soaked',
+    use: 'Water circulation pumps that keep cooler pads soaked.',
     image: null,
+    motor: { attachment: 'pump', mount: 'none' },
   },
   {
     slug: 'high-speed-motors',
     name: 'High-speed motors',
-    short: 'High-speed',
-    use: 'Stronger air throw for large coolers',
+    use: 'Higher RPM for stronger air throw in large coolers.',
     image: asset('products/high-speed-motors.webp'),
+    motor: { attachment: 'blades', fast: true },
   },
   {
     slug: 'kit-motors',
     name: 'Kit motors',
-    short: 'Kit',
-    use: 'Ready to fit, for assemblers and repairers',
+    use: 'Ready-to-fit kits for cooler assemblers and repairers.',
     image: asset('products/kit-motors.webp'),
+    motor: { attachment: 'blades', clamp: true },
   },
   {
     slug: '110-motors',
     name: '110 motors',
-    short: '110',
-    use: 'The standard size for room and desert coolers',
+    use: 'The 110 size for standard room and desert coolers.',
     image: asset('products/110-motors.webp'),
+    motor: { attachment: 'blades', plate: '110' },
   },
   {
     slug: 'h-frame-motors',
     name: 'H Frame motors',
-    short: 'H Frame',
-    use: 'Bolts rigidly into the frame, runs quiet',
+    use: 'H-frame mounting for rigid, low-vibration installs.',
     image: asset('products/h-frame-motors.webp'),
+    motor: { attachment: 'blades', mount: 'hframe' },
   },
   {
     slug: 'exhaust-motors',
     name: 'Exhaust motors',
-    short: 'Exhaust',
-    use: 'For kitchens, bathrooms and workshops',
+    use: 'For exhaust fans in kitchens, bathrooms and workshops.',
     image: asset('products/exhaust-motors.webp'),
+    motor: { attachment: 'blades', finish: 'Silver' },
   },
   {
     slug: 'blower-motors',
     name: 'Blower motors',
-    short: 'Blower',
-    use: 'Drives the wheel in blower coolers',
+    use: 'Drives blower wheels in centrifugal-blower coolers.',
     image: null,
+    motor: { attachment: 'blower' },
   },
   {
     slug: 'capcan-motors',
     name: 'Capcan motors',
-    short: 'Capcan',
-    use: 'Capacitor-can start for steady torque',
+    use: 'Capacitor-can motors for steady starting torque.',
     image: null,
+    motor: { attachment: 'blades', cap: true },
   },
   {
     slug: 'submersible-pumps',
     name: 'Submersible pumps',
-    short: 'Submersible',
-    use: 'Sits in the tank, lifts water to the pads',
+    use: 'Sit in the cooler tank and push water to the pads.',
     image: null,
+    motor: { attachment: 'pump', mount: 'strainer' },
   },
 ]
 
@@ -122,49 +127,26 @@ export const nav = [
   { label: 'Contact', href: '#contact' },
 ]
 
-// Why Xing-Z: each reason is a short statement set large on its own colour field.
 export const reasons = [
   {
-    phrase: 'Wound in copper.',
+    icon: 'winding',
+    title: 'Copper winding',
     text: 'Stators are wound in copper, which runs cooler and holds up through long summer duty cycles.',
-    field: 'copper',
   },
   {
-    phrase: 'Tested before dispatch.',
-    text: 'Motors are checked on our test line before they leave, so faults stay at the factory, not at your counter.',
-    field: 'paper',
+    icon: 'testing',
+    title: 'Quality testing',
+    text: 'Motors are checked on our test line before dispatch, so faults stay at the factory, not at your counter.',
   },
   {
-    phrase: 'Stock all summer.',
+    icon: 'supply',
+    title: 'Consistent supply',
     text: 'Steady production through the season, so dealers and OEMs can plan orders without gaps.',
-    field: 'steel',
   },
   {
-    phrase: 'One line on WhatsApp.',
-    text: 'Orders, replacements and technical questions go to one number, answered by people who know the motors.',
-    field: 'ink',
-  },
-]
-
-// How a motor is made, in the order it happens. Photographs from the workshop and the finished motor.
-export const makingSteps = [
-  {
-    stage: 'Stamped',
-    text: 'Steel laminations are stamped and stacked into the core.',
-    image: asset('process/stamped.webp'),
-    alt: 'A stamped steel lamination beside a rotor in the workshop',
-  },
-  {
-    stage: 'Wound',
-    text: 'The core is wound in copper and tied off by hand.',
-    image: asset('process/wound.webp'),
-    alt: 'Two stators wound in copper wire on the workbench',
-  },
-  {
-    stage: 'Assembled',
-    text: 'Housing, bearings and capacitor go on, then the test line.',
-    image: asset('products/h-frame-motors.webp'),
-    alt: 'A finished Xing-Z H Frame motor',
+    icon: 'support',
+    title: 'Dealer support',
+    text: 'A direct WhatsApp line for orders, replacements and technical questions.',
   },
 ]
 
@@ -247,7 +229,7 @@ export const partnerSteps = [
   { title: 'Place your order', text: 'Motors are tested on our line and dispatched to you.' },
 ]
 
-// Not shown on the page until there are real, attributable quotes (with permission).
+// Replace with real, attributable quotes (with permission) before launch.
 export const testimonials = [
   {
     quote: '[Quote from a dealer — e.g. what changed in returns or repeat orders after stocking Xing-Z.]',
@@ -269,7 +251,7 @@ export const testimonials = [
   },
 ]
 
-// Not shown yet. `src`: path to a dealer/OEM logo in /public (with their permission).
+// `src`: path to a dealer/OEM logo in /public (with their permission), or null for an empty slot.
 export const partnerLogos = Array.from({ length: 6 }, () => ({ name: null, src: null }))
 
 export const footerLinks = [

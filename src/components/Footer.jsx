@@ -1,63 +1,60 @@
+import { FileText, Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
+import XingZLogo from './XingZLogo.jsx'
+import { container } from './SectionHeading.jsx'
 import { brand, contact, external, footerLinks, whatsappLink } from '../content/site.js'
 
-const tel = `tel:${contact.phone.replace(/\s/g, '')}`
-const pad = 'max-w-7xl mx-auto px-5 sm:px-6 md:px-12 lg:px-16'
-
-// The close, on the ink field: short notes along the top, the phone number as the display line, and one row
-// of links and credits. The range is listed on the page already, so only the page links repeat here.
 export default function Footer() {
-  const pageLinks = footerLinks.filter((column) => column.title !== 'Range').flatMap((column) => column.links)
+  const details = [
+    { icon: MapPin, content: contact.address.map((line) => <span key={line} className="block">{line}</span>) },
+    { icon: Phone, content: contact.phone, href: `tel:${contact.phone.replace(/\s/g, '')}` },
+    { icon: MessageCircle, content: 'Chat on WhatsApp', href: whatsappLink(), external: true },
+    { icon: Mail, content: contact.email, href: `mailto:${contact.email}` },
+    { icon: FileText, content: `GSTIN: ${contact.gstin}` },
+  ]
 
   return (
-    <footer id="contact" data-ink="light" data-logo="white" className="field-ink">
-      <div className={`${pad} min-h-[90svh] pt-10 md:pt-12 pb-8 flex flex-col`}>
-        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-10 text-white text-sm leading-relaxed">
-            <div>
-              <img src={brand.logoSrc} alt={brand.name} width="873" height="357" className="h-8 w-auto" />
-              <p className="mt-4 max-w-[28ch]">{brand.claim.join(' ')}</p>
-            </div>
-            <p>
-              {contact.address.map((line) => (
-                <span key={line} className="block">
-                  {line}
-                </span>
-              ))}
-              <span className="block mt-2">GSTIN: {contact.gstin}</span>
-            </p>
-            <p>
-              <a href={whatsappLink()} {...external} className="block hover:text-accent-hi transition-colors">
-                WhatsApp us
-              </a>
-              <a href={`mailto:${contact.email}`} className="block hover:text-accent-hi transition-colors">
-                {contact.email}
-              </a>
-            </p>
-          </div>
-          <a href="#top" className="text-white text-sm hover:text-accent-hi transition-colors">
-            Back to top
-          </a>
+    <footer id="contact" className="border-t border-white/10 bg-page-3">
+      <div className={`${container} py-14 md:py-20 grid gap-12 lg:grid-cols-[1.2fr_2fr]`}>
+        <div>
+          <XingZLogo />
+          <p className="mt-4 max-w-xs text-white/60 text-sm leading-relaxed">{brand.claim.join(' ')}</p>
+          <ul className="mt-6 space-y-3 text-sm text-white/70">
+            {details.map(({ icon: Icon, content, href, external: isExternal }, i) => (
+              <li key={i} className="flex gap-3">
+                <Icon className="w-4 h-4 mt-0.5 flex-none text-accent" />
+                {href ? (
+                  <a href={href} {...(isExternal ? external : {})} className="hover:text-white transition-colors">
+                    {content}
+                  </a>
+                ) : (
+                  <span>{content}</span>
+                )}
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <div className="mt-auto pt-24">
-          <h2 className="text-white text-[12vw] md:text-[clamp(56px,8.5vw,128px)] leading-[0.95] tracking-[-0.045em] whitespace-nowrap">
-            <a href={tel} className="transition-colors duration-200 hover:text-accent-hi">
-              {contact.phone}
-            </a>
-          </h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-8">
+          {footerLinks.map((column) => (
+            <div key={column.title}>
+              <h3 className="text-white text-sm font-medium">{column.title}</h3>
+              <ul className="mt-4 space-y-2.5">
+                {column.links.map((link) => (
+                  <li key={link.label}>
+                    <a href={link.href} className="text-white/60 hover:text-white text-sm transition-colors">
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
 
-          <div className="mt-10 flex flex-col md:flex-row md:items-baseline md:justify-between gap-3 text-white text-sm">
-            <nav aria-label="Footer" className="flex flex-wrap gap-x-5 gap-y-1">
-              {pageLinks.map((link) => (
-                <a key={link.label} href={link.href} className="hover:text-accent-hi transition-colors">
-                  {link.label}
-                </a>
-              ))}
-            </nav>
-            <span>
-              © {new Date().getFullYear()} {brand.name}. All rights reserved.
-            </span>
-          </div>
+      <div className="border-t border-white/10">
+        <div className={`${container} py-6 text-xs text-white/40`}>
+          © {new Date().getFullYear()} {brand.name}. All rights reserved.
         </div>
       </div>
     </footer>

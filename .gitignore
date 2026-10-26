@@ -4,8 +4,3 @@ dist/
 
 # Original photos the published images were made from; kept local, out of the public repo.
 assets-src/
-
-# Design-skill tooling and its working files (screenshots, direction sheet)
-.agents/
-.taste-skill/
-skills-lock.json
