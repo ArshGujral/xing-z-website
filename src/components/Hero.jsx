@@ -131,6 +131,43 @@ function useAnchorScroll(barRef) {
   }, [barRef])
 }
 
+// Which chapter is under the bar: its ink (light or dark text) and the logo that reads on it. Each chapter
+// carries data-ink and data-logo; the bar follows them as their edges pass beneath it.
+function useChapterUnderBar(barRef, theme) {
+  const [chapter, setChapter] = useState({ ink: theme === 'light' ? 'dark' : 'light', logo: theme === 'light' ? 'copper' : 'white' })
+
+  useEffect(() => {
+    let frame = 0
+    const read = () => {
+      frame = 0
+      const y = barRef.current.getBoundingClientRect().bottom - 1
+      for (const el of document.querySelectorAll('[data-ink]:not(nav)')) {
+        const r = el.getBoundingClientRect()
+        if (r.top <= y && r.bottom > y) {
+          const next = { ink: el.dataset.ink, logo: el.dataset.logo }
+          setChapter((prev) => (prev.ink === next.ink && prev.logo === next.logo ? prev : next))
+          return
+        }
+      }
+    }
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(read)
+    }
+    // After the theme switch has re-rendered the chapters' attributes
+    const settle = setTimeout(read, 0)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    return () => {
+      cancelAnimationFrame(frame)
+      clearTimeout(settle)
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
+  }, [barRef, theme])
+
+  return chapter
+}
+
 function NavItem({ item, isOpen, onOpen, onClose }) {
   const hasDropdown = Boolean(item.items)
 
@@ -153,7 +190,7 @@ function NavItem({ item, isOpen, onOpen, onClose }) {
       </a>
 
       {hasDropdown && isOpen && (
-        <div className="liquid-glass !absolute !bg-page/60 top-full left-0 z-50 rounded-xl py-3 px-2 min-w-[220px] shadow-xl animate-dropdown">
+        <div className="absolute bg-[rgb(var(--bar-fill))] top-full left-0 z-50 rounded-xl py-3 px-2 min-w-[220px] animate-dropdown">
           {item.items.map((sub) => (
             <a
               key={sub.label}
@@ -175,14 +212,14 @@ function ThemeToggle() {
   const toLight = theme !== 'light'
   const label = toLight ? 'Switch to light mode' : 'Switch to dark mode'
   const icon = (shown) =>
-    `absolute w-[18px] h-[18px] transition-all duration-500 ${shown ? 'rotate-0 scale-100 opacity-100' : '-rotate-90 scale-50 opacity-0'}`
+    `absolute w-[18px] h-[18px] transition-[transform,opacity] duration-500 ${shown ? 'rotate-0 scale-100 opacity-100' : '-rotate-90 scale-50 opacity-0'}`
 
   return (
     <button
       onClick={toggle}
       aria-label={label}
       title={label}
-      className="liquid-glass w-9 h-9 flex-none rounded-full flex items-center justify-center text-white hover:bg-white/10 transition-colors"
+      className="relative w-9 h-9 flex-none rounded-full flex items-center justify-center text-white bg-white/10 hover:bg-white/20 transition-colors"
     >
       <Sun className={icon(toLight)} />
       <Moon className={icon(!toLight)} />
@@ -203,13 +240,15 @@ export default function Hero() {
   const barRef = useRef(null)
   const docked = useLogoDock(logoRef, heroSlotRef, navSlotRef)
   useAnchorScroll(barRef)
+  const chapter = useChapterUnderBar(barRef, theme)
+  const barLogo = { white: brand.logoSrc, copper: brand.logoOnLight, black: brand.logoBlack }[chapter.logo] ?? logoSrc
 
   return (
     <>
       {/* Held off the top edge (and below the iPhone status bar) instead of padded down from it: Safari paints
           the status bar area solid when a fixed element touches the top, and this way the page shows through. */}
       <header className="fixed inset-x-0 top-[max(0.75rem,env(safe-area-inset-top))] z-50 px-3 sm:px-4">
-        <nav ref={barRef} className="relative">
+        <nav ref={barRef} data-ink={chapter.ink} className="relative">
           {/* The glass sits behind the bar's contents rather than around them, so dropdowns aren't clipped by it. */}
           <div aria-hidden="true" data-solid={docked} className="nav-glass liquid-glass !absolute inset-0 rounded-2xl" />
 
@@ -240,7 +279,7 @@ export default function Hero() {
               <a
                 href={whatsappLink()}
                 {...external}
-                className="liquid-glass rounded-full px-5 py-2 text-white text-sm font-medium whitespace-nowrap"
+                className="rounded-full px-5 py-2 bg-white text-[rgb(var(--bar-fill))] text-sm font-semibold whitespace-nowrap transition-transform duration-200 hover:-translate-y-0.5"
               >
                 Get a quote
               </a>
@@ -255,12 +294,12 @@ export default function Hero() {
                 aria-expanded={mobileOpen}
               >
                 <Menu
-                  className={`absolute w-6 h-6 transition-all duration-300 ${
+                  className={`absolute w-6 h-6 transition-[transform,opacity] duration-300 ${
                     mobileOpen ? 'rotate-90 scale-50 opacity-0' : 'rotate-0 scale-100 opacity-100'
                   }`}
                 />
                 <X
-                  className={`absolute w-6 h-6 transition-all duration-300 ${
+                  className={`absolute w-6 h-6 transition-[transform,opacity] duration-300 ${
                     mobileOpen ? 'rotate-0 scale-100 opacity-100' : '-rotate-90 scale-50 opacity-0'
                   }`}
                 />
@@ -276,12 +315,12 @@ export default function Hero() {
           aria-label={`${brand.name} home`}
           className="absolute left-0 top-0 block origin-top-left opacity-0 transition-opacity duration-700"
         >
-          <img src={logoSrc} alt={brand.name} {...LOGO} draggable="false" className="block w-full h-auto" />
+          <img src={barLogo} alt={brand.name} {...LOGO} draggable="false" className="block w-full h-auto" />
         </a>
 
         {/* Mobile menu */}
         <div
-          className={`lg:hidden absolute left-3 right-3 sm:left-4 sm:right-4 top-full mt-2 z-10 max-h-[calc(100svh-6rem-env(safe-area-inset-top))] overflow-y-auto bg-panel/95 backdrop-blur-xl rounded-2xl p-6 transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          className={`lg:hidden absolute left-3 right-3 sm:left-4 sm:right-4 top-full mt-2 z-10 max-h-[calc(100svh-6rem-env(safe-area-inset-top))] overflow-y-auto bg-panel rounded-2xl p-6 transition-[transform,opacity] duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] ${
             mobileOpen
               ? 'opacity-100 translate-y-0 pointer-events-auto'
               : 'opacity-0 -translate-y-4 pointer-events-none'
@@ -311,7 +350,7 @@ export default function Hero() {
             ))}
           </div>
 
-          <div className="mt-6 pt-6 border-t border-white/10 flex items-center justify-between gap-4">
+          <div className="mt-8 flex items-center justify-between gap-4">
             <a
               href={tel}
               className="inline-flex items-center gap-1.5 text-white/90 hover:text-white text-sm font-medium transition-colors"
@@ -322,7 +361,7 @@ export default function Hero() {
             <a
               href={whatsappLink()}
               {...external}
-              className="liquid-glass rounded-full px-5 py-2 text-white text-sm font-medium"
+              className="rounded-full px-5 py-2 bg-white text-on-fg text-sm font-semibold"
             >
               Get a quote
             </a>
@@ -330,8 +369,12 @@ export default function Hero() {
         </div>
       </header>
 
-      <section id="top" className="relative h-svh min-h-[580px] w-full overflow-hidden">
-        <div className="absolute inset-0 bg-stage" />
+      <section
+        id="top"
+        data-ink={theme === 'light' ? 'dark' : 'light'}
+        data-logo={theme === 'light' ? 'copper' : 'white'}
+        className="field-ground relative h-svh min-h-[580px] w-full overflow-hidden"
+      >
         <CopperWires className="absolute inset-0 w-full h-full" />
         <div className="absolute inset-0 bg-hush" />
 
@@ -347,14 +390,14 @@ export default function Hero() {
           />
 
           {/* The tagline sits under the logo as a two-line caption about the logo's width, so the pair reads as one lockup. */}
-          <p className="font-tagline mt-4 text-white/80 text-[0.66rem] sm:text-xs uppercase tracking-[0.26em] leading-[1.9]">
+          <p className="font-tagline mt-4 text-white text-sm leading-snug">
             {brand.tagline[0]}
             <br />
             <span className="text-accent">{brand.tagline[1]}</span>
           </p>
 
-          <h1 className="mt-10 sm:mt-12 max-w-4xl text-white text-[1.65rem] sm:text-4xl md:text-5xl leading-[1.1] tracking-[-0.02em] text-balance">
-            {brand.claim[0]} <span className="text-white/60">{brand.claim[1]}</span>
+          <h1 className="mt-10 sm:mt-12 max-w-4xl text-white text-[1.6rem] sm:text-5xl lg:text-[3.5rem] leading-[1.04] tracking-[-0.03em] text-balance">
+            {brand.headline}
           </h1>
 
           <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-8 sm:mt-10">
@@ -367,7 +410,7 @@ export default function Hero() {
             </a>
             <a
               href="#range"
-              className="px-5 sm:px-6 py-2.5 sm:py-3 liquid-glass rounded-full text-white text-sm font-semibold hover:bg-white/10 transition-colors"
+              className="px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-white/10 text-white text-sm font-semibold hover:bg-white/20 transition-colors"
             >
               See the range
             </a>

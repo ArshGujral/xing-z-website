@@ -1,38 +1,46 @@
-import { Cable, Handshake, ShieldCheck, Truck } from 'lucide-react'
-import SectionHeading, { container } from './SectionHeading.jsx'
+import { container } from './SectionHeading.jsx'
 import { reasons } from '../content/site.js'
 
-const ICONS = { winding: Cable, testing: ShieldCheck, supply: Truck, support: Handshake }
+const INK = { copper: 'dark', paper: 'dark', steel: 'light', ink: 'light' }
+const LOGO = { copper: 'black', paper: 'black', steel: 'white', ink: 'white' }
 
+// Why Xing-Z: one reason per full-bleed colour field. The phrase sits large at a bottom corner and its
+// explanation small near the top of the opposite side, so the eye travels the diagonal. Alternate fields mirror.
 export default function WhyXingZ() {
   return (
-    <section id="why" className="pt-24 pb-20 md:py-28 border-t border-white/5">
-      <div className={container}>
-        <SectionHeading
-          eyebrow="Why Xing-Z"
-          title="Built better"
-          muted="where it counts."
-          intro="Four things buyers ask about before they switch suppliers, and how we answer them."
-        />
-
-        <div className="mt-12 grid gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {reasons.map((reason) => {
-            const Icon = ICONS[reason.icon]
-            return (
-              <div
-                key={reason.title}
-                className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition-colors hover:border-[#d9774f]/50"
+    <section id="why" aria-label="Why Xing-Z">
+      {reasons.map((reason, i) => {
+        const mirrored = i % 2 === 1
+        const Heading = i === 0 ? 'h2' : 'h3'
+        return (
+          <div
+            key={reason.phrase}
+            data-ink={INK[reason.field]}
+            data-logo={LOGO[reason.field]}
+            className={`field-${reason.field}`}
+          >
+            <div className={`${container} min-h-[60svh] md:min-h-[70svh] py-16 md:py-20 flex flex-col justify-between gap-16`}>
+              <p
+                data-reveal
+                className={`max-w-[30ch] text-white text-base sm:text-lg leading-relaxed ${
+                  mirrored ? 'md:self-start ml-auto md:ml-0 text-right md:text-left' : 'md:ml-[58%]'
+                }`}
               >
-                <div className="w-11 h-11 rounded-xl flex items-center justify-center bg-[#d9774f]/15 border border-[#d9774f]/30 text-accent-soft">
-                  <Icon className="w-5 h-5" />
-                </div>
-                <h3 className="mt-5 text-white text-lg font-medium tracking-tight">{reason.title}</h3>
-                <p className="mt-2 text-white/60 text-sm leading-relaxed">{reason.text}</p>
-              </div>
-            )
-          })}
-        </div>
-      </div>
+                {reason.text}
+              </p>
+              <Heading
+                data-reveal
+                style={{ '--i': 1 }}
+                className={`text-white text-[11vw] md:text-[clamp(56px,8.5vw,128px)] leading-[0.92] tracking-[-0.045em] max-w-[11ch] ${
+                  mirrored ? 'md:self-end md:text-right' : ''
+                }`}
+              >
+                {reason.phrase}
+              </Heading>
+            </div>
+          </div>
+        )
+      })}
     </section>
   )
 }

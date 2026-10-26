@@ -206,33 +206,32 @@ export default function InsideTheMotor() {
   )
 
   return (
-    <section id="inside" className="pt-24 pb-20 md:py-28 border-t border-white/5">
-      <div className={container}>
+    <section id="inside" data-ink="light" data-logo="white" className="field-steel">
+      <div className={`${container} py-28 md:py-40`}>
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <SectionHeading
-            eyebrow="Inside the motor"
             title="Take one apart."
-            muted="We'd like you to."
             intro="Every Xing-Z motor is built from named components. Here's what goes into our H Frame motor."
           />
           <a
             href={pages.inside}
-            className="inline-flex items-center gap-1.5 self-start md:self-auto text-sm font-medium text-accent hover:text-accent-hi whitespace-nowrap transition-colors"
+            className="inline-flex items-center gap-1.5 self-start md:self-auto text-base font-medium text-accent hover:text-accent-hi whitespace-nowrap transition-colors"
           >
             Full materials breakdown
             <ArrowRight className="w-4 h-4" />
           </a>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-10 items-center">
+        <div className="mt-14 md:mt-20 grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-12 items-center">
           <div>
             <div
               ref={panelRef}
-              className="relative aspect-[1540/1370] overflow-hidden rounded-3xl border border-white/10 bg-[radial-gradient(ellipse_at_50%_50%,rgba(217,119,79,0.16),rgba(255,255,255,0.015)_70%)]"
+              data-reveal
+              className="relative aspect-[1540/1370] overflow-hidden bg-[#183c37]"
             >
               <button
                 onClick={() => setExploded((e) => !e)}
-                className="!absolute top-3 right-3 sm:top-4 sm:right-4 z-10 liquid-glass rounded-full px-4 py-1.5 text-white text-xs font-medium hover:bg-white/10 transition-colors"
+                className="absolute top-3 right-3 sm:top-4 sm:right-4 z-10 rounded-full bg-white text-on-fg px-5 py-2 text-sm font-semibold transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0"
               >
                 {exploded ? 'Assemble' : 'Explode'}
               </button>
@@ -372,8 +371,8 @@ export default function InsideTheMotor() {
                             opacity="0.7"
                           />
                           <circle cx={tx} cy={ty} r="7" fill="#f0ad87" />
-                          <circle cx={bx} cy={by} r="40" stroke="#d9774f" strokeWidth="4" style={{ fill: 'rgb(var(--page))' }} />
-                          <text x={bx} y={by + 14} textAnchor="middle" fontSize="40" fontWeight="600" style={{ fill: 'rgb(var(--accent-soft))' }}>
+                          <circle cx={bx} cy={by} r="40" style={{ fill: 'rgb(var(--accent))' }} />
+                          <text x={bx} y={by + 14} textAnchor="middle" fontSize="40" fontWeight="600" style={{ fill: 'rgb(var(--on-fg))' }}>
                             {part + 1}
                           </text>
                         </g>
@@ -384,37 +383,31 @@ export default function InsideTheMotor() {
               </svg>
             </div>
             {/* Below the panel rather than inside it, where it collided with the capacitor on phones */}
-            <p className="mt-2 px-1 text-[10px] sm:text-[11px] text-white/40">
+            <p className="mt-3 text-white text-sm">
               Outer parts and capacitor photographed; inner parts illustrated.
             </p>
           </div>
 
-          <ol className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-1">
+          <ol className="grid grid-cols-1 gap-1 sm:grid-cols-2 lg:grid-cols-1">
             {parts.map((part, i) => (
               <li
                 key={part.name}
+                data-reveal
+                style={{ '--i': i }}
                 onMouseEnter={() => setActive(i)}
                 onMouseLeave={() => setActive(null)}
-                className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.02] p-2.5 pr-4 transition-colors hover:border-[#d9774f]/50"
+                className="flex items-center gap-4 bg-[#183c37] p-3 pr-5 transition-colors hover:bg-[#143430]"
               >
-                <img src={part.thumb} alt="" loading="lazy" className="w-14 h-14 flex-none rounded-lg object-cover" />
+                <img src={part.thumb} alt="" loading="lazy" className="w-20 h-20 flex-none object-cover" />
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2">
-                    <span className="w-5 h-5 flex-none rounded-full border border-[#d9774f]/70 text-accent-soft text-[10px] font-semibold flex items-center justify-center">
+                    <span aria-hidden="true" className="w-6 h-6 flex-none rounded-full bg-accent text-on-fg text-[13px] font-semibold flex items-center justify-center">
                       {i + 1}
                     </span>
-                    <h3 className="text-white text-sm font-medium leading-snug">{part.name}</h3>
-                    {part.brand ? (
-                      <span className="ml-auto flex-none rounded-full bg-[#d9774f]/15 border border-[#d9774f]/40 px-2 py-0.5 text-[10px] text-accent-soft">
-                        {part.brand}
-                      </span>
-                    ) : (
-                      <span className="ml-auto flex-none rounded-full border border-dashed border-white/20 px-2 py-0.5 text-[10px] text-white/40">
-                        Add brand
-                      </span>
-                    )}
+                    <h3 className="text-white text-lg leading-snug">{part.name}</h3>
+                    {part.brand && <span className="ml-auto flex-none text-accent text-sm">{part.brand}</span>}
                   </div>
-                  <p className="mt-1 text-white/60 text-xs leading-snug">{part.role}</p>
+                  <p className="mt-1 text-white text-sm leading-snug">{part.role}</p>
                 </div>
               </li>
             ))}

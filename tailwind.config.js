@@ -14,6 +14,7 @@ export default {
         white: token('fg'),
         page: { DEFAULT: token('page'), 2: token('page-2'), 3: token('page-3') },
         panel: token('panel'),
+        'on-fg': token('on-fg'),
         accent: { DEFAULT: token('accent'), soft: token('accent-soft'), hi: token('accent-hi') },
       },
     },

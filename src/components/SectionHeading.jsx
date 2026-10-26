@@ -1,18 +1,14 @@
 export const container = 'max-w-7xl mx-auto px-5 sm:px-6 md:px-12 lg:px-16'
 
-export default function SectionHeading({ eyebrow, title, muted, intro, center = false }) {
+// A section's heading and its one supporting sentence. No label above it: the heading names the section.
+export default function SectionHeading({ title, intro, className = '' }) {
   return (
-    <div className={center ? 'text-center max-w-2xl mx-auto' : 'max-w-2xl'}>
-      <p className="text-accent text-xs sm:text-sm font-medium uppercase tracking-[0.18em]">{eyebrow}</p>
-      <h2 className="mt-4 text-white text-3xl sm:text-4xl md:text-5xl leading-[1.05] tracking-[-0.02em]">
-        {title} {muted && <span className="text-white/60">{muted}</span>}
+    <div className={`max-w-3xl ${className}`}>
+      <h2 data-reveal className="text-white text-[2rem] sm:text-5xl lg:text-[3.5rem] leading-[1.02] tracking-[-0.03em]">
+        {title}
       </h2>
       {intro && (
-        <p
-          className={`mt-5 max-w-xl text-white/70 text-sm sm:text-base md:text-lg leading-relaxed ${
-            center ? 'mx-auto' : ''
-          }`}
-        >
+        <p data-reveal style={{ '--i': 1 }} className="mt-6 max-w-xl text-white text-base sm:text-lg leading-relaxed">
           {intro}
         </p>
       )}
