@@ -14,11 +14,11 @@ export const brand = {
 }
 
 export const contact = {
-  whatsapp: '910000000000', // country code + number, digits only
-  phone: '+91 00000 00000',
-  email: 'sales@example.com',
-  address: ['[Factory address line 1]', '[Area, City, State – PIN]'],
-  gstin: '[add GSTIN]',
+  whatsapp: '919650384912', // country code + number, digits only
+  phone: '+91 9650384912',
+  email: 'amanelectronics215@gmail.com',
+  address: ['RZ 170', 'Vishnu Garden, Street No 9, New Delhi – 110018'],
+  gstin: '07AATPS7815E1Z7',
 }
 
 export const whatsappLink = (message = "Hi Xing-Z, I'd like a quote.") =>
@@ -51,56 +51,56 @@ export const stats = [
 export const categories = [
   {
     slug: 'high-speed-motors',
-    name: 'High-speed motors',
-    use: 'Higher RPM for stronger air throw in large coolers.',
+    name: 'High-Speed Motors',
+    use: 'Higher RPM for stronger air throw in smaller coolers.',
     image: asset('products/high-speed-motors.webp'),
     motor: { attachment: 'blades', fast: true },
   },
   {
     slug: 'kit-motors',
-    name: 'Kit motors',
+    name: 'Kit Motors',
     use: 'Ready-to-fit kits for cooler assemblers and repairers.',
     image: asset('products/kit-motors.webp'),
     motor: { attachment: 'blades', clamp: true },
   },
   {
     slug: '110-motors',
-    name: '110 motors',
+    name: '110 Motors',
     use: 'The 110 size for standard room and desert coolers.',
     image: asset('products/110-motors.webp'),
     motor: { attachment: 'blades', plate: '110' },
   },
   {
     slug: 'h-frame-motors',
-    name: 'H Frame motors',
-    use: 'H-frame mounting for rigid, low-vibration installs.',
+    name: 'H Frame Motors',
+    use: 'H-frame Motors for rigid, low-vibration & Tent Coolers.',
     image: asset('products/h-frame-motors.webp'),
     motor: { attachment: 'blades', mount: 'hframe' },
   },
   {
     slug: 'exhaust-motors',
-    name: 'Exhaust motors',
+    name: 'Exhaust Motors',
     use: 'For exhaust fans in kitchens, bathrooms and workshops.',
     image: asset('products/exhaust-motors.webp'),
     motor: { attachment: 'blades', finish: 'Silver' },
   },
   {
     slug: 'blower-motors',
-    name: 'Blower motors',
+    name: 'Blower Motors',
     use: 'Drives blower wheels in centrifugal-blower coolers.',
     image: null,
     motor: { attachment: 'blower' },
   },
   {
     slug: 'capcan-motors',
-    name: 'Capcan motors',
-    use: 'Capacitor-can motors for steady starting torque.',
+    name: 'Capcan Motors',
+    use: 'Capcan Motors, for more durable and noiseless concealed motors.',
     image: asset('products/capcan-motors.webp'),
     motor: { attachment: 'blades', cap: true },
   },
   {
     slug: 'submersible-pumps',
-    name: 'Submersible pumps',
+    name: 'Submersible Pumps',
     use: 'Sit in the cooler tank and push water to the pads.',
     image: asset('products/submersible-pumps.webp'),
     motor: { attachment: 'pump', mount: 'strainer' },
@@ -123,22 +123,22 @@ export const nav = [
 export const reasons = [
   {
     icon: 'winding',
-    title: 'Copper winding',
-    text: 'Stators are wound in copper, which runs cooler and holds up through long summer duty cycles.',
+    title: 'Copper & Aluminium Winding',
+    text: 'Stators are wound in copper & aluminium, which runs cooler and holds up through long summer duty cycles.',
   },
   {
     icon: 'testing',
-    title: 'Quality testing',
-    text: 'Motors are checked on our test line before dispatch, so faults stay at the factory, not at your counter.',
+    title: 'Quality Testing',
+    text: 'Motors are checked 3 Times on our test line before dispatch, so faults stay at the factory, not at your counter.',
   },
   {
     icon: 'supply',
-    title: 'Consistent supply',
+    title: 'Consistent Supply',
     text: 'Steady production through the season, so dealers and OEMs can plan orders without gaps.',
   },
   {
     icon: 'support',
-    title: 'Dealer support',
+    title: 'Dealer Support',
     text: 'A direct WhatsApp line for orders, replacements and technical questions.',
   },
 ]
@@ -147,7 +147,7 @@ export const reasons = [
 // `thumb`: small photo shown in the parts list.
 export const parts = [
   {
-    name: 'Shaft & rotor',
+    name: 'Shaft & Rotor',
     role: 'Turns the magnetic field into rotation and carries it to the fan.',
     brand: null,
     thumb: asset('parts/thumbs/shaft-rotor.webp'),
@@ -159,14 +159,14 @@ export const parts = [
     thumb: asset('parts/thumbs/bearings.webp'),
   },
   {
-    name: 'Aluminium end cover',
+    name: 'Aluminium end seal cover',
     role: 'Seats the bearing and keeps the rotor centred.',
     brand: null,
     thumb: asset('parts/thumbs/cover.webp'),
   },
   {
-    name: 'Copper-wound stator',
-    role: 'Stamped steel laminations wound in copper. This is where copper matters.',
+    name: 'Copper & Aluminium wound stator',
+    role: 'Stamped CRNO steel laminations wound in copper & aluminium. ',
     brand: null,
     thumb: asset('parts/thumbs/stator.webp'),
   },

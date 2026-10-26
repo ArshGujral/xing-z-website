@@ -12,7 +12,7 @@ export default function TrustStrip() {
               i % 2 ? 'border-l' : ''
             } ${i >= 2 ? 'border-t md:border-t-0' : ''} ${i === 2 ? 'md:border-l' : ''}`}
           >
-            <div className="text-copper text-3xl sm:text-4xl md:text-5xl font-medium tracking-[-0.02em]">
+            <div className="text-copper text-3xl sm:text-4xl xl:text-5xl font-medium tracking-[-0.02em] whitespace-nowrap">
               {stat.value}
             </div>
             <div className="mt-2 text-white/60 text-xs sm:text-sm">{stat.label}</div>
