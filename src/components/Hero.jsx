@@ -366,6 +366,8 @@ export default function Hero() {
             {brand.claim[0]} <span className="text-white/60">{brand.claim[1]}</span>
           </h1>
 
+          <p className="mt-5 max-w-xl text-white/75 text-sm sm:text-base md:text-lg leading-relaxed text-balance">{brand.supporting}</p>
+
           <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-8 sm:mt-10">
             <a
               href={whatsappLink()}

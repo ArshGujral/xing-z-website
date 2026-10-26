@@ -10,7 +10,8 @@ export const brand = {
   logoSrc: asset('xingz-logo-white.png'),
   logoOnLight: asset('xingz-logo-teal.png'), // used in light mode; copper and black versions are alternatives
   tagline: ["We don't just manufacture.", 'We engineer.'], // shown on two lines under the hero logo
-  claim: ["One of India's largest manufacturers", 'of cooler motors and cooler pumps.'], // hero headline; the second part is muted
+  claim: ['Precision Engineered', 'Cooler Motors & Pumps'], // hero headline; the second part is muted
+  supporting: 'Manufactured for consistent performance. Built for lasting partnerships.', // the line under the hero headline
 }
 
 export const contact = {
