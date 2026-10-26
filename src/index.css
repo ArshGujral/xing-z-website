@@ -9,47 +9,47 @@
    (see tailwind.config.js); the rest are whole values. Dark is the default; html[data-theme='light'] switches. */
 :root {
   --fg: 255 255 255;
-  --page: 10 7 6;
-  --page-2: 13 9 7;
-  --page-3: 7 5 4;
-  --panel: 44 34 28;
-  --accent: 227 154 115;
-  --accent-soft: 240 173 135;
-  --accent-hi: 246 195 164;
+  --page: 5 10 10;
+  --page-2: 8 15 15;
+  --page-3: 3 7 7;
+  --panel: 18 36 34;
+  --accent: 34 151 132;
+  --accent-soft: 102 169 158;
+  --accent-hi: 160 213 205;
 
   --glass-fill: rgba(255, 255, 255, 0.01);
   --glass-edge: 255, 255, 255;
   --glass-edge-strength: 1;
-  --bar-solid: rgba(12, 8, 6, 0.55);
+  --bar-solid: rgba(6, 14, 13, 0.55);
   --bar-shadow: rgba(0, 0, 0, 0.35);
-  /* Copper-wire backdrops: the stage behind the wires, and the hush that keeps text over them readable */
-  --stage: radial-gradient(ellipse at center, #1a110b 0%, #0b0706 55%, #050303 100%);
-  --hush: radial-gradient(ellipse 45% 55% at 50% 48%, rgba(5, 3, 2, 0.7) 0%, rgba(5, 3, 2, 0.35) 55%, transparent 100%),
+  /* Wire backdrops: the stage behind the wires, and the hush that keeps text over them readable */
+  --stage: radial-gradient(ellipse at center, #0b1a18 0%, #050b0b 55%, #020505 100%);
+  --hush: radial-gradient(ellipse 45% 55% at 50% 48%, rgba(2, 8, 8, 0.7) 0%, rgba(2, 8, 8, 0.35) 55%, transparent 100%),
     linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
-  --hush-wide: radial-gradient(ellipse 70% 60% at 50% 45%, rgba(5, 3, 2, 0.85) 0%, rgba(5, 3, 2, 0.55) 60%, rgba(5, 3, 2, 0.25) 100%);
-  --copper-text: linear-gradient(180deg, #f6c3a4 0%, #e08a5f 55%, #a4502d 100%);
+  --hush-wide: radial-gradient(ellipse 70% 60% at 50% 45%, rgba(2, 8, 8, 0.6) 0%, rgba(2, 8, 8, 0.3) 60%, rgba(2, 8, 8, 0.1) 100%);
+  --copper-text: linear-gradient(180deg, #a0d5cd 0%, #66a99e 55%, #229784 100%);
   color-scheme: dark;
 }
 
 html[data-theme='light'] {
-  --fg: 33 23 17;
-  --page: 248 244 239;
-  --page-2: 241 234 226;
-  --page-3: 236 228 219;
-  --panel: 255 251 247;
-  --accent: 168 82 44;
-  --accent-soft: 181 88 47;
-  --accent-hi: 138 61 28;
+  --fg: 10 31 28;
+  --page: 243 251 250;
+  --page-2: 230 245 243;
+  --page-3: 222 240 237;
+  --panel: 254 255 255;
+  --accent: 26 122 107;
+  --accent-soft: 34 151 132;
+  --accent-hi: 20 95 83;
 
   --glass-fill: rgba(255, 255, 255, 0.4);
-  --glass-edge: 120, 84, 60;
+  --glass-edge: 30, 100, 90;
   --glass-edge-strength: 0.7;
-  --bar-solid: rgba(250, 246, 241, 0.72);
-  --bar-shadow: rgba(80, 50, 30, 0.12);
-  --stage: radial-gradient(ellipse at center, #fffaf5 0%, #f6efe7 55%, #e9dfd3 100%);
-  --hush: radial-gradient(ellipse 45% 55% at 50% 48%, rgba(250, 246, 241, 0.88) 0%, rgba(250, 246, 241, 0.5) 55%, transparent 100%);
-  --hush-wide: radial-gradient(ellipse 70% 60% at 50% 45%, rgba(250, 246, 241, 0.92) 0%, rgba(250, 246, 241, 0.65) 60%, rgba(250, 246, 241, 0.3) 100%);
-  --copper-text: linear-gradient(180deg, #c8683c 0%, #a24a24 55%, #7a3416 100%);
+  --bar-solid: rgba(243, 251, 250, 0.72);
+  --bar-shadow: rgba(20, 70, 62, 0.12);
+  --stage: radial-gradient(ellipse at center, #ffffff 0%, #eefaf8 55%, #dcf1ee 100%);
+  --hush: radial-gradient(ellipse 45% 55% at 50% 48%, rgba(243, 251, 250, 0.88) 0%, rgba(243, 251, 250, 0.5) 55%, transparent 100%);
+  --hush-wide: radial-gradient(ellipse 70% 60% at 50% 45%, rgba(243, 251, 250, 0.7) 0%, rgba(243, 251, 250, 0.4) 60%, rgba(243, 251, 250, 0.15) 100%);
+  --copper-text: linear-gradient(180deg, #229784 0%, #1a7a6b 55%, #145f53 100%);
   color-scheme: light;
 }
 

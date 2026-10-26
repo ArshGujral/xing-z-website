@@ -7,9 +7,9 @@ function RangeCard({ category }) {
   return (
     <article
       id={category.slug}
-      className="group relative rounded-2xl border border-white/10 bg-white/[0.02] overflow-hidden scroll-mt-24 transition-colors hover:border-[#d9774f]/50"
+      className="group relative rounded-2xl border border-white/10 bg-white/[0.02] overflow-hidden scroll-mt-24 transition-colors hover:border-[#229784]/50"
     >
-      <div className="relative aspect-[4/3] bg-[radial-gradient(ellipse_at_50%_62%,rgba(217,119,79,0.2),transparent_65%)]">
+      <div className="relative aspect-[4/3] bg-[radial-gradient(ellipse_at_50%_62%,rgba(34,151,132,0.2),transparent_65%)]">
         {category.image ? (
           <>
             {/* Spotlight and floor shadow so black housings read against the dark card */}
@@ -52,9 +52,9 @@ export default function RangeGrid() {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <SectionHeading
             eyebrow="The range"
-            title="Nine motor lines."
+            title="Eight product lines."
             muted="One standard of build."
-            intro="From cooler pumps to blower motors. Pick a category and we'll send models, sizes and prices on WhatsApp."
+            intro="From high-speed motors to submersible pumps. Pick a category and we'll send models, sizes and prices on WhatsApp."
           />
           <a
             href={whatsappLink('Hi Xing-Z, please send me your full catalogue.')}

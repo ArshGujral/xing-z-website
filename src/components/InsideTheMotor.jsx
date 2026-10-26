@@ -228,7 +228,7 @@ export default function InsideTheMotor() {
           <div>
             <div
               ref={panelRef}
-              className="relative aspect-[1540/1370] overflow-hidden rounded-3xl border border-white/10 bg-[radial-gradient(ellipse_at_50%_50%,rgba(217,119,79,0.16),rgba(255,255,255,0.015)_70%)]"
+              className="relative aspect-[1540/1370] overflow-hidden rounded-3xl border border-white/10 bg-[radial-gradient(ellipse_at_50%_50%,rgba(34,151,132,0.16),rgba(255,255,255,0.015)_70%)]"
             >
               <button
                 onClick={() => setExploded((e) => !e)}
@@ -366,13 +366,13 @@ export default function InsideTheMotor() {
                             y1={by}
                             x2={tx}
                             y2={ty}
-                            stroke="#d9774f"
+                            stroke="#229784"
                             strokeWidth="3"
                             strokeDasharray="10 8"
                             opacity="0.7"
                           />
-                          <circle cx={tx} cy={ty} r="7" fill="#f0ad87" />
-                          <circle cx={bx} cy={by} r="40" stroke="#d9774f" strokeWidth="4" style={{ fill: 'rgb(var(--page))' }} />
+                          <circle cx={tx} cy={ty} r="7" fill="#a0d5cd" />
+                          <circle cx={bx} cy={by} r="40" stroke="#229784" strokeWidth="4" style={{ fill: 'rgb(var(--page))' }} />
                           <text x={bx} y={by + 14} textAnchor="middle" fontSize="40" fontWeight="600" style={{ fill: 'rgb(var(--accent-soft))' }}>
                             {part + 1}
                           </text>
@@ -395,17 +395,17 @@ export default function InsideTheMotor() {
                 key={part.name}
                 onMouseEnter={() => setActive(i)}
                 onMouseLeave={() => setActive(null)}
-                className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.02] p-2.5 pr-4 transition-colors hover:border-[#d9774f]/50"
+                className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.02] p-2.5 pr-4 transition-colors hover:border-[#229784]/50"
               >
                 <img src={part.thumb} alt="" loading="lazy" className="w-14 h-14 flex-none rounded-lg object-cover" />
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2">
-                    <span className="w-5 h-5 flex-none rounded-full border border-[#d9774f]/70 text-accent-soft text-[10px] font-semibold flex items-center justify-center">
+                    <span className="w-5 h-5 flex-none rounded-full border border-[#229784]/70 text-accent-soft text-[10px] font-semibold flex items-center justify-center">
                       {i + 1}
                     </span>
                     <h3 className="text-white text-sm font-medium leading-snug">{part.name}</h3>
                     {part.brand ? (
-                      <span className="ml-auto flex-none rounded-full bg-[#d9774f]/15 border border-[#d9774f]/40 px-2 py-0.5 text-[10px] text-accent-soft">
+                      <span className="ml-auto flex-none rounded-full bg-[#229784]/15 border border-[#229784]/40 px-2 py-0.5 text-[10px] text-accent-soft">
                         {part.brand}
                       </span>
                     ) : (

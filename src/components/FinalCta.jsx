@@ -1,15 +1,19 @@
 import { Check, Factory, Store } from 'lucide-react'
-import CopperWires from './CopperWires.jsx'
+import { NeuralNoise } from './ui/neural-noise.jsx'
 import { container } from './SectionHeading.jsx'
 import { external, partnerOffers, partnerSteps, whatsappLink } from '../content/site.js'
+import { useTheme } from '../theme.jsx'
 
 const ICONS = { store: Store, factory: Factory }
 
 export default function FinalCta() {
+  const { theme } = useTheme()
+
   return (
     <section id="dealers" className="relative overflow-hidden border-t border-white/5">
       <div className="absolute inset-0 bg-stage" />
-      <CopperWires className="absolute inset-0 w-full h-full" />
+      {/* Teal filaments: brighter on the dark ground, deeper teal on the light one */}
+      <NeuralNoise {...(theme === 'light' ? { base: '#1a7a6b', glow: '#229784', strength: 0.7 } : { base: '#229784', glow: '#a0d5cd', strength: 0.9 })} />
       <div className="absolute inset-0 bg-hush-wide" />
 
       <div className={`relative ${container} py-24 md:py-32`}>
@@ -33,7 +37,7 @@ export default function FinalCta() {
                 key={offer.title}
                 className="liquid-glass !bg-page/50 rounded-3xl p-6 sm:p-8 flex flex-col"
               >
-                <span className="w-11 h-11 rounded-xl border border-[#d9774f]/40 bg-[#d9774f]/10 flex items-center justify-center text-accent-soft">
+                <span className="w-11 h-11 rounded-xl border border-[#229784]/40 bg-[#229784]/10 flex items-center justify-center text-accent-soft">
                   <Icon className="w-5 h-5" />
                 </span>
                 <h3 className="mt-5 text-white text-xl sm:text-2xl font-medium tracking-[-0.01em]">{offer.title}</h3>
@@ -66,7 +70,7 @@ export default function FinalCta() {
           <ol className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4">
             {partnerSteps.map((step, i) => (
               <li key={step.title} className="flex sm:flex-col gap-4 sm:gap-3 sm:items-center sm:text-center">
-                <span className="w-9 h-9 flex-none rounded-full border border-[#d9774f]/70 text-accent-soft text-sm font-semibold flex items-center justify-center">
+                <span className="w-9 h-9 flex-none rounded-full border border-[#229784]/70 text-accent-soft text-sm font-semibold flex items-center justify-center">
                   {i + 1}
                 </span>
                 <div>

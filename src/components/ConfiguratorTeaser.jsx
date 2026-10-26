@@ -64,7 +64,7 @@ export default function ConfiguratorTeaser() {
           </div>
         </div>
 
-        <div className="relative rounded-3xl border border-white/10 bg-[radial-gradient(ellipse_at_50%_35%,rgba(217,119,79,0.16),rgba(255,255,255,0.02)_65%)] p-5 sm:p-8">
+        <div className="relative rounded-3xl border border-white/10 bg-[radial-gradient(ellipse_at_50%_35%,rgba(34,151,132,0.16),rgba(255,255,255,0.02)_65%)] p-5 sm:p-8">
           <div className="flex items-center justify-between text-xs text-white/50">
             <span className="inline-flex items-center gap-1.5">
               <Box className="w-3.5 h-3.5" />

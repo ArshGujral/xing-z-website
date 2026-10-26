@@ -21,9 +21,9 @@ export default function WhyXingZ() {
             return (
               <div
                 key={reason.title}
-                className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition-colors hover:border-[#d9774f]/50"
+                className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition-colors hover:border-[#229784]/50"
               >
-                <div className="w-11 h-11 rounded-xl flex items-center justify-center bg-[#d9774f]/15 border border-[#d9774f]/30 text-accent-soft">
+                <div className="w-11 h-11 rounded-xl flex items-center justify-center bg-[#229784]/15 border border-[#229784]/30 text-accent-soft">
                   <Icon className="w-5 h-5" />
                 </div>
                 <h3 className="mt-5 text-white text-lg font-medium tracking-tight">{reason.title}</h3>

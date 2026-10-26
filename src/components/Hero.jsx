@@ -1,8 +1,18 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { ChevronDown, Menu, Moon, Phone, Sun, X } from 'lucide-react'
-import CopperWires from './CopperWires.jsx'
+import { ShaderBackground } from './ui/hero-shader.jsx'
 import { brand, contact, external, nav, whatsappLink } from '../content/site.js'
 import { useTheme } from '../theme.jsx'
+
+// The hero's mesh-gradient backdrop in the logo's teals, on ink (dark theme) or pale aqua (light theme).
+const TEAL_MESH = {
+  colors: ['#000000', '#229784', '#a0d5cd', '#04201c', '#66a99e'],
+  overlayColors: ['#000000', '#e6fdfc', '#229784', '#000000'],
+}
+const TEAL_MESH_LIGHT = {
+  colors: ['#f3fbfa', '#66a99e', '#ffffff', '#e6fdfc', '#229784'],
+  overlayColors: ['#f3fbfa', '#ffffff', '#a0d5cd', '#f3fbfa'],
+}
 
 const tel = `tel:${contact.phone.replace(/\s/g, '')}`
 
@@ -331,8 +341,7 @@ export default function Hero() {
       </header>
 
       <section id="top" className="relative h-svh min-h-[580px] w-full overflow-hidden">
-        <div className="absolute inset-0 bg-stage" />
-        <CopperWires className="absolute inset-0 w-full h-full" />
+        <ShaderBackground className="absolute inset-0" {...(theme === 'light' ? TEAL_MESH_LIGHT : TEAL_MESH)} />
         <div className="absolute inset-0 bg-hush" />
 
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-5 sm:px-6 md:px-12 lg:px-16 pt-[calc(6rem+env(safe-area-inset-top))] pb-10">

@@ -8,7 +8,7 @@ export const asset = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\//,
 export const brand = {
   name: 'Xing-Z',
   logoSrc: asset('xingz-logo-white.png'),
-  logoOnLight: asset('xingz-logo-copper.png'), // used in light mode; xingz-logo-black.png is the plain alternative
+  logoOnLight: asset('xingz-logo-teal.png'), // used in light mode; copper and black versions are alternatives
   tagline: ["We don't just manufacture.", 'We engineer.'], // shown on two lines under the hero logo
   claim: ["One of India's largest manufacturers", 'of cooler motors and cooler pumps.'], // hero headline; the second part is muted
 }
@@ -49,13 +49,6 @@ export const stats = [
 
 // `image`: path to a real product photo in /public. Until then an illustration is drawn from `motor`.
 export const categories = [
-  {
-    slug: 'cooler-pump-motors',
-    name: 'Cooler pump motors',
-    use: 'Water circulation pumps that keep cooler pads soaked.',
-    image: null,
-    motor: { attachment: 'pump', mount: 'none' },
-  },
   {
     slug: 'high-speed-motors',
     name: 'High-speed motors',
@@ -102,14 +95,14 @@ export const categories = [
     slug: 'capcan-motors',
     name: 'Capcan motors',
     use: 'Capacitor-can motors for steady starting torque.',
-    image: null,
+    image: asset('products/capcan-motors.webp'),
     motor: { attachment: 'blades', cap: true },
   },
   {
     slug: 'submersible-pumps',
     name: 'Submersible pumps',
     use: 'Sit in the cooler tank and push water to the pads.',
-    image: null,
+    image: asset('products/submersible-pumps.webp'),
     motor: { attachment: 'pump', mount: 'strainer' },
   },
 ]

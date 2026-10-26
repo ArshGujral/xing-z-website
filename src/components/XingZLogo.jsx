@@ -18,9 +18,9 @@ export default function XingZLogo({ className = '' }) {
       <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true">
         <defs>
           <linearGradient id={`${id}cu`} x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#f6c3a4" />
-            <stop offset="0.5" stopColor="#d9774f" />
-            <stop offset="1" stopColor="#8e3f22" />
+            <stop offset="0" stopColor="#a0d5cd" />
+            <stop offset="0.5" stopColor="#229784" />
+            <stop offset="1" stopColor="#145f53" />
           </linearGradient>
         </defs>
         <rect x="1" y="1" width="28" height="28" rx="8" fill={`url(#${id}cu)`} />
