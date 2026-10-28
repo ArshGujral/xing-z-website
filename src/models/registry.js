@@ -7,6 +7,10 @@ import { asset } from '../content/site.js'
 const hasRing = (product, variants) => !variants.includes('Without ring') && product.attributes.Ring !== 'Without ring'
 
 export const MODELS = {
+  capcan: { load: () => import('./capcan.ts') },
+  'h-frame': { load: () => import('./h-frame.ts') },
+  exhaust: { load: () => import('./exhaust.ts') },
+  pump: { load: () => import('./pump.ts') },
   'high-speed': {
     load: () => import('./high-speed.ts'),
     params: (product, variants) => ({ ring: hasRing(product, variants), photo: asset('models/high-speed-photo.webp') }),
@@ -22,3 +26,4 @@ export const MODELS = {
 }
 
 export const hasModel = (id) => Boolean(id && MODELS[id])
+
