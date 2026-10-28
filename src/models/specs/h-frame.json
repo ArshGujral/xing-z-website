@@ -26,7 +26,7 @@
         "topologyIntent": "Revolved drawn-steel cup with a deep rounded bottom; its lip sits just proud at the joint line.",
         "edgeTreatment": {
           "type": "none",
-          "bevelRadius": 0.0,
+          "bevelRadius": 0,
           "segments": 1
         },
         "deformationStack": [],
@@ -35,12 +35,12 @@
         "latheProfile": {
           "points": [
             [
-              0.0,
-              0.0
+              0,
+              0
             ],
             [
               0.36,
-              0.0
+              0
             ],
             [
               0.41,
@@ -68,6 +68,14 @@
             ],
             [
               0.5,
+              0.175
+            ],
+            [
+              0.5,
+              0.486
+            ],
+            [
+              0.5,
               0.49
             ],
             [
@@ -79,7 +87,7 @@
               0.505
             ],
             [
-              0.0,
+              0,
               0.505
             ]
           ],
@@ -113,7 +121,7 @@
         "topologyIntent": "Revolved black can from the joint line up to the end-bell skirt; a small chamfer at the joint makes the groove.",
         "edgeTreatment": {
           "type": "none",
-          "bevelRadius": 0.0,
+          "bevelRadius": 0,
           "segments": 1
         },
         "deformationStack": [],
@@ -122,7 +130,7 @@
         "latheProfile": {
           "points": [
             [
-              0.0,
+              0,
               0.505
             ],
             [
@@ -135,10 +143,18 @@
             ],
             [
               0.5,
+              0.514
+            ],
+            [
+              0.5,
+              1.06
+            ],
+            [
+              0.5,
               1.065
             ],
             [
-              0.0,
+              0,
               1.065
             ]
           ],
@@ -172,7 +188,7 @@
         "topologyIntent": "Revolved cast cap: short skirt, rounded rim, raised rib annulus and a raised inner disc round the hub.",
         "edgeTreatment": {
           "type": "none",
-          "bevelRadius": 0.0,
+          "bevelRadius": 0,
           "segments": 1
         },
         "deformationStack": [],
@@ -181,60 +197,80 @@
         "latheProfile": {
           "points": [
             [
-              0.0,
-              -0.10400000000000009
+              0.118,
+              -0.104
             ],
             [
-              0.502,
-              -0.10400000000000009
+              0.503,
+              -0.104
             ],
             [
-              0.502,
-              -0.02
+              0.503,
+              -0.1
+            ],
+            [
+              0.503,
+              -0.034
+            ],
+            [
+              0.503,
+              -0.03
+            ],
+            [
+              0.501,
+              -0.012
             ],
             [
               0.494,
-              -0.006
+              0.006
             ],
             [
-              0.48,
-              0.0
+              0.484,
+              0.014
             ],
             [
-              0.44,
-              0.0
+              0.474,
+              0.014
             ],
             [
-              0.44,
-              0.012
+              0.468,
+              0
             ],
             [
-              0.3,
-              0.012
+              0.338,
+              0
             ],
             [
-              0.29,
-              0.0
+              0.334,
+              0.022
             ],
             [
-              0.27,
-              0.0
+              0.314,
+              0.022
             ],
             [
-              0.26,
-              0.018
+              0.31,
+              0
             ],
             [
-              0.12,
-              0.018
+              0.214,
+              0
             ],
             [
-              0.12,
-              0.0
+              0.21,
+              0.02
             ],
             [
-              0.0,
-              0.0
+              0.194,
+              0.02
+            ],
+            [
+              0.192,
+              0
+            ],
+            [
+              0.15,
+              0
             ]
           ],
           "segments": 128
@@ -264,10 +300,10 @@
       "parent": "end-bell",
       "material": "cast-aluminium",
       "geometry": {
-        "topologyIntent": "Six-sided cast boss round the bearing, with an open bore round the shaft.",
+        "topologyIntent": "Cast hub boss round the bore.",
         "edgeTreatment": {
           "type": "none",
-          "bevelRadius": 0.0,
+          "bevelRadius": 0,
           "segments": 1
         },
         "deformationStack": [],
@@ -276,31 +312,27 @@
         "latheProfile": {
           "points": [
             [
-              0.065,
-              0.0
+              0.15,
+              0
             ],
             [
-              0.115,
-              0.0
+              0.15,
+              0.085
             ],
             [
-              0.115,
-              0.06
+              0.142,
+              0.097
             ],
             [
-              0.105,
-              0.07
+              0.12,
+              0.097
             ],
             [
-              0.065,
-              0.07
-            ],
-            [
-              0.065,
-              0.03
+              0.114,
+              0.09
             ]
           ],
-          "segments": 6
+          "segments": 96
         }
       }
     },
@@ -327,10 +359,10 @@
       "parent": "end-bell",
       "material": "bore-dark",
       "geometry": {
-        "topologyIntent": "Dark ring at the bottom of the bore.",
+        "topologyIntent": "Dark bore wall and floor.",
         "edgeTreatment": {
           "type": "none",
-          "bevelRadius": 0.0,
+          "bevelRadius": 0,
           "segments": 1
         },
         "deformationStack": [],
@@ -339,15 +371,770 @@
         "latheProfile": {
           "points": [
             [
-              0.044,
-              0.03
+              0.1142,
+              0.09
             ],
             [
-              0.066,
-              0.03
+              0.1142,
+              -0.04
+            ],
+            [
+              0,
+              -0.04
             ]
           ],
-          "segments": 48
+          "segments": 96
+        }
+      }
+    },
+    {
+      "primitive": "lathe",
+      "transform": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "id": "shaft",
+      "parent": "end-bell",
+      "material": "teal-paint",
+      "geometry": {
+        "topologyIntent": "Output shaft, rib texture.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry",
+        "latheProfile": {
+          "points": [
+            [
+              0,
+              -0.04
+            ],
+            [
+              0.043,
+              -0.04
+            ],
+            [
+              0.043,
+              0.12
+            ],
+            [
+              0.0428,
+              0.1236
+            ],
+            [
+              0.0428,
+              0.1254
+            ],
+            [
+              0.043,
+              0.129
+            ],
+            [
+              0.043,
+              0.132
+            ],
+            [
+              0.0428,
+              0.1356
+            ],
+            [
+              0.0428,
+              0.1374
+            ],
+            [
+              0.043,
+              0.141
+            ],
+            [
+              0.043,
+              0.144
+            ],
+            [
+              0.0428,
+              0.1476
+            ],
+            [
+              0.0428,
+              0.1494
+            ],
+            [
+              0.043,
+              0.153
+            ],
+            [
+              0.043,
+              0.156
+            ],
+            [
+              0.0428,
+              0.1596
+            ],
+            [
+              0.0428,
+              0.1614
+            ],
+            [
+              0.043,
+              0.165
+            ],
+            [
+              0.043,
+              0.168
+            ],
+            [
+              0.0428,
+              0.1716
+            ],
+            [
+              0.0428,
+              0.1734
+            ],
+            [
+              0.043,
+              0.177
+            ],
+            [
+              0.043,
+              0.18
+            ],
+            [
+              0.0428,
+              0.1836
+            ],
+            [
+              0.0428,
+              0.1854
+            ],
+            [
+              0.043,
+              0.189
+            ],
+            [
+              0.043,
+              0.192
+            ],
+            [
+              0.0428,
+              0.1956
+            ],
+            [
+              0.0428,
+              0.1974
+            ],
+            [
+              0.043,
+              0.201
+            ],
+            [
+              0.043,
+              0.204
+            ],
+            [
+              0.0428,
+              0.2076
+            ],
+            [
+              0.0428,
+              0.2094
+            ],
+            [
+              0.043,
+              0.213
+            ],
+            [
+              0.043,
+              0.216
+            ],
+            [
+              0.0428,
+              0.2196
+            ],
+            [
+              0.0428,
+              0.2214
+            ],
+            [
+              0.043,
+              0.225
+            ],
+            [
+              0.043,
+              0.228
+            ],
+            [
+              0.0428,
+              0.2316
+            ],
+            [
+              0.0428,
+              0.2334
+            ],
+            [
+              0.043,
+              0.237
+            ],
+            [
+              0.043,
+              0.24
+            ],
+            [
+              0.0428,
+              0.2436
+            ],
+            [
+              0.0428,
+              0.2454
+            ],
+            [
+              0.043,
+              0.249
+            ],
+            [
+              0.043,
+              0.252
+            ],
+            [
+              0.0428,
+              0.2556
+            ],
+            [
+              0.0428,
+              0.2574
+            ],
+            [
+              0.043,
+              0.261
+            ],
+            [
+              0.043,
+              0.264
+            ],
+            [
+              0.0428,
+              0.2676
+            ],
+            [
+              0.0428,
+              0.2694
+            ],
+            [
+              0.043,
+              0.273
+            ],
+            [
+              0.043,
+              0.276
+            ],
+            [
+              0.0428,
+              0.2796
+            ],
+            [
+              0.0428,
+              0.2814
+            ],
+            [
+              0.043,
+              0.285
+            ],
+            [
+              0.043,
+              0.288
+            ],
+            [
+              0.0428,
+              0.2916
+            ],
+            [
+              0.0428,
+              0.2934
+            ],
+            [
+              0.043,
+              0.297
+            ],
+            [
+              0.043,
+              0.3
+            ],
+            [
+              0.0428,
+              0.3036
+            ],
+            [
+              0.0428,
+              0.3054
+            ],
+            [
+              0.043,
+              0.309
+            ],
+            [
+              0.043,
+              0.312
+            ],
+            [
+              0.0428,
+              0.3156
+            ],
+            [
+              0.0428,
+              0.3174
+            ],
+            [
+              0.043,
+              0.321
+            ],
+            [
+              0.043,
+              0.324
+            ],
+            [
+              0.0428,
+              0.3276
+            ],
+            [
+              0.0428,
+              0.3294
+            ],
+            [
+              0.043,
+              0.333
+            ],
+            [
+              0.043,
+              0.336
+            ],
+            [
+              0.0428,
+              0.3396
+            ],
+            [
+              0.0428,
+              0.3414
+            ],
+            [
+              0.043,
+              0.345
+            ],
+            [
+              0.043,
+              0.348
+            ],
+            [
+              0.0428,
+              0.3516
+            ],
+            [
+              0.0428,
+              0.3534
+            ],
+            [
+              0.043,
+              0.357
+            ],
+            [
+              0.043,
+              0.36
+            ],
+            [
+              0.0428,
+              0.3636
+            ],
+            [
+              0.0428,
+              0.3654
+            ],
+            [
+              0.043,
+              0.369
+            ],
+            [
+              0.043,
+              0.372
+            ],
+            [
+              0.0428,
+              0.3756
+            ],
+            [
+              0.0428,
+              0.3774
+            ],
+            [
+              0.043,
+              0.381
+            ],
+            [
+              0.043,
+              0.384
+            ],
+            [
+              0.0428,
+              0.3876
+            ],
+            [
+              0.0428,
+              0.3894
+            ],
+            [
+              0.043,
+              0.393
+            ],
+            [
+              0.043,
+              0.396
+            ],
+            [
+              0.0428,
+              0.3996
+            ],
+            [
+              0.0428,
+              0.4014
+            ],
+            [
+              0.043,
+              0.405
+            ],
+            [
+              0.043,
+              0.408
+            ],
+            [
+              0.0428,
+              0.4116
+            ],
+            [
+              0.0428,
+              0.4134
+            ],
+            [
+              0.043,
+              0.417
+            ],
+            [
+              0.043,
+              0.42
+            ],
+            [
+              0.0428,
+              0.4236
+            ],
+            [
+              0.0428,
+              0.4254
+            ],
+            [
+              0.043,
+              0.429
+            ],
+            [
+              0.043,
+              0.432
+            ],
+            [
+              0.0428,
+              0.4356
+            ],
+            [
+              0.0428,
+              0.4374
+            ],
+            [
+              0.043,
+              0.441
+            ],
+            [
+              0.043,
+              0.444
+            ],
+            [
+              0.0428,
+              0.4476
+            ],
+            [
+              0.0428,
+              0.4494
+            ],
+            [
+              0.043,
+              0.453
+            ],
+            [
+              0.043,
+              0.456
+            ],
+            [
+              0.0428,
+              0.4596
+            ],
+            [
+              0.0428,
+              0.4614
+            ],
+            [
+              0.043,
+              0.465
+            ],
+            [
+              0.043,
+              0.468
+            ],
+            [
+              0.0428,
+              0.4716
+            ],
+            [
+              0.0428,
+              0.4734
+            ],
+            [
+              0.043,
+              0.477
+            ],
+            [
+              0.043,
+              0.48
+            ],
+            [
+              0.0428,
+              0.4836
+            ],
+            [
+              0.0428,
+              0.4854
+            ],
+            [
+              0.043,
+              0.489
+            ],
+            [
+              0.043,
+              0.492
+            ],
+            [
+              0.0428,
+              0.4956
+            ],
+            [
+              0.0428,
+              0.4974
+            ],
+            [
+              0.043,
+              0.501
+            ],
+            [
+              0.043,
+              0.504
+            ],
+            [
+              0.0428,
+              0.5076
+            ],
+            [
+              0.0428,
+              0.5094
+            ],
+            [
+              0.043,
+              0.513
+            ],
+            [
+              0.043,
+              0.516
+            ],
+            [
+              0.0428,
+              0.5196
+            ],
+            [
+              0.0428,
+              0.5214
+            ],
+            [
+              0.043,
+              0.525
+            ],
+            [
+              0.043,
+              0.528
+            ],
+            [
+              0.0428,
+              0.5316
+            ],
+            [
+              0.0428,
+              0.5334
+            ],
+            [
+              0.043,
+              0.537
+            ],
+            [
+              0.043,
+              0.54
+            ],
+            [
+              0.0428,
+              0.5436
+            ],
+            [
+              0.0428,
+              0.5454
+            ],
+            [
+              0.043,
+              0.549
+            ],
+            [
+              0.043,
+              0.552
+            ],
+            [
+              0.0428,
+              0.5556
+            ],
+            [
+              0.0428,
+              0.5574
+            ],
+            [
+              0.043,
+              0.561
+            ],
+            [
+              0.043,
+              0.564
+            ],
+            [
+              0.0428,
+              0.5676
+            ],
+            [
+              0.0428,
+              0.5694
+            ],
+            [
+              0.043,
+              0.573
+            ],
+            [
+              0.043,
+              0.576
+            ],
+            [
+              0.0428,
+              0.5796
+            ],
+            [
+              0.0428,
+              0.5814
+            ],
+            [
+              0.043,
+              0.585
+            ],
+            [
+              0.043,
+              0.588
+            ],
+            [
+              0.0428,
+              0.5916
+            ],
+            [
+              0.0428,
+              0.5934
+            ],
+            [
+              0.043,
+              0.597
+            ],
+            [
+              0.043,
+              0.6
+            ],
+            [
+              0.0428,
+              0.6036
+            ],
+            [
+              0.0428,
+              0.6054
+            ],
+            [
+              0.043,
+              0.609
+            ],
+            [
+              0.043,
+              0.612
+            ],
+            [
+              0.0428,
+              0.6156
+            ],
+            [
+              0.0428,
+              0.6174
+            ],
+            [
+              0.043,
+              0.621
+            ],
+            [
+              0.043,
+              0.624
+            ],
+            [
+              0.0428,
+              0.6276
+            ],
+            [
+              0.0428,
+              0.6294
+            ],
+            [
+              0.043,
+              0.633
+            ],
+            [
+              0.043,
+              0.636
+            ],
+            [
+              0.043,
+              0.716
+            ],
+            [
+              0.037,
+              0.722
+            ],
+            [
+              0,
+              0.722
+            ]
+          ],
+          "segments": 96
         }
       }
     },
@@ -356,7 +1143,7 @@
       "transform": {
         "position": [
           0,
-          0.03,
+          0.7222,
           0
         ],
         "rotation": [
@@ -365,53 +1152,53 @@
           0
         ],
         "scale": [
-          0.094,
-          0.692,
-          0.094
-        ]
-      },
-      "id": "shaft",
-      "parent": "end-bell",
-      "material": "teal-paint",
-      "geometry": {
-        "topologyIntent": "Teal-painted steel shaft rising from the hub bore to 0.72 D above the top face.",
-        "edgeTreatment": {
-          "type": "none",
-          "bevelRadius": 0.0,
-          "segments": 1
-        },
-        "deformationStack": [],
-        "uvStrategy": "generated procedural coordinates",
-        "normalStrategy": "vertex normals from generated geometry"
-      }
-    },
-    {
-      "primitive": "cylinder",
-      "transform": {
-        "position": [
-          0,
-          0.722,
-          0
-        ],
-        "rotation": [
-          0,
-          0,
-          0
-        ],
-        "scale": [
-          0.032,
+          0.034,
           0.002,
-          0.032
+          0.034
         ]
       },
       "id": "shaft-tip",
       "parent": "end-bell",
       "material": "bore-dark",
       "geometry": {
-        "topologyIntent": "Dark centre hole on the shaft end.",
+        "topologyIntent": "Axial centre hole.",
         "edgeTreatment": {
           "type": "none",
-          "bevelRadius": 0.0,
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          0,
+          0.69,
+          0
+        ],
+        "rotation": [
+          0,
+          0.75,
+          1.5707963267948966
+        ],
+        "scale": [
+          0.024,
+          0.088,
+          0.024
+        ]
+      },
+      "id": "shaft-pin-hole",
+      "parent": "end-bell",
+      "material": "bore-dark",
+      "geometry": {
+        "topologyIntent": "Cross-drilled pin hole near the tip.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
           "segments": 1
         },
         "deformationStack": [],
@@ -423,165 +1210,29 @@
       "primitive": "box",
       "transform": {
         "position": [
-          -0.3191,
-          0.7825,
-          0.2661
+          -0.3528864521931706,
+          0.775,
+          0.3654246185720348
         ],
         "rotation": [
           0,
-          -0.6981,
+          -0.767944870877505,
           0
         ],
         "scale": [
+          0.24,
           0.3,
-          0.365,
-          0.18
+          0.016
         ]
       },
       "id": "bracket-left",
       "parent": "can-body",
       "material": "bracket-coat",
       "geometry": {
-        "topologyIntent": "Pressed-steel channel bracket welded to the can, its face turned toward the front to carry two bolts.",
+        "topologyIntent": "Bracket base plate on the can.",
         "edgeTreatment": {
           "type": "none",
-          "bevelRadius": 0.0,
-          "segments": 1
-        },
-        "deformationStack": [],
-        "uvStrategy": "generated procedural coordinates",
-        "normalStrategy": "vertex normals from generated geometry"
-      }
-    },
-    {
-      "primitive": "cylinder",
-      "transform": {
-        "position": [
-          -0.4569,
-          0.699,
-          0.2653
-        ],
-        "rotation": [
-          0,
-          0,
-          0
-        ],
-        "scale": [
-          0.084,
-          0.01,
-          0.084
-        ]
-      },
-      "id": "washer-left-0",
-      "parent": "can-body",
-      "material": "brass",
-      "geometry": {
-        "topologyIntent": "Plated washer under the bolt head.",
-        "edgeTreatment": {
-          "type": "none",
-          "bevelRadius": 0.0,
-          "segments": 1
-        },
-        "deformationStack": [],
-        "uvStrategy": "generated procedural coordinates",
-        "normalStrategy": "vertex normals from generated geometry"
-      }
-    },
-    {
-      "primitive": "cylinder",
-      "transform": {
-        "position": [
-          -0.4621,
-          0.699,
-          0.2715
-        ],
-        "rotation": [
-          0,
-          0,
-          0
-        ],
-        "scale": [
-          0.064,
-          0.034,
-          0.064
-        ]
-      },
-      "id": "bolt-left-0",
-      "parent": "can-body",
-      "material": "brass",
-      "geometry": {
-        "topologyIntent": "Brass hex bolt head standing out of the bracket face.",
-        "edgeTreatment": {
-          "type": "none",
-          "bevelRadius": 0.0,
-          "segments": 1
-        },
-        "deformationStack": [],
-        "uvStrategy": "generated procedural coordinates",
-        "normalStrategy": "vertex normals from generated geometry"
-      }
-    },
-    {
-      "primitive": "cylinder",
-      "transform": {
-        "position": [
-          -0.4569,
-          0.837,
-          0.2653
-        ],
-        "rotation": [
-          0,
-          0,
-          0
-        ],
-        "scale": [
-          0.084,
-          0.01,
-          0.084
-        ]
-      },
-      "id": "washer-left-1",
-      "parent": "can-body",
-      "material": "brass",
-      "geometry": {
-        "topologyIntent": "Plated washer under the bolt head.",
-        "edgeTreatment": {
-          "type": "none",
-          "bevelRadius": 0.0,
-          "segments": 1
-        },
-        "deformationStack": [],
-        "uvStrategy": "generated procedural coordinates",
-        "normalStrategy": "vertex normals from generated geometry"
-      }
-    },
-    {
-      "primitive": "cylinder",
-      "transform": {
-        "position": [
-          -0.4621,
-          0.837,
-          0.2715
-        ],
-        "rotation": [
-          0,
-          0,
-          0
-        ],
-        "scale": [
-          0.064,
-          0.034,
-          0.064
-        ]
-      },
-      "id": "bolt-left-1",
-      "parent": "can-body",
-      "material": "brass",
-      "geometry": {
-        "topologyIntent": "Brass hex bolt head standing out of the bracket face.",
-        "edgeTreatment": {
-          "type": "none",
-          "bevelRadius": 0.0,
+          "bevelRadius": 0,
           "segments": 1
         },
         "deformationStack": [],
@@ -593,29 +1244,505 @@
       "primitive": "box",
       "transform": {
         "position": [
-          0.3191,
-          0.7825,
-          0.2661
+          0.058,
+          0,
+          0.038
         ],
         "rotation": [
           0,
-          0.6981,
+          0,
           0
         ],
         "scale": [
+          0.012,
           0.3,
-          0.365,
-          0.18
+          0.07
+        ]
+      },
+      "id": "bracket-left-web-a",
+      "parent": "bracket-left",
+      "material": "bracket-coat",
+      "geometry": {
+        "topologyIntent": "Channel web.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "box",
+      "transform": {
+        "position": [
+          -0.058,
+          0,
+          0.038
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.012,
+          0.3,
+          0.07
+        ]
+      },
+      "id": "bracket-left-web-b",
+      "parent": "bracket-left",
+      "material": "bracket-coat",
+      "geometry": {
+        "topologyIntent": "Channel web.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "box",
+      "transform": {
+        "position": [
+          0,
+          0,
+          0.072
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.128,
+          0.3,
+          0.012
+        ]
+      },
+      "id": "bracket-left-face",
+      "parent": "bracket-left",
+      "material": "bracket-coat",
+      "geometry": {
+        "topologyIntent": "Channel outer face.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          0.1,
+          -0.11,
+          0.007
+        ],
+        "rotation": [
+          1.5707963267948966,
+          0,
+          0
+        ],
+        "scale": [
+          0.013,
+          0.004,
+          0.013
+        ]
+      },
+      "id": "bracket-left-hole-0",
+      "parent": "bracket-left",
+      "material": "bore-dark",
+      "geometry": {
+        "topologyIntent": "Rivet hole in the flange.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          0.1,
+          0.11,
+          0.007
+        ],
+        "rotation": [
+          1.5707963267948966,
+          0,
+          0
+        ],
+        "scale": [
+          0.013,
+          0.004,
+          0.013
+        ]
+      },
+      "id": "bracket-left-hole-1",
+      "parent": "bracket-left",
+      "material": "bore-dark",
+      "geometry": {
+        "topologyIntent": "Rivet hole in the flange.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          0,
+          -0.075,
+          0.083
+        ],
+        "rotation": [
+          1.5707963267948966,
+          0,
+          0
+        ],
+        "scale": [
+          0.1,
+          0.01,
+          0.1
+        ]
+      },
+      "id": "washer-left-0",
+      "parent": "bracket-left",
+      "material": "brass",
+      "geometry": {
+        "topologyIntent": "Flat washer.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          0,
+          -0.075,
+          0.106
+        ],
+        "rotation": [
+          1.5707963267948966,
+          0,
+          0
+        ],
+        "scale": [
+          0.086,
+          0.036,
+          0.086
+        ]
+      },
+      "id": "bolt-left-0",
+      "parent": "bracket-left",
+      "material": "brass",
+      "geometry": {
+        "topologyIntent": "Hex bolt head pointing outward.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          0,
+          -0.075,
+          0.125
+        ],
+        "rotation": [
+          1.5707963267948966,
+          0,
+          0
+        ],
+        "scale": [
+          0.07,
+          0.004,
+          0.07
+        ]
+      },
+      "id": "bolt-left-0-crown",
+      "parent": "bracket-left",
+      "material": "brass",
+      "geometry": {
+        "topologyIntent": "Chamfered crown of the bolt head.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          0,
+          0.075,
+          0.083
+        ],
+        "rotation": [
+          1.5707963267948966,
+          0,
+          0
+        ],
+        "scale": [
+          0.1,
+          0.01,
+          0.1
+        ]
+      },
+      "id": "washer-left-1",
+      "parent": "bracket-left",
+      "material": "brass",
+      "geometry": {
+        "topologyIntent": "Flat washer.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          0,
+          0.075,
+          0.106
+        ],
+        "rotation": [
+          1.5707963267948966,
+          0,
+          0
+        ],
+        "scale": [
+          0.086,
+          0.036,
+          0.086
+        ]
+      },
+      "id": "bolt-left-1",
+      "parent": "bracket-left",
+      "material": "brass",
+      "geometry": {
+        "topologyIntent": "Hex bolt head pointing outward.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          0,
+          0.075,
+          0.125
+        ],
+        "rotation": [
+          1.5707963267948966,
+          0,
+          0
+        ],
+        "scale": [
+          0.07,
+          0.004,
+          0.07
+        ]
+      },
+      "id": "bolt-left-1-crown",
+      "parent": "bracket-left",
+      "material": "brass",
+      "geometry": {
+        "topologyIntent": "Chamfered crown of the bolt head.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "box",
+      "transform": {
+        "position": [
+          0.3528864521931706,
+          0.775,
+          0.3654246185720348
+        ],
+        "rotation": [
+          0,
+          0.767944870877505,
+          0
+        ],
+        "scale": [
+          0.24,
+          0.3,
+          0.016
         ]
       },
       "id": "bracket-right",
       "parent": "can-body",
       "material": "bracket-coat",
       "geometry": {
-        "topologyIntent": "Pressed-steel channel bracket welded to the can, its face turned toward the front to carry two bolts.",
+        "topologyIntent": "Bracket base plate on the can.",
         "edgeTreatment": {
           "type": "none",
-          "bevelRadius": 0.0,
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "box",
+      "transform": {
+        "position": [
+          0.058,
+          0,
+          0.038
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.012,
+          0.3,
+          0.07
+        ]
+      },
+      "id": "bracket-right-web-a",
+      "parent": "bracket-right",
+      "material": "bracket-coat",
+      "geometry": {
+        "topologyIntent": "Channel web.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "box",
+      "transform": {
+        "position": [
+          -0.058,
+          0,
+          0.038
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.012,
+          0.3,
+          0.07
+        ]
+      },
+      "id": "bracket-right-web-b",
+      "parent": "bracket-right",
+      "material": "bracket-coat",
+      "geometry": {
+        "topologyIntent": "Channel web.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "box",
+      "transform": {
+        "position": [
+          0,
+          0,
+          0.072
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.128,
+          0.3,
+          0.012
+        ]
+      },
+      "id": "bracket-right-face",
+      "parent": "bracket-right",
+      "material": "bracket-coat",
+      "geometry": {
+        "topologyIntent": "Channel outer face.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
           "segments": 1
         },
         "deformationStack": [],
@@ -627,29 +1754,97 @@
       "primitive": "cylinder",
       "transform": {
         "position": [
-          0.4569,
-          0.699,
-          0.2653
+          -0.1,
+          -0.11,
+          0.007
         ],
         "rotation": [
-          0,
+          1.5707963267948966,
           0,
           0
         ],
         "scale": [
-          0.084,
+          0.013,
+          0.004,
+          0.013
+        ]
+      },
+      "id": "bracket-right-hole-0",
+      "parent": "bracket-right",
+      "material": "bore-dark",
+      "geometry": {
+        "topologyIntent": "Rivet hole in the flange.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          -0.1,
+          0.11,
+          0.007
+        ],
+        "rotation": [
+          1.5707963267948966,
+          0,
+          0
+        ],
+        "scale": [
+          0.013,
+          0.004,
+          0.013
+        ]
+      },
+      "id": "bracket-right-hole-1",
+      "parent": "bracket-right",
+      "material": "bore-dark",
+      "geometry": {
+        "topologyIntent": "Rivet hole in the flange.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          0,
+          -0.075,
+          0.083
+        ],
+        "rotation": [
+          1.5707963267948966,
+          0,
+          0
+        ],
+        "scale": [
+          0.1,
           0.01,
-          0.084
+          0.1
         ]
       },
       "id": "washer-right-0",
-      "parent": "can-body",
+      "parent": "bracket-right",
       "material": "brass",
       "geometry": {
-        "topologyIntent": "Plated washer under the bolt head.",
+        "topologyIntent": "Flat washer.",
         "edgeTreatment": {
           "type": "none",
-          "bevelRadius": 0.0,
+          "bevelRadius": 0,
           "segments": 1
         },
         "deformationStack": [],
@@ -661,29 +1856,29 @@
       "primitive": "cylinder",
       "transform": {
         "position": [
-          0.4621,
-          0.699,
-          0.2715
+          0,
+          -0.075,
+          0.106
         ],
         "rotation": [
-          0,
+          1.5707963267948966,
           0,
           0
         ],
         "scale": [
-          0.064,
-          0.034,
-          0.064
+          0.086,
+          0.036,
+          0.086
         ]
       },
       "id": "bolt-right-0",
-      "parent": "can-body",
+      "parent": "bracket-right",
       "material": "brass",
       "geometry": {
-        "topologyIntent": "Brass hex bolt head standing out of the bracket face.",
+        "topologyIntent": "Hex bolt head pointing outward.",
         "edgeTreatment": {
           "type": "none",
-          "bevelRadius": 0.0,
+          "bevelRadius": 0,
           "segments": 1
         },
         "deformationStack": [],
@@ -695,29 +1890,63 @@
       "primitive": "cylinder",
       "transform": {
         "position": [
-          0.4569,
-          0.837,
-          0.2653
+          0,
+          -0.075,
+          0.125
         ],
         "rotation": [
-          0,
+          1.5707963267948966,
           0,
           0
         ],
         "scale": [
-          0.084,
+          0.07,
+          0.004,
+          0.07
+        ]
+      },
+      "id": "bolt-right-0-crown",
+      "parent": "bracket-right",
+      "material": "brass",
+      "geometry": {
+        "topologyIntent": "Chamfered crown of the bolt head.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          0,
+          0.075,
+          0.083
+        ],
+        "rotation": [
+          1.5707963267948966,
+          0,
+          0
+        ],
+        "scale": [
+          0.1,
           0.01,
-          0.084
+          0.1
         ]
       },
       "id": "washer-right-1",
-      "parent": "can-body",
+      "parent": "bracket-right",
       "material": "brass",
       "geometry": {
-        "topologyIntent": "Plated washer under the bolt head.",
+        "topologyIntent": "Flat washer.",
         "edgeTreatment": {
           "type": "none",
-          "bevelRadius": 0.0,
+          "bevelRadius": 0,
           "segments": 1
         },
         "deformationStack": [],
@@ -729,29 +1958,63 @@
       "primitive": "cylinder",
       "transform": {
         "position": [
-          0.4621,
-          0.837,
-          0.2715
+          0,
+          0.075,
+          0.106
         ],
         "rotation": [
-          0,
+          1.5707963267948966,
           0,
           0
         ],
         "scale": [
-          0.064,
-          0.034,
-          0.064
+          0.086,
+          0.036,
+          0.086
         ]
       },
       "id": "bolt-right-1",
-      "parent": "can-body",
+      "parent": "bracket-right",
       "material": "brass",
       "geometry": {
-        "topologyIntent": "Brass hex bolt head standing out of the bracket face.",
+        "topologyIntent": "Hex bolt head pointing outward.",
         "edgeTreatment": {
           "type": "none",
-          "bevelRadius": 0.0,
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          0,
+          0.075,
+          0.125
+        ],
+        "rotation": [
+          1.5707963267948966,
+          0,
+          0
+        ],
+        "scale": [
+          0.07,
+          0.004,
+          0.07
+        ]
+      },
+      "id": "bolt-right-1-crown",
+      "parent": "bracket-right",
+      "material": "brass",
+      "geometry": {
+        "topologyIntent": "Chamfered crown of the bolt head.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
           "segments": 1
         },
         "deformationStack": [],
@@ -763,140 +2026,184 @@
   "repetitions": [
     {
       "id": "screw-pads",
-      "name": "Cast screw pads (4)",
+      "name": "Counterbored screw pads (4)",
       "level": "meso",
       "parent": "end-bell",
       "count": 4,
       "primitive": "cylinder",
       "material": "cast-aluminium",
       "instanceScale": [
-        0.085,
+        0.1,
         0.03,
-        0.085
+        0.1
       ],
       "placement": {
-        "mode": "radial",
-        "axis": [
-          0,
-          1,
-          0
-        ],
-        "radius": 0.912,
-        "startAngleDeg": 16
+        "radius": 0.9,
+        "startAngleDeg": -73,
+        "y": 0.004
       },
       "distribution": "radial",
       "buildsGeometry": true,
       "variation": {
-        "scaleJitter": 0.0,
-        "rotationJitter": 0.0
+        "scaleJitter": 0,
+        "rotationJitter": 0
       },
       "evidenceRef": "zone-r1c1",
       "notes": "Raised pads under the screws at r 0.456."
     },
     {
       "id": "screw-heads",
-      "name": "Brass domed screws (4)",
+      "name": "Brass cheese-head screws (4)",
       "level": "meso",
       "parent": "end-bell",
       "count": 4,
-      "primitive": "sphere",
+      "primitive": "cylinder",
       "material": "brass",
       "instanceScale": [
-        0.05,
-        0.06,
-        0.05
+        0.056,
+        0.014,
+        0.056
       ],
       "placement": {
-        "mode": "radial",
-        "axis": [
-          0,
-          1,
-          0
-        ],
-        "radius": 0.912,
-        "startAngleDeg": 16
+        "radius": 0.9,
+        "startAngleDeg": -73,
+        "y": 0.021
       },
       "distribution": "radial",
       "buildsGeometry": true,
       "variation": {
-        "scaleJitter": 0.0,
-        "rotationJitter": 0.0
+        "scaleJitter": 0,
+        "rotationJitter": 0
       },
       "evidenceRef": "zone-r1c1",
       "notes": "Domed heads on the pads at r 0.456, 90 degree spacing."
     },
     {
       "id": "ribs",
-      "name": "Radial cast ribs (6)",
+      "name": "Radial cast spokes (8)",
       "level": "meso",
       "parent": "end-bell",
-      "count": 6,
+      "count": 8,
       "primitive": "box",
       "material": "cast-aluminium",
       "instanceScale": [
-        0.2,
-        0.05,
-        0.025
+        0.3,
+        0.044,
+        0.03
       ],
       "placement": {
-        "mode": "radial",
-        "axis": [
-          0,
-          1,
-          0
-        ],
-        "radius": 0.72,
-        "startAngleDeg": 0
+        "radius": 0.63,
+        "startAngleDeg": 22.5,
+        "y": 0
       },
       "distribution": "radial",
       "buildsGeometry": true,
       "variation": {
-        "scaleJitter": 0.0,
-        "rotationJitter": 0.0
+        "scaleJitter": 0,
+        "rotationJitter": 0
       },
       "evidenceRef": "zone-r1c1",
       "notes": "Ribs centred on r 0.36 crossing the raised annulus."
+    },
+    {
+      "id": "screw-domes",
+      "name": "Screw head crowns (4)",
+      "level": "meso",
+      "parent": "end-bell",
+      "count": 4,
+      "primitive": "sphere",
+      "material": "brass",
+      "instanceScale": [
+        0.054,
+        0.012,
+        0.054
+      ],
+      "placement": {
+        "radius": 0.9,
+        "startAngleDeg": -73,
+        "y": 0.028
+      },
+      "distribution": "radial",
+      "buildsGeometry": true,
+      "variation": {
+        "scaleJitter": 0,
+        "rotationJitter": 0
+      },
+      "evidenceRef": "zone-r1c1",
+      "notes": "Raised pads under the screws at r 0.456."
+    },
+    {
+      "id": "hub-lugs",
+      "name": "Hub castellations (8)",
+      "level": "meso",
+      "parent": "end-bell",
+      "count": 8,
+      "primitive": "box",
+      "material": "cast-aluminium",
+      "instanceScale": [
+        0.03,
+        0.09,
+        0.05
+      ],
+      "placement": {
+        "radius": 0.31,
+        "startAngleDeg": 0,
+        "y": 0.045
+      },
+      "distribution": "radial",
+      "buildsGeometry": true,
+      "variation": {
+        "scaleJitter": 0,
+        "rotationJitter": 0
+      },
+      "evidenceRef": "zone-r1c1",
+      "notes": "Raised pads under the screws at r 0.456."
     }
   ],
   "materials": [
     {
-      "metalness": 0.0,
-      "color": "#151515",
-      "id": "powder-coat",
-      "roughness": 0.55,
-      "clearcoat": 0.0
-    },
-    {
-      "metalness": 0.0,
-      "color": "#121212",
-      "id": "bracket-coat",
-      "roughness": 0.5,
-      "clearcoat": 0
-    },
-    {
-      "metalness": 1.0,
-      "color": "#c4c6c6",
-      "id": "cast-aluminium",
-      "roughness": 0.45,
-      "clearcoat": 0
-    },
-    {
-      "metalness": 0.0,
-      "color": "#2f5c54",
-      "id": "teal-paint",
-      "roughness": 0.35,
-      "clearcoat": 0.4
-    },
-    {
-      "metalness": 1.0,
-      "color": "#c4a24c",
-      "id": "brass",
-      "roughness": 0.32,
-      "clearcoat": 0
-    },
-    {
-      "metalness": 0.0,
+      "metalness": 0,
       "color": "#0c0c0c",
+      "id": "powder-coat",
+      "roughness": 0.58,
+      "clearcoat": 0,
+      "envMapIntensity": 0.22
+    },
+    {
+      "metalness": 0,
+      "color": "#111111",
+      "id": "bracket-coat",
+      "roughness": 0.55,
+      "clearcoat": 0,
+      "envMapIntensity": 0.3
+    },
+    {
+      "metalness": 0.65,
+      "color": "#7b7e7e",
+      "id": "cast-aluminium",
+      "roughness": 0.55,
+      "clearcoat": 0,
+      "envMapIntensity": 0.35
+    },
+    {
+      "metalness": 0.7,
+      "color": "#2a5249",
+      "id": "teal-paint",
+      "roughness": 0.3,
+      "clearcoat": 0.4,
+      "envMapIntensity": 0.9
+    },
+    {
+      "metalness": 1,
+      "color": "#c2a463",
+      "id": "brass",
+      "roughness": 0.34,
+      "clearcoat": 0,
+      "envMapIntensity": 0.8
+    },
+    {
+      "metalness": 0,
+      "color": "#0b0b0b",
       "id": "bore-dark",
       "roughness": 0.7,
       "clearcoat": 0

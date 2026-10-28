@@ -26,7 +26,7 @@
         "topologyIntent": "Revolved drawn-steel can with a generously rounded bottom edge and a joint groove; its top runs up hidden inside the band.",
         "edgeTreatment": {
           "type": "none",
-          "bevelRadius": 0.0,
+          "bevelRadius": 0,
           "segments": 1
         },
         "deformationStack": [],
@@ -35,44 +35,96 @@
         "latheProfile": {
           "points": [
             [
-              0.0,
-              0.0
+              0,
+              0
             ],
             [
-              0.44,
-              0.0
+              0.36,
+              0
             ],
             [
-              0.478,
-              0.008
+              0.41,
+              0.012
             ],
             [
-              0.496,
+              0.445,
               0.03
             ],
             [
-              0.5,
-              0.065
+              0.472,
+              0.058
+            ],
+            [
+              0.49,
+              0.092
+            ],
+            [
+              0.498,
+              0.13
             ],
             [
               0.5,
+              0.17
+            ],
+            [
+              0.5,
+              0.175
+            ],
+            [
+              0.5,
+              0.645
+            ],
+            [
+              0.5,
+              0.65
+            ],
+            [
+              0.506,
+              0.655
+            ],
+            [
+              0.518,
+              0.66
+            ],
+            [
+              0.518,
               0.665
             ],
             [
-              0.494,
-              0.67
+              0.518,
+              0.75
             ],
             [
-              0.5,
-              0.675
+              0.518,
+              0.755
             ],
             [
-              0.5,
-              0.84
+              0.53,
+              0.76
             ],
             [
-              0.0,
-              0.84
+              0.542,
+              0.765
+            ],
+            [
+              0.542,
+              0.77
+            ],
+            [
+              0.542,
+              0.795
+            ],
+            [
+              0.542,
+              0.8
+            ],
+            [
+              0.528,
+              0.8
+            ],
+            [
+              0,
+              0.8
             ]
           ],
           "segments": 96
@@ -85,69 +137,6 @@
         "position": [
           0,
           0,
-          0
-        ],
-        "rotation": [
-          0,
-          0,
-          0
-        ],
-        "scale": [
-          1,
-          1,
-          1
-        ]
-      },
-      "id": "band-lip",
-      "parent": "lower-can",
-      "material": "powder-coat",
-      "geometry": {
-        "topologyIntent": "Plain lip ring under the fins, slightly proud of the can, chamfered top and bottom.",
-        "edgeTreatment": {
-          "type": "none",
-          "bevelRadius": 0.0,
-          "segments": 1
-        },
-        "deformationStack": [],
-        "uvStrategy": "generated procedural coordinates",
-        "normalStrategy": "vertex normals from generated geometry",
-        "latheProfile": {
-          "points": [
-            [
-              0.499,
-              0.74
-            ],
-            [
-              0.52,
-              0.74
-            ],
-            [
-              0.527,
-              0.748
-            ],
-            [
-              0.527,
-              0.8029999999999999
-            ],
-            [
-              0.515,
-              0.815
-            ],
-            [
-              0.499,
-              0.815
-            ]
-          ],
-          "segments": 128
-        }
-      }
-    },
-    {
-      "primitive": "lathe",
-      "transform": {
-        "position": [
-          0,
-          1.0175,
           0
         ],
         "rotation": [
@@ -168,7 +157,7 @@
         "topologyIntent": "Band core round the stator carrying 32 vertical fins; the cap wall hides its top edge.",
         "edgeTreatment": {
           "type": "none",
-          "bevelRadius": 0.0,
+          "bevelRadius": 0,
           "segments": 1
         },
         "deformationStack": [],
@@ -177,23 +166,31 @@
         "latheProfile": {
           "points": [
             [
-              0.499,
-              -0.21750000000000003
+              0.5,
+              0.8
             ],
             [
-              0.515,
-              -0.21750000000000003
+              0.528,
+              0.8
             ],
             [
-              0.515,
-              0.21750000000000003
+              0.528,
+              0.805
             ],
             [
-              0.499,
-              0.21750000000000003
+              0.528,
+              1.175
+            ],
+            [
+              0.528,
+              1.18
+            ],
+            [
+              0.5,
+              1.18
             ]
           ],
-          "segments": 128
+          "segments": 32
         }
       }
     },
@@ -202,7 +199,7 @@
       "transform": {
         "position": [
           0,
-          1.46,
+          1.43,
           0
         ],
         "rotation": [
@@ -223,7 +220,7 @@
         "topologyIntent": "Revolved cap: wall down over the band top, rounded top rim, flat top face with a shallow dish round the boss.",
         "edgeTreatment": {
           "type": "none",
-          "bevelRadius": 0.0,
+          "bevelRadius": 0,
           "segments": 1
         },
         "deformationStack": [],
@@ -232,36 +229,52 @@
         "latheProfile": {
           "points": [
             [
-              0.0,
-              -0.24
+              0.5,
+              -0.25
             ],
             [
-              0.535,
-              -0.24
+              0.527,
+              -0.25
             ],
             [
-              0.535,
+              0.527,
+              -0.245
+            ],
+            [
+              0.527,
+              -0.035
+            ],
+            [
+              0.527,
               -0.03
             ],
             [
-              0.525,
-              -0.008
+              0.53,
+              -0.012
             ],
             [
-              0.505,
-              0.0
+              0.52,
+              -0.002
             ],
             [
-              0.25,
-              0.0
+              0.508,
+              0
             ],
             [
-              0.245,
-              -0.015
+              0.296,
+              0
             ],
             [
-              0.0,
-              -0.015
+              0.29,
+              -0.005
+            ],
+            [
+              0.286,
+              -0.012
+            ],
+            [
+              0.286,
+              -0.04
             ]
           ],
           "segments": 96
@@ -269,11 +282,11 @@
       }
     },
     {
-      "primitive": "cylinder",
+      "primitive": "lathe",
       "transform": {
         "position": [
           0,
-          0.1,
+          0,
           0
         ],
         "rotation": [
@@ -282,58 +295,45 @@
           0
         ],
         "scale": [
-          0.09,
-          0.56,
-          0.09
+          1,
+          1,
+          1
         ]
       },
-      "id": "shaft",
+      "id": "seat-floor",
       "parent": "cap",
-      "material": "teal-paint",
+      "material": "seat-grey",
       "geometry": {
-        "topologyIntent": "Teal-painted steel shaft rising from the steel collar to 0.66 D above the top face.",
+        "topologyIntent": "Bearing shield floor of the recess.",
         "edgeTreatment": {
           "type": "none",
-          "bevelRadius": 0.0,
+          "bevelRadius": 0,
           "segments": 1
         },
         "deformationStack": [],
         "uvStrategy": "generated procedural coordinates",
-        "normalStrategy": "vertex normals from generated geometry"
-      }
-    },
-    {
-      "primitive": "cylinder",
-      "transform": {
-        "position": [
-          0,
-          0.06,
-          0
-        ],
-        "rotation": [
-          0,
-          0,
-          0
-        ],
-        "scale": [
-          0.094,
-          0.045,
-          0.094
-        ]
-      },
-      "id": "shaft-collar",
-      "parent": "cap",
-      "material": "ground-steel",
-      "geometry": {
-        "topologyIntent": "Bright ground-steel section of the shaft between the boss and the teal paint.",
-        "edgeTreatment": {
-          "type": "none",
-          "bevelRadius": 0.0,
-          "segments": 1
-        },
-        "deformationStack": [],
-        "uvStrategy": "generated procedural coordinates",
-        "normalStrategy": "vertex normals from generated geometry"
+        "normalStrategy": "vertex normals from generated geometry",
+        "latheProfile": {
+          "points": [
+            [
+              0.2861,
+              -0.04
+            ],
+            [
+              0.2,
+              -0.04
+            ],
+            [
+              0.19,
+              -0.036
+            ],
+            [
+              0.15,
+              -0.036
+            ]
+          ],
+          "segments": 96
+        }
       }
     },
     {
@@ -359,10 +359,10 @@
       "parent": "cap",
       "material": "boss-black",
       "geometry": {
-        "topologyIntent": "Raised black dome in the dish holding the bearing round the shaft.",
+        "topologyIntent": "Rounded bearing boss in the recess.",
         "edgeTreatment": {
           "type": "none",
-          "bevelRadius": 0.0,
+          "bevelRadius": 0,
           "segments": 1
         },
         "deformationStack": [],
@@ -371,28 +371,36 @@
         "latheProfile": {
           "points": [
             [
-              0.04,
-              -0.015
+              0.15,
+              -0.036
             ],
             [
               0.15,
-              -0.015
+              0.015
             ],
             [
-              0.15,
-              0.0
-            ],
-            [
-              0.13,
+              0.148,
               0.03
             ],
             [
-              0.09,
-              0.06
+              0.14,
+              0.045
             ],
             [
-              0.045,
-              0.068
+              0.125,
+              0.056
+            ],
+            [
+              0.105,
+              0.061
+            ],
+            [
+              0.06,
+              0.062
+            ],
+            [
+              0.052,
+              0.058
             ]
           ],
           "segments": 96
@@ -400,12 +408,12 @@
       }
     },
     {
-      "primitive": "sphere",
+      "primitive": "cylinder",
       "transform": {
         "position": [
-          0.2516,
-          0.0,
-          0.3731
+          0,
+          0.074,
+          0
         ],
         "rotation": [
           0,
@@ -413,19 +421,855 @@
           0
         ],
         "scale": [
-          0.062,
-          0.032,
-          0.062
+          0.104,
+          0.028,
+          0.104
+        ]
+      },
+      "id": "shaft-collar",
+      "parent": "cap",
+      "material": "ground-steel",
+      "geometry": {
+        "topologyIntent": "Ground steel collar at the shaft root.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "lathe",
+      "transform": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "id": "shaft",
+      "parent": "cap",
+      "material": "teal-paint",
+      "geometry": {
+        "topologyIntent": "Output shaft with rolled ribs.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry",
+        "latheProfile": {
+          "points": [
+            [
+              0,
+              0.05
+            ],
+            [
+              0.045,
+              0.05
+            ],
+            [
+              0.045,
+              0.1
+            ],
+            [
+              0.0444,
+              0.1045
+            ],
+            [
+              0.0444,
+              0.1068
+            ],
+            [
+              0.045,
+              0.1113
+            ],
+            [
+              0.045,
+              0.115
+            ],
+            [
+              0.0444,
+              0.1195
+            ],
+            [
+              0.0444,
+              0.1218
+            ],
+            [
+              0.045,
+              0.1263
+            ],
+            [
+              0.045,
+              0.13
+            ],
+            [
+              0.0444,
+              0.1345
+            ],
+            [
+              0.0444,
+              0.1368
+            ],
+            [
+              0.045,
+              0.1413
+            ],
+            [
+              0.045,
+              0.145
+            ],
+            [
+              0.0444,
+              0.1495
+            ],
+            [
+              0.0444,
+              0.1518
+            ],
+            [
+              0.045,
+              0.1563
+            ],
+            [
+              0.045,
+              0.16
+            ],
+            [
+              0.0444,
+              0.1645
+            ],
+            [
+              0.0444,
+              0.1668
+            ],
+            [
+              0.045,
+              0.1713
+            ],
+            [
+              0.045,
+              0.175
+            ],
+            [
+              0.0444,
+              0.1795
+            ],
+            [
+              0.0444,
+              0.1818
+            ],
+            [
+              0.045,
+              0.1863
+            ],
+            [
+              0.045,
+              0.19
+            ],
+            [
+              0.0444,
+              0.1945
+            ],
+            [
+              0.0444,
+              0.1968
+            ],
+            [
+              0.045,
+              0.2013
+            ],
+            [
+              0.045,
+              0.205
+            ],
+            [
+              0.0444,
+              0.2095
+            ],
+            [
+              0.0444,
+              0.2118
+            ],
+            [
+              0.045,
+              0.2163
+            ],
+            [
+              0.045,
+              0.22
+            ],
+            [
+              0.0444,
+              0.2245
+            ],
+            [
+              0.0444,
+              0.2268
+            ],
+            [
+              0.045,
+              0.2313
+            ],
+            [
+              0.045,
+              0.235
+            ],
+            [
+              0.0444,
+              0.2395
+            ],
+            [
+              0.0444,
+              0.2418
+            ],
+            [
+              0.045,
+              0.2463
+            ],
+            [
+              0.045,
+              0.25
+            ],
+            [
+              0.0444,
+              0.2545
+            ],
+            [
+              0.0444,
+              0.2568
+            ],
+            [
+              0.045,
+              0.2613
+            ],
+            [
+              0.045,
+              0.265
+            ],
+            [
+              0.0444,
+              0.2695
+            ],
+            [
+              0.0444,
+              0.2718
+            ],
+            [
+              0.045,
+              0.2763
+            ],
+            [
+              0.045,
+              0.28
+            ],
+            [
+              0.0444,
+              0.2845
+            ],
+            [
+              0.0444,
+              0.2868
+            ],
+            [
+              0.045,
+              0.2913
+            ],
+            [
+              0.045,
+              0.295
+            ],
+            [
+              0.0444,
+              0.2995
+            ],
+            [
+              0.0444,
+              0.3018
+            ],
+            [
+              0.045,
+              0.3063
+            ],
+            [
+              0.045,
+              0.31
+            ],
+            [
+              0.0444,
+              0.3145
+            ],
+            [
+              0.0444,
+              0.3168
+            ],
+            [
+              0.045,
+              0.3213
+            ],
+            [
+              0.045,
+              0.325
+            ],
+            [
+              0.0444,
+              0.3295
+            ],
+            [
+              0.0444,
+              0.3318
+            ],
+            [
+              0.045,
+              0.3363
+            ],
+            [
+              0.045,
+              0.34
+            ],
+            [
+              0.0444,
+              0.3445
+            ],
+            [
+              0.0444,
+              0.3468
+            ],
+            [
+              0.045,
+              0.3513
+            ],
+            [
+              0.045,
+              0.355
+            ],
+            [
+              0.0444,
+              0.3595
+            ],
+            [
+              0.0444,
+              0.3618
+            ],
+            [
+              0.045,
+              0.3663
+            ],
+            [
+              0.045,
+              0.37
+            ],
+            [
+              0.0444,
+              0.3745
+            ],
+            [
+              0.0444,
+              0.3768
+            ],
+            [
+              0.045,
+              0.3813
+            ],
+            [
+              0.045,
+              0.385
+            ],
+            [
+              0.0444,
+              0.3895
+            ],
+            [
+              0.0444,
+              0.3918
+            ],
+            [
+              0.045,
+              0.3963
+            ],
+            [
+              0.045,
+              0.4
+            ],
+            [
+              0.0444,
+              0.4045
+            ],
+            [
+              0.0444,
+              0.4068
+            ],
+            [
+              0.045,
+              0.4113
+            ],
+            [
+              0.045,
+              0.415
+            ],
+            [
+              0.0444,
+              0.4195
+            ],
+            [
+              0.0444,
+              0.4218
+            ],
+            [
+              0.045,
+              0.4263
+            ],
+            [
+              0.045,
+              0.43
+            ],
+            [
+              0.0444,
+              0.4345
+            ],
+            [
+              0.0444,
+              0.4368
+            ],
+            [
+              0.045,
+              0.4413
+            ],
+            [
+              0.045,
+              0.445
+            ],
+            [
+              0.0444,
+              0.4495
+            ],
+            [
+              0.0444,
+              0.4518
+            ],
+            [
+              0.045,
+              0.4563
+            ],
+            [
+              0.045,
+              0.46
+            ],
+            [
+              0.0444,
+              0.4645
+            ],
+            [
+              0.0444,
+              0.4668
+            ],
+            [
+              0.045,
+              0.4713
+            ],
+            [
+              0.045,
+              0.475
+            ],
+            [
+              0.0444,
+              0.4795
+            ],
+            [
+              0.0444,
+              0.4818
+            ],
+            [
+              0.045,
+              0.4863
+            ],
+            [
+              0.045,
+              0.49
+            ],
+            [
+              0.0444,
+              0.4945
+            ],
+            [
+              0.0444,
+              0.4968
+            ],
+            [
+              0.045,
+              0.5013
+            ],
+            [
+              0.045,
+              0.505
+            ],
+            [
+              0.0444,
+              0.5095
+            ],
+            [
+              0.0444,
+              0.5118
+            ],
+            [
+              0.045,
+              0.5163
+            ],
+            [
+              0.045,
+              0.52
+            ],
+            [
+              0.0444,
+              0.5245
+            ],
+            [
+              0.0444,
+              0.5268
+            ],
+            [
+              0.045,
+              0.5313
+            ],
+            [
+              0.045,
+              0.535
+            ],
+            [
+              0.0444,
+              0.5395
+            ],
+            [
+              0.0444,
+              0.5418
+            ],
+            [
+              0.045,
+              0.5463
+            ],
+            [
+              0.045,
+              0.55
+            ],
+            [
+              0.0444,
+              0.5545
+            ],
+            [
+              0.0444,
+              0.5568
+            ],
+            [
+              0.045,
+              0.5613
+            ],
+            [
+              0.045,
+              0.565
+            ],
+            [
+              0.0444,
+              0.5695
+            ],
+            [
+              0.0444,
+              0.5718
+            ],
+            [
+              0.045,
+              0.5763
+            ],
+            [
+              0.045,
+              0.58
+            ],
+            [
+              0.0444,
+              0.5845
+            ],
+            [
+              0.0444,
+              0.5868
+            ],
+            [
+              0.045,
+              0.5913
+            ],
+            [
+              0.045,
+              0.595
+            ],
+            [
+              0.0444,
+              0.5995
+            ],
+            [
+              0.0444,
+              0.6018
+            ],
+            [
+              0.045,
+              0.6063
+            ],
+            [
+              0.045,
+              0.61
+            ],
+            [
+              0.0444,
+              0.6145
+            ],
+            [
+              0.0444,
+              0.6168
+            ],
+            [
+              0.045,
+              0.6213
+            ],
+            [
+              0.045,
+              0.625
+            ],
+            [
+              0.0444,
+              0.6295
+            ],
+            [
+              0.0444,
+              0.6318
+            ],
+            [
+              0.045,
+              0.6363
+            ],
+            [
+              0.045,
+              0.64
+            ],
+            [
+              0.0444,
+              0.6445
+            ],
+            [
+              0.0444,
+              0.6468
+            ],
+            [
+              0.045,
+              0.6513
+            ],
+            [
+              0.045,
+              0.655
+            ],
+            [
+              0.0444,
+              0.6595
+            ],
+            [
+              0.0444,
+              0.6618
+            ],
+            [
+              0.045,
+              0.6663
+            ],
+            [
+              0.045,
+              0.67
+            ],
+            [
+              0.045,
+              0.704
+            ],
+            [
+              0.039,
+              0.71
+            ],
+            [
+              0,
+              0.71
+            ]
+          ],
+          "segments": 96
+        }
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          0,
+          0.7102,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.034,
+          0.002,
+          0.034
+        ]
+      },
+      "id": "shaft-tip",
+      "parent": "cap",
+      "material": "bore-dark",
+      "geometry": {
+        "topologyIntent": "Axial centre hole.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          0,
+          0.68,
+          0
+        ],
+        "rotation": [
+          0,
+          0.75,
+          1.5707963267948966
+        ],
+        "scale": [
+          0.024,
+          0.092,
+          0.024
+        ]
+      },
+      "id": "shaft-pin-hole",
+      "parent": "cap",
+      "material": "bore-dark",
+      "geometry": {
+        "topologyIntent": "Cross-drilled pin hole near the tip.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "lathe",
+      "transform": {
+        "position": [
+          0.25810939635797076,
+          0,
+          0.3686184199300463
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
         ]
       },
       "id": "screw-0",
       "parent": "cap",
       "material": "plated-steel",
       "geometry": {
-        "topologyIntent": "Plated button-head screw seated on the top face.",
+        "topologyIntent": "Pan-head screw.",
         "edgeTreatment": {
           "type": "none",
-          "bevelRadius": 0.0,
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry",
+        "latheProfile": {
+          "points": [
+            [
+              0.036,
+              0
+            ],
+            [
+              0.036,
+              0.006
+            ],
+            [
+              0.033,
+              0.013
+            ],
+            [
+              0.024,
+              0.019
+            ],
+            [
+              0.012,
+              0.021
+            ],
+            [
+              0,
+              0.021
+            ]
+          ],
+          "segments": 96
+        }
+      }
+    },
+    {
+      "primitive": "box",
+      "transform": {
+        "position": [
+          0,
+          0.02,
+          0
+        ],
+        "rotation": [
+          0,
+          0.6,
+          0
+        ],
+        "scale": [
+          0.034,
+          0.006,
+          0.008
+        ]
+      },
+      "id": "screw-0-slot-0",
+      "parent": "screw-0",
+      "material": "bore-dark",
+      "geometry": {
+        "topologyIntent": "Cross recess.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
           "segments": 1
         },
         "deformationStack": [],
@@ -434,12 +1278,46 @@
       }
     },
     {
-      "primitive": "sphere",
+      "primitive": "box",
       "transform": {
         "position": [
-          -0.2516,
-          0.0,
-          0.3731
+          0,
+          0.02,
+          0
+        ],
+        "rotation": [
+          0,
+          2.1707963267948966,
+          0
+        ],
+        "scale": [
+          0.034,
+          0.006,
+          0.008
+        ]
+      },
+      "id": "screw-0-slot-1",
+      "parent": "screw-0",
+      "material": "bore-dark",
+      "geometry": {
+        "topologyIntent": "Cross recess.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "lathe",
+      "transform": {
+        "position": [
+          -0.25810939635797076,
+          0,
+          0.3686184199300463
         ],
         "rotation": [
           0,
@@ -447,19 +1325,82 @@
           0
         ],
         "scale": [
-          0.062,
-          0.032,
-          0.062
+          1,
+          1,
+          1
         ]
       },
       "id": "screw-1",
       "parent": "cap",
       "material": "plated-steel",
       "geometry": {
-        "topologyIntent": "Plated button-head screw seated on the top face.",
+        "topologyIntent": "Pan-head screw.",
         "edgeTreatment": {
           "type": "none",
-          "bevelRadius": 0.0,
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry",
+        "latheProfile": {
+          "points": [
+            [
+              0.036,
+              0
+            ],
+            [
+              0.036,
+              0.006
+            ],
+            [
+              0.033,
+              0.013
+            ],
+            [
+              0.024,
+              0.019
+            ],
+            [
+              0.012,
+              0.021
+            ],
+            [
+              0,
+              0.021
+            ]
+          ],
+          "segments": 96
+        }
+      }
+    },
+    {
+      "primitive": "box",
+      "transform": {
+        "position": [
+          0,
+          0.02,
+          0
+        ],
+        "rotation": [
+          0,
+          0.6,
+          0
+        ],
+        "scale": [
+          0.034,
+          0.006,
+          0.008
+        ]
+      },
+      "id": "screw-1-slot-0",
+      "parent": "screw-1",
+      "material": "bore-dark",
+      "geometry": {
+        "topologyIntent": "Cross recess.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
           "segments": 1
         },
         "deformationStack": [],
@@ -468,12 +1409,46 @@
       }
     },
     {
-      "primitive": "sphere",
+      "primitive": "box",
       "transform": {
         "position": [
-          0.2516,
-          0.0,
-          -0.3731
+          0,
+          0.02,
+          0
+        ],
+        "rotation": [
+          0,
+          2.1707963267948966,
+          0
+        ],
+        "scale": [
+          0.034,
+          0.006,
+          0.008
+        ]
+      },
+      "id": "screw-1-slot-1",
+      "parent": "screw-1",
+      "material": "bore-dark",
+      "geometry": {
+        "topologyIntent": "Cross recess.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "lathe",
+      "transform": {
+        "position": [
+          0.25810939635797076,
+          0,
+          -0.3686184199300463
         ],
         "rotation": [
           0,
@@ -481,19 +1456,82 @@
           0
         ],
         "scale": [
-          0.062,
-          0.032,
-          0.062
+          1,
+          1,
+          1
         ]
       },
       "id": "screw-2",
       "parent": "cap",
       "material": "plated-steel",
       "geometry": {
-        "topologyIntent": "Plated button-head screw seated on the top face.",
+        "topologyIntent": "Pan-head screw.",
         "edgeTreatment": {
           "type": "none",
-          "bevelRadius": 0.0,
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry",
+        "latheProfile": {
+          "points": [
+            [
+              0.036,
+              0
+            ],
+            [
+              0.036,
+              0.006
+            ],
+            [
+              0.033,
+              0.013
+            ],
+            [
+              0.024,
+              0.019
+            ],
+            [
+              0.012,
+              0.021
+            ],
+            [
+              0,
+              0.021
+            ]
+          ],
+          "segments": 96
+        }
+      }
+    },
+    {
+      "primitive": "box",
+      "transform": {
+        "position": [
+          0,
+          0.02,
+          0
+        ],
+        "rotation": [
+          0,
+          0.6,
+          0
+        ],
+        "scale": [
+          0.034,
+          0.006,
+          0.008
+        ]
+      },
+      "id": "screw-2-slot-0",
+      "parent": "screw-2",
+      "material": "bore-dark",
+      "geometry": {
+        "topologyIntent": "Cross recess.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
           "segments": 1
         },
         "deformationStack": [],
@@ -502,12 +1540,46 @@
       }
     },
     {
-      "primitive": "sphere",
+      "primitive": "box",
       "transform": {
         "position": [
-          -0.2516,
-          0.0,
-          -0.3731
+          0,
+          0.02,
+          0
+        ],
+        "rotation": [
+          0,
+          2.1707963267948966,
+          0
+        ],
+        "scale": [
+          0.034,
+          0.006,
+          0.008
+        ]
+      },
+      "id": "screw-2-slot-1",
+      "parent": "screw-2",
+      "material": "bore-dark",
+      "geometry": {
+        "topologyIntent": "Cross recess.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "lathe",
+      "transform": {
+        "position": [
+          -0.25810939635797076,
+          0,
+          -0.3686184199300463
         ],
         "rotation": [
           0,
@@ -515,19 +1587,82 @@
           0
         ],
         "scale": [
-          0.062,
-          0.032,
-          0.062
+          1,
+          1,
+          1
         ]
       },
       "id": "screw-3",
       "parent": "cap",
       "material": "plated-steel",
       "geometry": {
-        "topologyIntent": "Plated button-head screw seated on the top face.",
+        "topologyIntent": "Pan-head screw.",
         "edgeTreatment": {
           "type": "none",
-          "bevelRadius": 0.0,
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry",
+        "latheProfile": {
+          "points": [
+            [
+              0.036,
+              0
+            ],
+            [
+              0.036,
+              0.006
+            ],
+            [
+              0.033,
+              0.013
+            ],
+            [
+              0.024,
+              0.019
+            ],
+            [
+              0.012,
+              0.021
+            ],
+            [
+              0,
+              0.021
+            ]
+          ],
+          "segments": 96
+        }
+      }
+    },
+    {
+      "primitive": "box",
+      "transform": {
+        "position": [
+          0,
+          0.02,
+          0
+        ],
+        "rotation": [
+          0,
+          0.6,
+          0
+        ],
+        "scale": [
+          0.034,
+          0.006,
+          0.008
+        ]
+      },
+      "id": "screw-3-slot-0",
+      "parent": "screw-3",
+      "material": "bore-dark",
+      "geometry": {
+        "topologyIntent": "Cross recess.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
           "segments": 1
         },
         "deformationStack": [],
@@ -539,165 +1674,29 @@
       "primitive": "box",
       "transform": {
         "position": [
-          0.4477,
-          0.0,
-          0.302
+          0,
+          0.02,
+          0
         ],
         "rotation": [
           0,
-          0.9774,
+          2.1707963267948966,
           0
         ],
         "scale": [
-          0.15,
-          0.38,
-          0.07
+          0.034,
+          0.006,
+          0.008
         ]
       },
-      "id": "bracket-right",
-      "parent": "stator-band",
-      "material": "powder-coat",
+      "id": "screw-3-slot-1",
+      "parent": "screw-3",
+      "material": "bore-dark",
       "geometry": {
-        "topologyIntent": "Cast bracket block standing off the band among the fins to carry two bolts.",
+        "topologyIntent": "Cross recess.",
         "edgeTreatment": {
           "type": "none",
-          "bevelRadius": 0.0,
-          "segments": 1
-        },
-        "deformationStack": [],
-        "uvStrategy": "generated procedural coordinates",
-        "normalStrategy": "vertex normals from generated geometry"
-      }
-    },
-    {
-      "primitive": "cylinder",
-      "transform": {
-        "position": [
-          0.4742,
-          -0.1125,
-          0.3199
-        ],
-        "rotation": [
-          0,
-          0,
-          0
-        ],
-        "scale": [
-          0.1,
-          0.01,
-          0.1
-        ]
-      },
-      "id": "bracket-washer-right-0",
-      "parent": "stator-band",
-      "material": "zinc-washer",
-      "geometry": {
-        "topologyIntent": "Yellow-zinc washer under the bolt head.",
-        "edgeTreatment": {
-          "type": "none",
-          "bevelRadius": 0.0,
-          "segments": 1
-        },
-        "deformationStack": [],
-        "uvStrategy": "generated procedural coordinates",
-        "normalStrategy": "vertex normals from generated geometry"
-      }
-    },
-    {
-      "primitive": "cylinder",
-      "transform": {
-        "position": [
-          0.4808,
-          -0.1125,
-          0.3243
-        ],
-        "rotation": [
-          0,
-          0,
-          0
-        ],
-        "scale": [
-          0.076,
-          0.038,
-          0.076
-        ]
-      },
-      "id": "bracket-bolt-right-0",
-      "parent": "stator-band",
-      "material": "plated-steel",
-      "geometry": {
-        "topologyIntent": "Plated hex bolt head standing out of the bracket face.",
-        "edgeTreatment": {
-          "type": "none",
-          "bevelRadius": 0.0,
-          "segments": 1
-        },
-        "deformationStack": [],
-        "uvStrategy": "generated procedural coordinates",
-        "normalStrategy": "vertex normals from generated geometry"
-      }
-    },
-    {
-      "primitive": "cylinder",
-      "transform": {
-        "position": [
-          0.4742,
-          0.0825,
-          0.3199
-        ],
-        "rotation": [
-          0,
-          0,
-          0
-        ],
-        "scale": [
-          0.1,
-          0.01,
-          0.1
-        ]
-      },
-      "id": "bracket-washer-right-1",
-      "parent": "stator-band",
-      "material": "zinc-washer",
-      "geometry": {
-        "topologyIntent": "Yellow-zinc washer under the bolt head.",
-        "edgeTreatment": {
-          "type": "none",
-          "bevelRadius": 0.0,
-          "segments": 1
-        },
-        "deformationStack": [],
-        "uvStrategy": "generated procedural coordinates",
-        "normalStrategy": "vertex normals from generated geometry"
-      }
-    },
-    {
-      "primitive": "cylinder",
-      "transform": {
-        "position": [
-          0.4808,
-          0.0825,
-          0.3243
-        ],
-        "rotation": [
-          0,
-          0,
-          0
-        ],
-        "scale": [
-          0.076,
-          0.038,
-          0.076
-        ]
-      },
-      "id": "bracket-bolt-right-1",
-      "parent": "stator-band",
-      "material": "plated-steel",
-      "geometry": {
-        "topologyIntent": "Plated hex bolt head standing out of the bracket face.",
-        "edgeTreatment": {
-          "type": "none",
-          "bevelRadius": 0.0,
+          "bevelRadius": 0,
           "segments": 1
         },
         "deformationStack": [],
@@ -709,29 +1708,165 @@
       "primitive": "box",
       "transform": {
         "position": [
-          -0.4477,
-          0.0,
-          0.302
+          -0.4176456994115627,
+          0.99,
+          0.3263005819225989
         ],
         "rotation": [
           0,
-          -0.9774,
+          -0.9075712110370514,
           0
         ],
         "scale": [
-          0.15,
+          0.29,
           0.38,
-          0.07
+          0.05
         ]
       },
       "id": "bracket-left",
       "parent": "stator-band",
       "material": "powder-coat",
       "geometry": {
-        "topologyIntent": "Cast bracket block standing off the band among the fins to carry two bolts.",
+        "topologyIntent": "Bracket base plate under all four ribs.",
         "edgeTreatment": {
           "type": "none",
-          "bevelRadius": 0.0,
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "box",
+      "transform": {
+        "position": [
+          0.09,
+          0,
+          0.03
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.03,
+          0.38,
+          0.06
+        ]
+      },
+      "id": "bracket-left-rib-a",
+      "parent": "bracket-left",
+      "material": "powder-coat",
+      "geometry": {
+        "topologyIntent": "Thick bracket rib.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "box",
+      "transform": {
+        "position": [
+          -0.09,
+          0,
+          0.03
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.03,
+          0.38,
+          0.06
+        ]
+      },
+      "id": "bracket-left-rib-b",
+      "parent": "bracket-left",
+      "material": "powder-coat",
+      "geometry": {
+        "topologyIntent": "Thick bracket rib.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "box",
+      "transform": {
+        "position": [
+          0.13,
+          0,
+          0.0225
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.03,
+          0.38,
+          0.045
+        ]
+      },
+      "id": "bracket-left-rib-c",
+      "parent": "bracket-left",
+      "material": "powder-coat",
+      "geometry": {
+        "topologyIntent": "Thick bracket rib.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "box",
+      "transform": {
+        "position": [
+          -0.13,
+          0,
+          0.0225
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.03,
+          0.38,
+          0.045
+        ]
+      },
+      "id": "bracket-left-rib-d",
+      "parent": "bracket-left",
+      "material": "powder-coat",
+      "geometry": {
+        "topologyIntent": "Thick bracket rib.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
           "segments": 1
         },
         "deformationStack": [],
@@ -743,29 +1878,29 @@
       "primitive": "cylinder",
       "transform": {
         "position": [
-          -0.4742,
-          -0.1125,
-          0.3199
+          0,
+          -0.12,
+          0.03
         ],
         "rotation": [
-          0,
+          1.5707963267948966,
           0,
           0
         ],
         "scale": [
-          0.1,
+          0.118,
           0.01,
-          0.1
+          0.118
         ]
       },
       "id": "bracket-washer-left-0",
-      "parent": "stator-band",
+      "parent": "bracket-left",
       "material": "zinc-washer",
       "geometry": {
-        "topologyIntent": "Yellow-zinc washer under the bolt head.",
+        "topologyIntent": "Zinc washer.",
         "edgeTreatment": {
           "type": "none",
-          "bevelRadius": 0.0,
+          "bevelRadius": 0,
           "segments": 1
         },
         "deformationStack": [],
@@ -777,63 +1912,29 @@
       "primitive": "cylinder",
       "transform": {
         "position": [
-          -0.4808,
-          -0.1125,
-          0.3243
+          0,
+          -0.12,
+          0.053
         ],
         "rotation": [
-          0,
-          0,
-          0
-        ],
-        "scale": [
-          0.076,
-          0.038,
-          0.076
-        ]
-      },
-      "id": "bracket-bolt-left-0",
-      "parent": "stator-band",
-      "material": "plated-steel",
-      "geometry": {
-        "topologyIntent": "Plated hex bolt head standing out of the bracket face.",
-        "edgeTreatment": {
-          "type": "none",
-          "bevelRadius": 0.0,
-          "segments": 1
-        },
-        "deformationStack": [],
-        "uvStrategy": "generated procedural coordinates",
-        "normalStrategy": "vertex normals from generated geometry"
-      }
-    },
-    {
-      "primitive": "cylinder",
-      "transform": {
-        "position": [
-          -0.4742,
-          0.0825,
-          0.3199
-        ],
-        "rotation": [
-          0,
+          1.5707963267948966,
           0,
           0
         ],
         "scale": [
           0.1,
-          0.01,
+          0.038,
           0.1
         ]
       },
-      "id": "bracket-washer-left-1",
-      "parent": "stator-band",
-      "material": "zinc-washer",
+      "id": "bracket-bolt-left-0",
+      "parent": "bracket-left",
+      "material": "plated-steel",
       "geometry": {
-        "topologyIntent": "Yellow-zinc washer under the bolt head.",
+        "topologyIntent": "Hex bolt head pointing outward.",
         "edgeTreatment": {
           "type": "none",
-          "bevelRadius": 0.0,
+          "bevelRadius": 0,
           "segments": 1
         },
         "deformationStack": [],
@@ -845,9 +1946,179 @@
       "primitive": "cylinder",
       "transform": {
         "position": [
-          -0.4808,
-          0.0825,
-          0.3243
+          0,
+          -0.12,
+          0.072
+        ],
+        "rotation": [
+          1.5707963267948966,
+          0,
+          0
+        ],
+        "scale": [
+          0.084,
+          0.004,
+          0.084
+        ]
+      },
+      "id": "bracket-bolt-left-0-crown",
+      "parent": "bracket-left",
+      "material": "plated-steel",
+      "geometry": {
+        "topologyIntent": "Chamfered crown of the bolt head.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          0,
+          0.05,
+          0.03
+        ],
+        "rotation": [
+          1.5707963267948966,
+          0,
+          0
+        ],
+        "scale": [
+          0.118,
+          0.01,
+          0.118
+        ]
+      },
+      "id": "bracket-washer-left-1",
+      "parent": "bracket-left",
+      "material": "zinc-washer",
+      "geometry": {
+        "topologyIntent": "Zinc washer.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          0,
+          0.05,
+          0.053
+        ],
+        "rotation": [
+          1.5707963267948966,
+          0,
+          0
+        ],
+        "scale": [
+          0.1,
+          0.038,
+          0.1
+        ]
+      },
+      "id": "bracket-bolt-left-1",
+      "parent": "bracket-left",
+      "material": "plated-steel",
+      "geometry": {
+        "topologyIntent": "Hex bolt head pointing outward.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          0,
+          0.05,
+          0.072
+        ],
+        "rotation": [
+          1.5707963267948966,
+          0,
+          0
+        ],
+        "scale": [
+          0.084,
+          0.004,
+          0.084
+        ]
+      },
+      "id": "bracket-bolt-left-1-crown",
+      "parent": "bracket-left",
+      "material": "plated-steel",
+      "geometry": {
+        "topologyIntent": "Chamfered crown of the bolt head.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "box",
+      "transform": {
+        "position": [
+          0.4176456994115627,
+          0.99,
+          0.3263005819225989
+        ],
+        "rotation": [
+          0,
+          0.9075712110370514,
+          0
+        ],
+        "scale": [
+          0.29,
+          0.38,
+          0.05
+        ]
+      },
+      "id": "bracket-right",
+      "parent": "stator-band",
+      "material": "powder-coat",
+      "geometry": {
+        "topologyIntent": "Bracket base plate under all four ribs.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "box",
+      "transform": {
+        "position": [
+          0.09,
+          0,
+          0.03
         ],
         "rotation": [
           0,
@@ -855,19 +2126,325 @@
           0
         ],
         "scale": [
-          0.076,
-          0.038,
-          0.076
+          0.03,
+          0.38,
+          0.06
         ]
       },
-      "id": "bracket-bolt-left-1",
-      "parent": "stator-band",
-      "material": "plated-steel",
+      "id": "bracket-right-rib-a",
+      "parent": "bracket-right",
+      "material": "powder-coat",
       "geometry": {
-        "topologyIntent": "Plated hex bolt head standing out of the bracket face.",
+        "topologyIntent": "Thick bracket rib.",
         "edgeTreatment": {
           "type": "none",
-          "bevelRadius": 0.0,
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "box",
+      "transform": {
+        "position": [
+          -0.09,
+          0,
+          0.03
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.03,
+          0.38,
+          0.06
+        ]
+      },
+      "id": "bracket-right-rib-b",
+      "parent": "bracket-right",
+      "material": "powder-coat",
+      "geometry": {
+        "topologyIntent": "Thick bracket rib.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "box",
+      "transform": {
+        "position": [
+          0.13,
+          0,
+          0.0225
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.03,
+          0.38,
+          0.045
+        ]
+      },
+      "id": "bracket-right-rib-c",
+      "parent": "bracket-right",
+      "material": "powder-coat",
+      "geometry": {
+        "topologyIntent": "Thick bracket rib.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "box",
+      "transform": {
+        "position": [
+          -0.13,
+          0,
+          0.0225
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.03,
+          0.38,
+          0.045
+        ]
+      },
+      "id": "bracket-right-rib-d",
+      "parent": "bracket-right",
+      "material": "powder-coat",
+      "geometry": {
+        "topologyIntent": "Thick bracket rib.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          0,
+          -0.12,
+          0.03
+        ],
+        "rotation": [
+          1.5707963267948966,
+          0,
+          0
+        ],
+        "scale": [
+          0.118,
+          0.01,
+          0.118
+        ]
+      },
+      "id": "bracket-washer-right-0",
+      "parent": "bracket-right",
+      "material": "zinc-washer",
+      "geometry": {
+        "topologyIntent": "Zinc washer.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          0,
+          -0.12,
+          0.053
+        ],
+        "rotation": [
+          1.5707963267948966,
+          0,
+          0
+        ],
+        "scale": [
+          0.1,
+          0.038,
+          0.1
+        ]
+      },
+      "id": "bracket-bolt-right-0",
+      "parent": "bracket-right",
+      "material": "plated-steel",
+      "geometry": {
+        "topologyIntent": "Hex bolt head pointing outward.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          0,
+          -0.12,
+          0.072
+        ],
+        "rotation": [
+          1.5707963267948966,
+          0,
+          0
+        ],
+        "scale": [
+          0.084,
+          0.004,
+          0.084
+        ]
+      },
+      "id": "bracket-bolt-right-0-crown",
+      "parent": "bracket-right",
+      "material": "plated-steel",
+      "geometry": {
+        "topologyIntent": "Chamfered crown of the bolt head.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          0,
+          0.05,
+          0.03
+        ],
+        "rotation": [
+          1.5707963267948966,
+          0,
+          0
+        ],
+        "scale": [
+          0.118,
+          0.01,
+          0.118
+        ]
+      },
+      "id": "bracket-washer-right-1",
+      "parent": "bracket-right",
+      "material": "zinc-washer",
+      "geometry": {
+        "topologyIntent": "Zinc washer.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          0,
+          0.05,
+          0.053
+        ],
+        "rotation": [
+          1.5707963267948966,
+          0,
+          0
+        ],
+        "scale": [
+          0.1,
+          0.038,
+          0.1
+        ]
+      },
+      "id": "bracket-bolt-right-1",
+      "parent": "bracket-right",
+      "material": "plated-steel",
+      "geometry": {
+        "topologyIntent": "Hex bolt head pointing outward.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          0,
+          0.05,
+          0.072
+        ],
+        "rotation": [
+          1.5707963267948966,
+          0,
+          0
+        ],
+        "scale": [
+          0.084,
+          0.004,
+          0.084
+        ]
+      },
+      "id": "bracket-bolt-right-1-crown",
+      "parent": "bracket-right",
+      "material": "plated-steel",
+      "geometry": {
+        "topologyIntent": "Chamfered crown of the bolt head.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
           "segments": 1
         },
         "deformationStack": [],
@@ -879,16 +2456,16 @@
   "repetitions": [
     {
       "id": "fins",
-      "name": "Vertical stator fins (32)",
+      "name": "Stator band ridges (32)",
       "level": "meso",
       "parent": "stator-band",
       "count": 32,
       "primitive": "box",
       "material": "powder-coat",
       "instanceScale": [
-        0.05,
-        0.42500000000000004,
-        0.028
+        0.03,
+        0.38,
+        0.018
       ],
       "placement": {
         "mode": "radial",
@@ -897,14 +2474,15 @@
           1,
           0
         ],
-        "radius": 1.08,
-        "startAngleDeg": 0
+        "radius": 1.074,
+        "startAngleDeg": 0,
+        "y": 0.99
       },
       "distribution": "radial",
       "buildsGeometry": true,
       "variation": {
-        "scaleJitter": 0.0,
-        "rotationJitter": 0.0
+        "scaleJitter": 0,
+        "rotationJitter": 0
       },
       "evidenceRef": "zone-r1c1",
       "notes": "Fin centres at r 0.54 (0.515 to 0.565), full band height, 11.25 degree pitch."
@@ -912,46 +2490,68 @@
   ],
   "materials": [
     {
-      "metalness": 0.0,
-      "color": "#141414",
+      "metalness": 0,
+      "color": "#0c0c0c",
       "id": "powder-coat",
-      "roughness": 0.5,
-      "clearcoat": 0.0
+      "roughness": 0.55,
+      "clearcoat": 0,
+      "envMapIntensity": 0.22
     },
     {
-      "metalness": 0.0,
-      "color": "#1f8f80",
+      "metalness": 0.55,
+      "color": "#0f8576",
       "id": "teal-paint",
-      "roughness": 0.3,
-      "clearcoat": 0.5
+      "roughness": 0.28,
+      "clearcoat": 0.5,
+      "envMapIntensity": 0.9
     },
     {
-      "metalness": 1.0,
-      "color": "#cdd0d4",
+      "metalness": 1,
+      "color": "#d2d5d8",
       "id": "ground-steel",
       "roughness": 0.2,
-      "clearcoat": 0
+      "clearcoat": 0,
+      "envMapIntensity": 1
     },
     {
-      "metalness": 1.0,
-      "color": "#c3c6ca",
+      "metalness": 1,
+      "color": "#c9ccd0",
       "id": "plated-steel",
-      "roughness": 0.28,
-      "clearcoat": 0
+      "roughness": 0.3,
+      "clearcoat": 0,
+      "envMapIntensity": 0.9
     },
     {
-      "metalness": 1.0,
-      "color": "#b8a06a",
+      "metalness": 1,
+      "color": "#bca674",
       "id": "zinc-washer",
       "roughness": 0.32,
-      "clearcoat": 0
+      "clearcoat": 0,
+      "envMapIntensity": 0.8
     },
     {
-      "metalness": 0.0,
-      "color": "#0f0f0f",
+      "metalness": 0,
+      "color": "#0e0e0e",
       "id": "boss-black",
-      "roughness": 0.4,
-      "clearcoat": 0
+      "roughness": 0.38,
+      "clearcoat": 0,
+      "envMapIntensity": 0.3
+    },
+    {
+      "metalness": 0.2,
+      "color": "#202020",
+      "id": "seat-grey",
+      "roughness": 0.45,
+      "clearcoat": 0,
+      "envMapIntensity": 0.4
+    },
+    {
+      "metalness": 0,
+      "color": "#0a0a0a",
+      "id": "bore-dark",
+      "roughness": 0.7,
+      "clearcoat": 0,
+      "envMapIntensity": 0.22
     }
   ]
 }
