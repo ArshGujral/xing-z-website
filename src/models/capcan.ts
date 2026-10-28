@@ -1,4 +1,3 @@
-import spec from './specs/capcan.json'
-import { createCatalogueModel } from './catalogue-model.js'
-export const createModel = () => createCatalogueModel(spec, 'capcan')
+import { createMotor } from './precision-motors.js'
+export const createModel = (options = {}) => createMotor('capcan', options)
 

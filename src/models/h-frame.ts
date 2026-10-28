@@ -1,4 +1,3 @@
-import spec from './specs/h-frame.json'
-import { createCatalogueModel } from './catalogue-model.js'
-export const createModel = () => createCatalogueModel(spec, 'h-frame')
+import { createMotor } from './precision-motors.js'
+export const createModel = (options = {}) => createMotor('h-frame', options)
 
