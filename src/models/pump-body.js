@@ -74,16 +74,19 @@ function surfaceAt(theta, y) {
 // phi at which the dome profile reaches a height, for horizontal slot ends.
 const phiAtY = (y) => Math.asin(Math.pow((y - 0.33) / (DOME_TOP - 0.33), DOME_N / 2))
 
-const slotOpen = (theta) => {
-  const t = wrap(theta)
-  if (t < SLOT_ARC[0] || t > SLOT_ARC[1]) return false
-  return ((t / TAU) * SLOT.count) % 1 < SLOT.open
-}
+// Each impeller slot's angular span [from, to]. The hood's grid and the slot walls both use these exact edges.
+const SLOTS = Array.from({ length: SLOT.count }, (_, k) => [(k * TAU) / SLOT.count, ((k + SLOT.open) * TAU) / SLOT.count])
+  .filter(([a, b]) => a >= SLOT_ARC[0] && b <= SLOT_ARC[1])
+const slotOpen = (theta) => SLOTS.some(([a, b]) => theta > a && theta < b)
 
 function hoodGeometry(inset, withSlots) {
-  const nT = 408, thetas = [], phis = []
+  const thetas = [], phis = []
   const p1 = phiAtY(SLOT.from), p2 = phiAtY(SLOT.to)
-  for (let i = 0; i <= nT; i++) thetas.push(-Math.PI / 2 + (i / nT) * TAU) // seam at the back, inside the motor block
+  for (let i = 0; i <= 360; i++) thetas.push(-Math.PI / 2 + (i / 360) * TAU) // seam at the back, inside the motor block
+  if (withSlots) for (const edges of SLOTS) thetas.push(...edges) // the slots lie inside the seam's range
+  thetas.sort((a, b) => a - b)
+  for (let i = thetas.length - 1; i > 0; i--) if (thetas[i] - thetas[i - 1] < 1e-4) thetas.splice(i, 1)
+  const nT = thetas.length - 1
   for (let j = 0; j <= 56; j++) phis.push((j / 56) * (Math.PI / 2))
   phis.push(p1, p2); phis.sort((a, b) => a - b)
   const pos = [], nor = [], idx = [], p = new THREE.Vector3(), nm = new THREE.Vector3()
@@ -111,10 +114,8 @@ function hoodGeometry(inset, withSlots) {
 function slotWalls() {
   const pos = [], quad = (a, b, c, d) => pos.push(...a, ...b, ...c, ...b, ...d, ...c)
   const P = (t, f, i) => hoodPoint(t, f, i).toArray()
-  const p1 = phiAtY(SLOT.from), p2 = phiAtY(SLOT.to), step = TAU / SLOT.count
-  for (let k = 0; k < SLOT.count; k++) {
-    const ta = k * step, tb = ta + step * SLOT.open
-    if (ta < SLOT_ARC[0] || tb > SLOT_ARC[1]) continue
+  const p1 = phiAtY(SLOT.from), p2 = phiAtY(SLOT.to)
+  for (const [ta, tb] of SLOTS) {
     for (let j = 0; j < 12; j++) {
       const fa = p1 + ((p2 - p1) * j) / 12, fb = p1 + ((p2 - p1) * (j + 1)) / 12
       quad(P(ta, fa, 0), P(ta, fb, 0), P(ta, fa, SLOT.wall), P(ta, fb, SLOT.wall))
