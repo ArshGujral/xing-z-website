@@ -69,7 +69,7 @@ export function createCatalogueModel(spec, family) {
     mark.position.set(.19,.41,.247);mark.rotation.x=-.258;mark.name='moulded-wordmark';root.add(mark)
   } else {
     // The capcan photo shows no moulded mark, so it gets none.
-    const mark={'h-frame':[.502,.93,.36],exhaust:[.505,.59,.38]}[family]
+    const mark={'h-frame':[.502,.93,.36],exhaust:[.529,1.3,.4]}[family]
     if(mark) addWordmark(root,{url:asset('xingz-logo-white.png'),radius:mark[0],y:mark[1],width:mark[2],color:0x333333})
   }
   root.userData.sculptRuntime={nodes,meshes};return root
