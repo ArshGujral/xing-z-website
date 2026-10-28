@@ -5,17 +5,22 @@ import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment
 import { MODELS } from '../models/registry.js'
 import { useTheme } from '../theme.jsx'
 
-const disposeTree = (root) =>
-  root.traverse((o) => {
-    o.geometry?.dispose()
-    const mats = Array.isArray(o.material) ? o.material : o.material ? [o.material] : []
-    mats.forEach((m) => {
-      Object.values(m).forEach((v) => v?.isTexture && !v.userData.shared && v.dispose())
-      m.dispose()
+const disposeTree = (root) => {
+  const resources = new Set()
+  root.traverse((object) => {
+    if (object.geometry) resources.add(object.geometry)
+    const materials = Array.isArray(object.material) ? object.material : object.material ? [object.material] : []
+    materials.forEach((material) => {
+      Object.values(material).forEach((value) => {
+        if (value?.isTexture && !value.userData.shared) resources.add(value)
+      })
+      resources.add(material)
     })
   })
+  resources.forEach((resource) => resource.dispose())
+}
 
-// Turntable stage for a family's 3D model: drag to orbit, slow auto-rotate, soft contact shadow, teal rim light.
+// Product inspection stage: drag to orbit, optional rotation and a soft studio contact shadow.
 // With no model for the family it shows the photo instead, so every product always has a picture.
 export default function ModelViewer({ modelId, product, variants = [], photo, alt }) {
   const mountRef = useRef(null)
@@ -68,13 +73,24 @@ export default function ModelViewer({ modelId, product, variants = [], photo, al
     key.shadow.radius = 6
     key.shadow.normalBias = .006
     key.shadow.bias = -.0001
-    // Low behind-left, so the teal edge rakes the sides of a black housing instead of tinting its top face.
+    // Neutral rim light separates the black housing from either theme without tinting the product.
     const rim = new THREE.DirectionalLight(0xffffff, 1.6)
     rim.position.set(-4, 0.8, -3)
     const fill = new THREE.HemisphereLight(0xf1f5f4, 0x292521, 0.6)
     scene.add(key, rim, fill)
 
-    const floor = new THREE.Mesh(new THREE.CircleGeometry(1, 64), new THREE.ShadowMaterial({ opacity: 0.35 }))
+    // A soft contact shadow grounds the product without a hard directional silhouette.
+    const shadowCanvas = document.createElement('canvas')
+    shadowCanvas.width = shadowCanvas.height = 128
+    const ctx = shadowCanvas.getContext('2d')
+    const gradient = ctx.createRadialGradient(64, 64, 8, 64, 64, 64)
+    gradient.addColorStop(0, 'rgba(0,0,0,.85)')
+    gradient.addColorStop(.5, 'rgba(0,0,0,.4)')
+    gradient.addColorStop(1, 'rgba(0,0,0,0)')
+    ctx.fillStyle = gradient
+    ctx.fillRect(0, 0, 128, 128)
+    const shadowTexture = new THREE.CanvasTexture(shadowCanvas)
+    const floor = new THREE.Mesh(new THREE.CircleGeometry(1, 64), new THREE.MeshBasicMaterial({ map: shadowTexture, transparent: true, depthWrite: false, opacity: .35 }))
     floor.rotation.x = -Math.PI / 2
     floor.receiveShadow = true
     scene.add(floor)
@@ -84,6 +100,7 @@ export default function ModelViewer({ modelId, product, variants = [], photo, al
 
     const resize = () => {
       const { clientWidth: w, clientHeight: h } = mount
+      if (!w || !h) return
       renderer.setSize(w, h, false)
       renderer.domElement.style.width = '100%'
       renderer.domElement.style.height = '100%'
@@ -120,11 +137,14 @@ export default function ModelViewer({ modelId, product, variants = [], photo, al
       io.disconnect()
       controls.dispose()
       if (state.model) disposeTree(state.model)
+      shadowTexture.dispose()
+      key.shadow.map?.dispose()
       floor.geometry.dispose()
       floor.material.dispose()
       environment.dispose()
       pmrem.dispose()
       renderer.dispose()
+      renderer.forceContextLoss()
       renderer.domElement.remove()
       stageRef.current = null
     }
@@ -159,7 +179,7 @@ export default function ModelViewer({ modelId, product, variants = [], photo, al
         state.scene.add(group)
         state.model = group
         const radius = Math.max(size.x, size.y, size.z)
-        state.floor.scale.setScalar(radius * 0.9)
+        state.floor.scale.setScalar(Math.max(size.x, size.z) * .85)
         state.key.shadow.camera.left = state.key.shadow.camera.bottom = -radius
         state.key.shadow.camera.right = state.key.shadow.camera.top = radius
         state.key.shadow.camera.updateProjectionMatrix()
@@ -217,7 +237,7 @@ export default function ModelViewer({ modelId, product, variants = [], photo, al
         />
       )}
       {entry && status === 'ready' && (
-        <div className="absolute top-4 right-4 flex gap-2">
+        <div className="absolute top-14 sm:top-4 right-4 flex gap-2">
           <button type="button" className="rounded-full border border-white/15 bg-page/80 px-3 py-2 text-xs text-white" aria-pressed={rotating}
             onClick={() => { const next = !rotating; setRotating(next); if (stageRef.current) stageRef.current.controls.autoRotate = next }}>
             {rotating ? 'Pause rotation' : 'Rotate'}
