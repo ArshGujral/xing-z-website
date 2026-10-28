@@ -1,4 +1,2 @@
-import spec from './specs/pump.json'
-import { createCatalogueModel } from './catalogue-model.js'
-export const createModel = () => createCatalogueModel(spec, 'pump')
-
+import { createPumpModel } from './pump-body.js'
+export const createModel = () => createPumpModel()
