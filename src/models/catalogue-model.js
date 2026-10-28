@@ -36,7 +36,6 @@ export function createCatalogueModel(spec, family) {
   }
   for(const c of spec.components) (nodes[c.parent]??root).add(nodes[c.id])
   for(const r of spec.repetitions) {
-    if(family==='pump') continue
     const cluster=new THREE.InstancedMesh(primitive(r.primitive,/nuts|bolts/.test(r.id)),materials[r.material],r.count)
     cluster.name=r.id; const dummy=new THREE.Object3D()
     for(let i=0;i<r.count;i++) {
@@ -45,33 +44,9 @@ export function createCatalogueModel(spec, family) {
     }
     cluster.castShadow=cluster.receiveShadow=true;(nodes[r.parent]??root).add(cluster)
   }
-  if(family==='pump') {
-    materials['teal-plastic'].color.set('#009d87')
-    materials['teal-plastic'].roughness=.38
-    // Build real gaps between moulded ribs rather than painting black slots on a solid shell.
-    const slottedShell=(id,low,high,count,openFraction)=>{
-      const component=spec.components.find(c=>c.id===id),profile=component.geometry.latheProfile.points,outer=profile.filter(p=>p[0]>.2)
-      const radiusAt=y=>{for(let i=1;i<outer.length;i++) if(y<=outer[i][1]) {const a=outer[i-1],b=outer[i];return a[0]+(b[0]-a[0])*(y-a[1])/(b[1]-a[1])}return outer[outer.length-1][0]}
-      meshes[id].visible=false
-      const attach=g=>{const m=new THREE.Mesh(g,materials[component.material]);m.castShadow=m.receiveShadow=true;nodes[id].add(m)}
-      attach(lathe([...profile.filter(p=>p[1]<low),[radiusAt(low),low],[radiusAt(low)-.012,low]]))
-      attach(lathe([[radiusAt(high)-.012,high],[radiusAt(high),high],...profile.filter(p=>p[1]>high)]))
-      const rib=[[radiusAt(low),low],...outer.filter(p=>p[1]>low&&p[1]<high),[radiusAt(high),high],[radiusAt(high)-.012,high],[radiusAt(low)-.012,low],[radiusAt(low),low]]
-      for(let i=0;i<count;i++)attach(lathe(rib,5,i*Math.PI*2/count,Math.PI*2/count*(1-openFraction)))
-      const inside=new THREE.Mesh(new THREE.CylinderGeometry(radiusAt(high)*.82,radiusAt(low)*.82,high-low,48),materials['slot-shadow']);inside.position.y=(low+high)/2;nodes[id].add(inside)
-    }
-    slottedShell('impeller-dome',-.10,.105,32,.56);slottedShell('base-bowl',-.035,.045,48,.53)
-    nodes['base-bowl'].scale.y=1.6
-    nodes['base-bowl'].position.y=.0486
-    meshes['xiing-panel'].visible=false
-    const texture=new THREE.TextureLoader().load(asset('xingz-logo-white.png'));texture.colorSpace=THREE.SRGBColorSpace
-    const mark=new THREE.Mesh(new THREE.PlaneGeometry(.22,.09),new THREE.MeshPhysicalMaterial({map:texture,color:0x086b61,transparent:true,depthWrite:false,roughness:.48,polygonOffset:true,polygonOffsetFactor:-2}))
-    mark.position.set(.19,.41,.247);mark.rotation.x=-.258;mark.name='moulded-wordmark';root.add(mark)
-  } else {
-    // The capcan photo shows no moulded mark, so it gets none.
-    const mark={'h-frame':[.502,.93,.36],exhaust:[.529,1.3,.4]}[family]
-    if(mark) addWordmark(root,{url:asset('xingz-logo-white.png'),radius:mark[0],y:mark[1],width:mark[2],color:0x333333})
-  }
+  // The capcan photo shows no moulded mark, so it gets none.
+  const mark={'h-frame':[.502,.93,.36],exhaust:[.529,1.3,.4]}[family]
+  if(mark) addWordmark(root,{url:asset('xingz-logo-white.png'),radius:mark[0],y:mark[1],width:mark[2],color:0x333333})
   root.userData.sculptRuntime={nodes,meshes};return root
 }
 
