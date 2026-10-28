@@ -1718,16 +1718,16 @@
           0
         ],
         "scale": [
-          0.15,
+          0.29,
           0.38,
-          0.03
+          0.05
         ]
       },
       "id": "bracket-left",
       "parent": "stator-band",
       "material": "powder-coat",
       "geometry": {
-        "topologyIntent": "Bracket pad on the band.",
+        "topologyIntent": "Bracket base plate under all four ribs.",
         "edgeTreatment": {
           "type": "none",
           "bevelRadius": 0,
@@ -1880,7 +1880,7 @@
         "position": [
           0,
           -0.12,
-          0.02
+          0.03
         ],
         "rotation": [
           1.5707963267948966,
@@ -1914,7 +1914,7 @@
         "position": [
           0,
           -0.12,
-          0.043
+          0.053
         ],
         "rotation": [
           1.5707963267948966,
@@ -1948,7 +1948,7 @@
         "position": [
           0,
           -0.12,
-          0.062
+          0.072
         ],
         "rotation": [
           1.5707963267948966,
@@ -1982,7 +1982,7 @@
         "position": [
           0,
           0.05,
-          0.02
+          0.03
         ],
         "rotation": [
           1.5707963267948966,
@@ -2016,7 +2016,7 @@
         "position": [
           0,
           0.05,
-          0.043
+          0.053
         ],
         "rotation": [
           1.5707963267948966,
@@ -2050,7 +2050,7 @@
         "position": [
           0,
           0.05,
-          0.062
+          0.072
         ],
         "rotation": [
           1.5707963267948966,
@@ -2092,16 +2092,16 @@
           0
         ],
         "scale": [
-          0.15,
+          0.29,
           0.38,
-          0.03
+          0.05
         ]
       },
       "id": "bracket-right",
       "parent": "stator-band",
       "material": "powder-coat",
       "geometry": {
-        "topologyIntent": "Bracket pad on the band.",
+        "topologyIntent": "Bracket base plate under all four ribs.",
         "edgeTreatment": {
           "type": "none",
           "bevelRadius": 0,
@@ -2254,7 +2254,7 @@
         "position": [
           0,
           -0.12,
-          0.02
+          0.03
         ],
         "rotation": [
           1.5707963267948966,
@@ -2288,7 +2288,7 @@
         "position": [
           0,
           -0.12,
-          0.043
+          0.053
         ],
         "rotation": [
           1.5707963267948966,
@@ -2322,7 +2322,7 @@
         "position": [
           0,
           -0.12,
-          0.062
+          0.072
         ],
         "rotation": [
           1.5707963267948966,
@@ -2356,7 +2356,7 @@
         "position": [
           0,
           0.05,
-          0.02
+          0.03
         ],
         "rotation": [
           1.5707963267948966,
@@ -2390,7 +2390,7 @@
         "position": [
           0,
           0.05,
-          0.043
+          0.053
         ],
         "rotation": [
           1.5707963267948966,
@@ -2424,7 +2424,7 @@
         "position": [
           0,
           0.05,
-          0.062
+          0.072
         ],
         "rotation": [
           1.5707963267948966,
