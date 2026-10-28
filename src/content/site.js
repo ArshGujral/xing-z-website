@@ -29,7 +29,7 @@ export const external = { target: '_blank', rel: 'noopener noreferrer' }
 
 // Future routes from the site map. Only the home page exists so far.
 export const pages = {
-  configurator: '/configurator',
+  configurator: 'configurator.html',
   why: '/why-xing-z',
   inside: '/inside-the-motor',
   manufacturing: '/manufacturing-and-quality',

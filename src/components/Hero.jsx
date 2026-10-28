@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { ChevronDown, Menu, Moon, Phone, Sun, X } from 'lucide-react'
+import { ChevronDown, Menu, Phone, X } from 'lucide-react'
 import { ShaderBackground } from './ui/hero-shader.jsx'
+import ThemeToggle from './ThemeToggle.jsx'
 import { brand, contact, external, nav, whatsappLink } from '../content/site.js'
 import { useTheme } from '../theme.jsx'
 
@@ -176,27 +177,6 @@ function NavItem({ item, isOpen, onOpen, onClose }) {
         </div>
       )}
     </div>
-  )
-}
-
-// Switches between the dark and light themes; shows the theme it switches to.
-function ThemeToggle() {
-  const { theme, toggle } = useTheme()
-  const toLight = theme !== 'light'
-  const label = toLight ? 'Switch to light mode' : 'Switch to dark mode'
-  const icon = (shown) =>
-    `absolute w-[18px] h-[18px] transition-all duration-500 ${shown ? 'rotate-0 scale-100 opacity-100' : '-rotate-90 scale-50 opacity-0'}`
-
-  return (
-    <button
-      onClick={toggle}
-      aria-label={label}
-      title={label}
-      className="liquid-glass w-9 h-9 flex-none rounded-full flex items-center justify-center text-white hover:bg-white/10 transition-colors"
-    >
-      <Sun className={icon(toLight)} />
-      <Moon className={icon(!toLight)} />
-    </button>
   )
 }
 

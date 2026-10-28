@@ -4,3 +4,10 @@ dist/
 
 # Original photos the published images were made from; kept local, out of the public repo.
 assets-src/
+
+# img2threejs working files (specs, renders, reviews) for the 3D models
+.img2threejs-work/
+
+# Notes one coding agent leaves for the other (see AGENTS.md)
+HANDOFF.md
+.impeccable/hook.cache.json

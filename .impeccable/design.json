@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-26T12:00:00Z",
+  "title": "Design System: Xing-Z",
+  "extensions": {
+    "colorMeta": {
+      "night-ink": { "role": "neutral", "displayName": "Night Ink", "tonalRamp": ["#050303", "#0a0706", "#140e0b", "#221914", "#3a2c24", "#5a463a", "#8a7465", "#c9b9ad"] },
+      "ember-panel": { "role": "neutral", "displayName": "Ember Panel", "tonalRamp": ["#140e0b", "#1f1713", "#2c221c", "#3d3027", "#544337", "#735d4d", "#9c8573", "#cdbcae"] },
+      "copper-glow": { "role": "primary", "displayName": "Copper Glow", "tonalRamp": ["#3e1608", "#6a2a12", "#8e3f22", "#b85a33", "#d9774f", "#e39a73", "#f0ad87", "#f6c3a4"] },
+      "forged-copper": { "role": "primary", "displayName": "Forged Copper", "tonalRamp": ["#3e1608", "#5a2410", "#7a3416", "#8a3d1c", "#a8522c", "#b5582f", "#c8683c", "#e39a73"] },
+      "spark-white": { "role": "neutral", "displayName": "Spark White", "tonalRamp": ["#262626", "#474747", "#6b6b6b", "#8f8f8f", "#b3b3b3", "#d6d6d6", "#ededed", "#ffffff"] },
+      "daylight-paper": { "role": "neutral", "displayName": "Daylight Paper", "tonalRamp": ["#5c5248", "#8a7f74", "#b3a99e", "#d4cabf", "#e9dfd3", "#ece4db", "#f1eae2", "#f8f4ef"] },
+      "workshop-ink": { "role": "neutral", "displayName": "Workshop Ink", "tonalRamp": ["#0d0906", "#211711", "#3a2c22", "#574537", "#78624f", "#9c8570", "#c4b19f", "#e8ddd2"] },
+      "whatsapp-green": { "role": "tertiary", "displayName": "WhatsApp Green", "tonalRamp": ["#06331a", "#0c5a2e", "#128c45", "#1fb458", "#25d366", "#5fe08e", "#9aecb7", "#d4f8e2"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The hero headline, second half muted." },
+      "headline": { "displayName": "Headline", "purpose": "Section headings with a muted second half." },
+      "title": { "displayName": "Title", "purpose": "Card titles, part names, button labels." },
+      "body": { "displayName": "Body", "purpose": "Running text at 60-80% foreground." },
+      "label": { "displayName": "Label", "purpose": "Copper uppercase label above each section heading." },
+      "tagline": { "displayName": "Tagline", "purpose": "Lato capitals under the hero logo only." }
+    },
+    "shadows": [
+      { "name": "docked-bar", "value": "inset 0 1px 1px rgba(255,255,255,0.1), 0 10px 30px rgba(0,0,0,0.35)", "purpose": "The glass nav bar once the logo has docked." },
+      { "name": "product-floor", "value": "drop-shadow(0 14px 22px rgba(0,0,0,0.55))", "purpose": "Seats a cut-out motor photo on its card." }
+    ],
+    "motion": [
+      { "name": "ease-out-expo", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Exploded motor, mobile menu, dropdowns." },
+      { "name": "logo-dock", "value": "scroll-linked, eased (1-(1-t)^4), 100ms smoothing", "purpose": "Hero logo gliding into the nav bar." },
+      { "name": "theme-crossfade", "value": "400ms colour transition", "purpose": "Switching between dark and light themes." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one solid action in an area; always opens WhatsApp.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Get a quote on WhatsApp</a>",
+      "css": ".ds-btn-primary { display: inline-block; padding: 12px 24px; border-radius: 9999px; background: #ffffff; color: #0a0706; font: 600 14px/1.2 'Helvetica Now Text', -apple-system, sans-serif; text-decoration: none; transition: background-color 0.2s; } .ds-btn-primary:hover { background: rgba(255,255,255,0.9); } .ds-btn-primary:focus-visible { outline: 2px solid #e39a73; outline-offset: 3px; }"
+    },
+    {
+      "name": "Glass Button",
+      "kind": "button",
+      "refersTo": "button-glass",
+      "description": "Secondary actions and the bar's quote link, floating as liquid glass.",
+      "html": "<a class=\"ds-btn-glass\" href=\"#\">See the range</a>",
+      "css": ".ds-btn-glass { position: relative; overflow: hidden; display: inline-block; padding: 12px 24px; border-radius: 9999px; color: #ffffff; background: rgba(255,255,255,0.01); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); box-shadow: inset 0 1px 1px rgba(255,255,255,0.1); font: 600 14px/1.2 'Helvetica Now Text', -apple-system, sans-serif; text-decoration: none; transition: background-color 0.2s; } .ds-btn-glass::before { content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1.4px; background: linear-gradient(180deg, rgba(255,255,255,0.45), rgba(255,255,255,0.15) 20%, transparent 40%, transparent 60%, rgba(255,255,255,0.15) 80%, rgba(255,255,255,0.45)); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; } .ds-btn-glass:hover { background: rgba(255,255,255,0.1); } .ds-btn-glass:focus-visible { outline: 2px solid #e39a73; outline-offset: 3px; }"
+    },
+    {
+      "name": "Navigation Bar",
+      "kind": "nav",
+      "refersTo": "nav-bar",
+      "description": "Floating glass bar with the docked logo, links and the quote action.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-nav-logo\">XING-Z</span><span class=\"ds-nav-links\"><a href=\"#\">Range</a><a href=\"#\">Why Xing-Z</a><a href=\"#\">Inside the Motor</a></span><a class=\"ds-nav-cta\" href=\"#\">Get a quote</a></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 64px; padding: 0 24px; border-radius: 16px; background: rgba(12,8,6,0.55); backdrop-filter: blur(16px) saturate(140%); -webkit-backdrop-filter: blur(16px) saturate(140%); box-shadow: inset 0 1px 1px rgba(255,255,255,0.1), 0 10px 30px rgba(0,0,0,0.35); font: 500 14px 'Helvetica Now Text', -apple-system, sans-serif; color: #ffffff; } .ds-nav-logo { font-weight: 700; letter-spacing: -0.02em; font-size: 18px; } .ds-nav-links { display: flex; gap: 24px; } .ds-nav-links a { color: rgba(255,255,255,0.9); text-decoration: none; transition: color 0.2s; } .ds-nav-links a:hover, .ds-nav-links a:focus-visible { color: #ffffff; } .ds-nav-cta { padding: 8px 20px; border-radius: 9999px; color: #ffffff; text-decoration: none; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.3); } .ds-nav-cta:hover { background: rgba(255,255,255,0.1); }"
+    },
+    {
+      "name": "Option Chips",
+      "kind": "chip",
+      "refersTo": "chip-option",
+      "description": "Configurator finish / mount / speed options in a soft track.",
+      "html": "<div class=\"ds-chips\"><span class=\"ds-chip\">Graphite</span><span class=\"ds-chip ds-chip-on\">Silver</span><span class=\"ds-chip\">Copper</span></div>",
+      "css": ".ds-chips { display: inline-flex; padding: 4px; border-radius: 9999px; background: rgba(255,255,255,0.05); font: 500 12px 'Helvetica Now Text', -apple-system, sans-serif; } .ds-chip { padding: 4px 12px; border-radius: 9999px; color: rgba(255,255,255,0.6); transition: background-color 0.3s, color 0.3s; } .ds-chip:hover { color: #ffffff; } .ds-chip-on { background: #ffffff; color: #0a0706; }"
+    },
+    {
+      "name": "Range Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "A motor line: photo on a warm spotlight, name, use, and a copper WhatsApp link.",
+      "html": "<article class=\"ds-card\"><div class=\"ds-card-media\"></div><div class=\"ds-card-body\"><h3>H Frame motors</h3><p>H-frame mounting for rigid, low-vibration installs.</p><a href=\"#\">Get prices on WhatsApp ↗</a></div></article>",
+      "css": ".ds-card { max-width: 320px; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.02); color: #ffffff; font-family: 'Helvetica Now Text', -apple-system, sans-serif; transition: border-color 0.2s; } .ds-card:hover { border-color: rgba(217,119,79,0.5); } .ds-card-media { aspect-ratio: 4 / 3; background: radial-gradient(ellipse at 50% 62%, rgba(217,119,79,0.2), transparent 65%); } .ds-card-body { padding: 20px 24px 24px; } .ds-card-body h3 { margin: 0; font-size: 18px; font-weight: 500; } .ds-card-body p { margin: 8px 0 16px; font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.6); } .ds-card-body a { color: #e39a73; font-size: 14px; font-weight: 500; text-decoration: none; } .ds-card-body a:hover { color: #f6c3a4; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Copper & Current",
+    "overview": "The site holds two things in balance: the material and the electricity it carries. Copper arrives as glossy, braided cable lying across a near-black stage, and the current shows as small sparks and pulses running along it. Everything else stays out of the way, so the interface reads sleek, modern and minimal: one quiet sans-serif, flat dark grounds, and copper used as light rather than as decoration.\n\nPanels and controls are glassy and light. They float over the copper as liquid glass, with a bright top-and-bottom edge and a faint blur, so the material always shows through. The logo starts large in the hero and glides into a glass bar that stays at the top of the screen. A light theme carries the same system on warm paper, with darker copper for contrast and the copper logo.",
+    "keyCharacteristics": [
+      "Near-black stage (dark) or warm paper (light), never a mid-tone ground.",
+      "Copper is the only accent; electricity is blue-white in the dark and deep blue in the light.",
+      "One typeface for everything except the tagline.",
+      "Glass for floating chrome, solid white for the one primary action.",
+      "Motion is purposeful: the sparking wires, the docking logo, the exploding motor."
+    ],
+    "rules": [
+      { "name": "The One Metal Rule", "body": "Copper is the only accent. No second brand hue; status and the WhatsApp button are the only other colours on the page.", "section": "colors" },
+      { "name": "The Foreground Token Rule", "body": "Text, borders and faint fills use the theme foreground (`--fg`) at an alpha, never a fixed white or black, so both themes come from the same classes.", "section": "colors" },
+      { "name": "The Single Voice Rule", "body": "Helvetica Now Text everywhere; Lato never leaves the tagline.", "section": "typography" },
+      { "name": "The Glass-Not-Shadow Rule", "body": "Anything that floats is glass. Shadows are kept for the docked bar and the product floors.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep copper as the only accent, Copper Glow in dark and Forged Copper in light.",
+      "Do build colours from the theme tokens (`--fg`, `--page`, `--accent`) so both themes follow.",
+      "Do float chrome as liquid glass, with its bright top and bottom edge.",
+      "Do keep one solid white pill as the primary action and route it to WhatsApp.",
+      "Do use the copper logo in light mode and the white logo in dark mode."
+    ],
+    "donts": [
+      "Don't add a second typeface beyond Helvetica Now Text and the Lato tagline.",
+      "Don't add shadows to cards or panels at rest.",
+      "Don't introduce a second accent hue; WhatsApp green stays on the WhatsApp button.",
+      "Don't show unconfirmed claims, numbers or quotes in decorative type (see PRODUCT.md)."
+    ]
+  }
+}

@@ -1,0 +1,218 @@
+{
+  "families": [
+    {
+      "id": "high-speed",
+      "name": "High-Speed Motors",
+      "summary": "Higher RPM for stronger air throw in smaller coolers.",
+      "photo": "products/high-speed-motors.webp",
+      "model": "high-speed",
+      "variants": ["Without ring"]
+    },
+    {
+      "id": "110",
+      "name": "110 Motors",
+      "summary": "The 110 size for standard room and desert coolers.",
+      "photo": "products/110-motors.webp",
+      "model": "110",
+      "variants": ["Without ring"]
+    },
+    {
+      "id": "kit",
+      "name": "Kit Motors",
+      "summary": "Ready-to-fit kits for cooler assemblers and repairers.",
+      "photo": "products/kit-motors.webp",
+      "model": "kit",
+      "variants": ["Without ring"]
+    },
+    {
+      "id": "capcan",
+      "name": "Capcan Motors",
+      "summary": "Capcan motors, for more durable and noiseless concealed motors.",
+      "photo": "products/capcan-motors.webp",
+      "model": "capcan",
+      "variants": []
+    },
+    {
+      "id": "h-frame",
+      "name": "H Frame Motors",
+      "summary": "H-frame motors for rigid, low-vibration and tent coolers.",
+      "photo": "products/h-frame-motors.webp",
+      "model": "h-frame",
+      "variants": []
+    },
+    {
+      "id": "exhaust",
+      "name": "Exhaust Motors",
+      "summary": "For exhaust fans in kitchens, bathrooms and workshops.",
+      "photo": "products/exhaust-motors.webp",
+      "model": "exhaust",
+      "variants": []
+    },
+    {
+      "id": "pump",
+      "name": "Submersible Pumps",
+      "summary": "Sit in the cooler tank and push water to the pads.",
+      "photo": "products/submersible-pumps.webp",
+      "model": "pump",
+      "variants": []
+    }
+  ],
+  "products": [
+    {
+      "code": "1HS1SP(M)WR",
+      "family": "high-speed",
+      "name": "High-Speed 1\" · Maruti · 1-speed",
+      "description": "1\" (HIGH SPEED)(MARUTI) 1SPEED (WITH RING)(BUSH)(PRINTED)",
+      "attributes": { "Size": "1\"", "Stamping": "Maruti", "Speeds": "1-speed", "Ring": "With ring", "Shaft support": "Bush" }
+    },
+    {
+      "code": "1HS3SP(M)WR",
+      "family": "high-speed",
+      "name": "High-Speed 1\" · Maruti · 3-speed",
+      "description": "1\" (HIGH SPEED)(MARUTI) 3SPEED (WITH RING)(BUSH)(PRINTED)",
+      "attributes": { "Size": "1\"", "Stamping": "Maruti", "Speeds": "3-speed", "Ring": "With ring", "Shaft support": "Bush" }
+    },
+    {
+      "code": "1HS1SP(C)WR",
+      "family": "high-speed",
+      "name": "High-Speed 1\" · CRC · 1-speed",
+      "description": "1\" (HIGH SPEED)(CRC) 1SPEED (WITH RING)(BUSH)(PRINTED)",
+      "attributes": { "Size": "1\"", "Stamping": "CRC", "Speeds": "1-speed", "Ring": "With ring", "Shaft support": "Bush" }
+    },
+    {
+      "code": "1HS3SP(C)WR",
+      "family": "high-speed",
+      "name": "High-Speed 1\" · CRC · 3-speed",
+      "description": "1\" (HIGH SPEED)(CRC) 3SPEED (WITH BLACK RING)(BUSH)(PRINTED)",
+      "attributes": { "Size": "1\"", "Stamping": "CRC", "Speeds": "3-speed", "Ring": "With black ring", "Shaft support": "Bush" }
+    },
+    {
+      "code": "11022(C)WR",
+      "family": "110",
+      "name": "110 · 22 mm stack · 2-speed",
+      "description": "110 22 (CRC) 2SPEED (WITH RING)(BUSH)(PRINTED)",
+      "attributes": { "Size": "22 mm", "Stamping": "CRC", "Speeds": "2-speed", "Ring": "With ring", "Shaft support": "Bush" }
+    },
+    {
+      "code": "11028(C)WR",
+      "family": "110",
+      "name": "110 · 28 mm stack · 2-speed",
+      "description": "110 28 (CRC) 2SPEED (WITH RING)(BUSH)(PRINTED)",
+      "attributes": { "Size": "28 mm", "Stamping": "CRC", "Speeds": "2-speed", "Ring": "With ring", "Shaft support": "Bush" }
+    },
+    {
+      "code": "11032(C)WR",
+      "family": "110",
+      "name": "110 · 32 mm stack · 2-speed",
+      "description": "110 32 (CRC) 2SPEED (WITH RING)(BUSH)(PRINTED)",
+      "attributes": { "Size": "32 mm", "Stamping": "CRC", "Speeds": "2-speed", "Ring": "With ring", "Shaft support": "Bush" }
+    },
+    {
+      "code": "KIT3-4(M)WR",
+      "family": "kit",
+      "name": "Kit 3/4\" · Maruti · 2-speed",
+      "description": "KIT 3/4 (MARUTI) 2SPEED (WITH RING)(BUSH)(PRINTED)",
+      "attributes": { "Size": "3/4\"", "Stamping": "Maruti", "Speeds": "2-speed", "Ring": "With ring", "Winding": "Standard", "Capacitor": "Standard" }
+    },
+    {
+      "code": "KIT7-8(M)WR",
+      "family": "kit",
+      "name": "Kit 7/8\" · Maruti · 2-speed",
+      "description": "KIT 7/8 (MARUTI) 2SPEED (WITH RING)(BUSH)(PRINTED)",
+      "attributes": { "Size": "7/8\"", "Stamping": "Maruti", "Speeds": "2-speed", "Ring": "With ring", "Winding": "Standard", "Capacitor": "Standard" }
+    },
+    {
+      "code": "KIT1(M)WR",
+      "family": "kit",
+      "name": "Kit 1\" · Maruti · 2-speed",
+      "description": "KIT 1 (MARUTI) 2SPEED (WITH RING)(BUSH)(PRINTED)",
+      "attributes": { "Size": "1\"", "Stamping": "Maruti", "Speeds": "2-speed", "Ring": "With ring", "Winding": "Standard", "Capacitor": "Standard" }
+    },
+    {
+      "code": "KIT1(M)WOR(CU)",
+      "family": "kit",
+      "name": "Kit 1\" · Maruti · 2-speed · Copper",
+      "description": "KIT 1\" (COPPER) (MARUTI) 2SPEED (WITHOUT RING)(BUSH)(PRINTED)",
+      "attributes": { "Size": "1\"", "Stamping": "Maruti", "Speeds": "2-speed", "Ring": "Without ring", "Winding": "Copper", "Capacitor": "Standard" }
+    },
+    {
+      "code": "KIT24(C)WR",
+      "family": "kit",
+      "name": "Kit 24 · CRC · 3-speed",
+      "description": "KIT 24 (CRC) 3SPEED (WITH RING)(BUSH)(PRINTED)",
+      "attributes": { "Size": "24", "Stamping": "CRC", "Speeds": "3-speed", "Ring": "With ring", "Winding": "Standard", "Capacitor": "Standard" }
+    },
+    {
+      "code": "KIT24(C)WOR(CU)",
+      "family": "kit",
+      "name": "Kit 24 · CRC · 3-speed · Copper",
+      "description": "KIT 24 (CRC) (COPPER) 3SPEED (WITHOUT RING)(BUSH)(PRINTED)",
+      "attributes": { "Size": "24", "Stamping": "CRC", "Speeds": "3-speed", "Ring": "Without ring", "Winding": "Copper", "Capacitor": "Standard" }
+    },
+    {
+      "code": "KIT1-14(M)WR(T)",
+      "family": "kit",
+      "name": "Kit 1¼\" · Maruti · 2-speed · Tibcon",
+      "description": "KIT 1 1/4 (M) 2SPEED (WITH RING)(BUSH)(PRINTED) (TIBCON) & SP Packing",
+      "attributes": { "Size": "1¼\"", "Stamping": "Maruti", "Speeds": "2-speed", "Ring": "With ring", "Winding": "Standard", "Capacitor": "Tibcon" },
+      "variants": ["Without ring", "Without Tibcon capacitor"]
+    },
+    {
+      "code": "KIT1-12(M)WR(T)",
+      "family": "kit",
+      "name": "Kit 1½\" · Maruti · 3-speed · 36 slot · Tibcon",
+      "description": "KIT 1 1/2 (M) 3SPEED 36 SLOT (WITH RING)(BUSH)(PRINTED) (TIBCON) & SP Packing",
+      "attributes": { "Size": "1½\"", "Stamping": "Maruti", "Speeds": "3-speed", "Ring": "With ring", "Winding": "Standard", "Capacitor": "Tibcon" },
+      "variants": ["Without ring", "Without Tibcon capacitor"]
+    },
+    {
+      "code": "1HS3SP(M)(B)(Cpn)",
+      "family": "capcan",
+      "name": "Capcan 1\" High-Speed · Maruti · 3-speed",
+      "description": "1\" (HIGH SPEED)(MARUTI) 3SPEED (WITH RING)(BEARING)(CAPCON)(PRINTED)",
+      "attributes": { "Size": "1\"", "Stamping": "Maruti", "Speeds": "3-speed", "Ring": "With ring", "Shaft support": "Ball bearing" }
+    },
+    {
+      "code": "H FRAME 35(C)(St)",
+      "family": "h-frame",
+      "name": "H Frame 35 mm · CRC · Steel",
+      "description": "H Frame 35MM (CRC)(Steel)(BEARING)(PRINTED)",
+      "attributes": { "Size": "35 mm", "Stamping": "CRC", "Body": "Steel", "Shaft support": "Ball bearing" }
+    },
+    {
+      "code": "996 (1 14)(M)",
+      "family": "exhaust",
+      "name": "996 Exhaust 1¼\" · Maruti",
+      "description": "996 EXHAUST 1 1/4 (MARUTI)(BEARING)(PRINTED)",
+      "attributes": { "Size": "1¼\"", "Stamping": "Maruti", "Shaft support": "Ball bearing" }
+    },
+    {
+      "code": "996 35(C)",
+      "family": "exhaust",
+      "name": "996 Exhaust 35 mm · CRC",
+      "description": "996 EXHAUST 35MM (CRC)(BEARING)(PRINTED)",
+      "attributes": { "Size": "35 mm", "Stamping": "CRC", "Shaft support": "Ball bearing" }
+    },
+    {
+      "code": "12W35",
+      "family": "pump",
+      "name": "12 W Pump · Atlas · 35\" wire",
+      "description": "12WATT PUMP (ATLAS)(35INCH WIRE) (PRINTED)",
+      "attributes": { "Power": "12 W", "Model": "Atlas", "Wire": "35 inch" }
+    },
+    {
+      "code": "20W35",
+      "family": "pump",
+      "name": "20 W Pump · Ventra · 35\" wire",
+      "description": "20WATT PUMP (VENTRA)(35INCH WIRE) (PRINTED)",
+      "attributes": { "Power": "20 W", "Model": "Ventra", "Wire": "35 inch" }
+    },
+    {
+      "code": "40W40",
+      "family": "pump",
+      "name": "40 W Pump · 40\" wire",
+      "description": "40WATT PUMP (40INCH WIRE) (PRINTED)",
+      "attributes": { "Power": "40 W", "Model": "—", "Wire": "40 inch" }
+    }
+  ]
+}
