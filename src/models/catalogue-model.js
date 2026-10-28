@@ -6,7 +6,7 @@ import { asset } from '../content/site.js'
 // Reconstruct all detail levels from the saved sculpt specification.
 export function createCatalogueModel(spec, family) {
   const root = new THREE.Group(), nodes = {}, meshes = {}
-  const materials = Object.fromEntries(spec.materials.map(m => [m.id,new THREE.MeshPhysicalMaterial({color:m.color,roughness:m.roughness,metalness:m.metalness,clearcoat:m.clearcoat,clearcoatRoughness:.25,envMapIntensity:.4})]))
+  const materials = Object.fromEntries(spec.materials.map(m => [m.id,new THREE.MeshPhysicalMaterial({color:m.color,roughness:m.roughness,metalness:m.metalness,clearcoat:m.clearcoat,clearcoatRoughness:m.clearcoatRoughness??.25,envMapIntensity:m.envMapIntensity??.4})]))
   const grain = new Uint8Array(128*128*4)
   let seed=19
   for(let i=0;i<grain.length;i+=4){seed=(Math.imul(seed,1664525)+1013904223)>>>0;const v=100+(seed%56);grain[i]=grain[i+1]=grain[i+2]=v;grain[i+3]=255}
@@ -31,7 +31,7 @@ export function createCatalogueModel(spec, family) {
     } else geometry=primitive(c.primitive,c.id.includes('bolt'))
     geometry.scale(...c.transform.scale)
     // Shaft positions in the sculpt spec name the bearing seat, not the cylinder centre.
-    if(c.id==='shaft') geometry.translate(0,c.transform.scale[1]/2,0)
+    if(c.id==='shaft'&&c.primitive==='cylinder') geometry.translate(0,c.transform.scale[1]/2,0)
     const mesh=new THREE.Mesh(geometry,materials[c.material]);mesh.name=c.id;mesh.castShadow=mesh.receiveShadow=true;node.add(mesh);meshes[c.id]=mesh
   }
   for(const c of spec.components) (nodes[c.parent]??root).add(nodes[c.id])
@@ -41,7 +41,7 @@ export function createCatalogueModel(spec, family) {
     cluster.name=r.id; const dummy=new THREE.Object3D()
     for(let i=0;i<r.count;i++) {
       const angle=THREE.MathUtils.degToRad(r.placement.startAngleDeg+i*360/r.count),radius=r.placement.radius/2
-      dummy.position.set(Math.cos(angle)*radius,0,-Math.sin(angle)*radius);dummy.rotation.set(0,angle,0);dummy.scale.fromArray(r.instanceScale);dummy.updateMatrix();cluster.setMatrixAt(i,dummy.matrix)
+      dummy.position.set(Math.cos(angle)*radius,r.placement.y??0,-Math.sin(angle)*radius);dummy.rotation.set(0,angle,0);dummy.scale.fromArray(r.instanceScale);dummy.updateMatrix();cluster.setMatrixAt(i,dummy.matrix)
     }
     cluster.castShadow=cluster.receiveShadow=true;(nodes[r.parent]??root).add(cluster)
   }
@@ -68,8 +68,9 @@ export function createCatalogueModel(spec, family) {
     const mark=new THREE.Mesh(new THREE.PlaneGeometry(.22,.09),new THREE.MeshPhysicalMaterial({map:texture,color:0x086b61,transparent:true,depthWrite:false,roughness:.48,polygonOffset:true,polygonOffsetFactor:-2}))
     mark.position.set(.19,.41,.247);mark.rotation.x=-.258;mark.name='moulded-wordmark';root.add(mark)
   } else {
-    const [radius,y,width]={'capcan':[.505,.34,.36],'h-frame':[.502,.85,.36],exhaust:[.505,.59,.38]}[family]
-    addWordmark(root,{url:asset('xingz-logo-white.png'),radius,y,width,color:0x333333})
+    // The capcan photo shows no moulded mark, so it gets none.
+    const mark={'h-frame':[.502,.85,.36],exhaust:[.505,.59,.38]}[family]
+    if(mark) addWordmark(root,{url:asset('xingz-logo-white.png'),radius:mark[0],y:mark[1],width:mark[2],color:0x333333})
   }
   root.userData.sculptRuntime={nodes,meshes};return root
 }

@@ -26,7 +26,7 @@
         "topologyIntent": "Glossy drawn-steel cup below the flange, slightly narrower than the upper can, rounded bottom edge.",
         "edgeTreatment": {
           "type": "none",
-          "bevelRadius": 0.0,
+          "bevelRadius": 0,
           "segments": 1
         },
         "deformationStack": [],
@@ -35,12 +35,12 @@
         "latheProfile": {
           "points": [
             [
-              0.0,
-              0.0
+              0,
+              0
             ],
             [
               0.455,
-              0.0
+              0
             ],
             [
               0.486,
@@ -63,7 +63,7 @@
               0.58
             ],
             [
-              0.0,
+              0,
               0.58
             ]
           ],
@@ -97,7 +97,7 @@
         "topologyIntent": "Glossy upper can from the flange to a rolled top rim, two rolled beads on the wall, top face dished down to the hub.",
         "edgeTreatment": {
           "type": "none",
-          "bevelRadius": 0.0,
+          "bevelRadius": 0,
           "segments": 1
         },
         "deformationStack": [],
@@ -106,7 +106,7 @@
         "latheProfile": {
           "points": [
             [
-              0.0,
+              0,
               0.585
             ],
             [
@@ -143,39 +143,47 @@
             ],
             [
               0.5,
-              0.8
+              1.08
             ],
             [
-              0.5,
-              1.0899999999999999
+              0.497,
+              1.104
             ],
             [
-              0.5,
-              1.0999999999999999
+              0.486,
+              1.121
             ],
             [
-              0.49,
-              1.1239999999999999
-            ],
-            [
-              0.465,
+              0.466,
               1.13
             ],
             [
-              0.43,
-              1.126
+              0.4,
+              1.128
             ],
             [
-              0.2,
-              1.0499999999999998
+              0.36,
+              1.122
             ],
             [
-              0.16,
-              1.045
+              0.335,
+              1.11
             ],
             [
-              0.0,
-              1.045
+              0.3,
+              1.05
+            ],
+            [
+              0.27,
+              0.99
+            ],
+            [
+              0.24,
+              0.975
+            ],
+            [
+              0,
+              0.975
             ]
           ],
           "segments": 128
@@ -187,7 +195,7 @@
       "transform": {
         "position": [
           0,
-          0.615,
+          0.6,
           0
         ],
         "rotation": [
@@ -203,12 +211,12 @@
       },
       "id": "flange",
       "parent": "lower-can",
-      "material": "gloss-coat",
+      "material": "plate-coat",
       "geometry": {
         "topologyIntent": "Flat glossy circular plate (r 0.71) round the can at mid-height, carrying the bolts and fixing holes.",
         "edgeTreatment": {
           "type": "none",
-          "bevelRadius": 0.0,
+          "bevelRadius": 0,
           "segments": 1
         },
         "deformationStack": [],
@@ -234,11 +242,11 @@
             ],
             [
               0.702,
-              0.0
+              0
             ],
             [
               0.495,
-              0.0
+              0
             ]
           ],
           "segments": 128
@@ -271,7 +279,7 @@
         "topologyIntent": "Rolled lip round the lower can just under the flange.",
         "edgeTreatment": {
           "type": "none",
-          "bevelRadius": 0.0,
+          "bevelRadius": 0,
           "segments": 1
         },
         "deformationStack": [],
@@ -326,7 +334,7 @@
         "topologyIntent": "Raised glossy hub in the dish holding the ball bearing round the shaft.",
         "edgeTreatment": {
           "type": "none",
-          "bevelRadius": 0.0,
+          "bevelRadius": 0,
           "segments": 1
         },
         "deformationStack": [],
@@ -335,24 +343,28 @@
         "latheProfile": {
           "points": [
             [
-              0.06,
-              1.0399999999999998
+              0.07,
+              0.975
             ],
             [
               0.16,
-              1.0399999999999998
+              0.975
             ],
             [
-              0.16,
-              1.1099999999999999
+              0.163,
+              1.05
             ],
             [
-              0.15,
-              1.1199999999999999
+              0.155,
+              1.064
             ],
             [
-              0.06,
-              1.1199999999999999
+              0.13,
+              1.07
+            ],
+            [
+              0.07,
+              1.07
             ]
           ],
           "segments": 64
@@ -385,7 +397,7 @@
         "topologyIntent": "Bright steel bearing ring visible in the hub round the shaft.",
         "edgeTreatment": {
           "type": "none",
-          "bevelRadius": 0.0,
+          "bevelRadius": 0,
           "segments": 1
         },
         "deformationStack": [],
@@ -395,19 +407,362 @@
           "points": [
             [
               0.058,
-              1.1179999999999999
+              1.066
             ],
             [
-              0.1,
-              1.1179999999999999
+              0.105,
+              1.066
             ],
             [
-              0.1,
-              1.134
+              0.105,
+              1.072
+            ],
+            [
+              0.098,
+              1.082
+            ],
+            [
+              0.064,
+              1.082
             ],
             [
               0.058,
-              1.134
+              1.072
+            ]
+          ],
+          "segments": 48
+        }
+      }
+    },
+    {
+      "primitive": "lathe",
+      "transform": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "id": "shaft",
+      "parent": "upper-can",
+      "material": "green-shaft",
+      "geometry": {
+        "topologyIntent": "Green anodised shaft with a threaded section, rising 0.65 D above the rim.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry",
+        "latheProfile": {
+          "points": [
+            [
+              0,
+              1.07
+            ],
+            [
+              0.058,
+              1.07
+            ],
+            [
+              0.058,
+              1.27
+            ],
+            [
+              0.051,
+              1.279
+            ],
+            [
+              0.051,
+              1.2835
+            ],
+            [
+              0.058,
+              1.2925
+            ],
+            [
+              0.058,
+              1.3
+            ],
+            [
+              0.051,
+              1.309
+            ],
+            [
+              0.051,
+              1.3135
+            ],
+            [
+              0.058,
+              1.3225
+            ],
+            [
+              0.058,
+              1.33
+            ],
+            [
+              0.051,
+              1.339
+            ],
+            [
+              0.051,
+              1.3435
+            ],
+            [
+              0.058,
+              1.3525
+            ],
+            [
+              0.058,
+              1.36
+            ],
+            [
+              0.051,
+              1.369
+            ],
+            [
+              0.051,
+              1.3735
+            ],
+            [
+              0.058,
+              1.3825
+            ],
+            [
+              0.058,
+              1.39
+            ],
+            [
+              0.051,
+              1.399
+            ],
+            [
+              0.051,
+              1.4035
+            ],
+            [
+              0.058,
+              1.4125
+            ],
+            [
+              0.058,
+              1.42
+            ],
+            [
+              0.051,
+              1.429
+            ],
+            [
+              0.051,
+              1.4335
+            ],
+            [
+              0.058,
+              1.4425
+            ],
+            [
+              0.058,
+              1.45
+            ],
+            [
+              0.051,
+              1.459
+            ],
+            [
+              0.051,
+              1.4635
+            ],
+            [
+              0.058,
+              1.4725
+            ],
+            [
+              0.058,
+              1.48
+            ],
+            [
+              0.051,
+              1.489
+            ],
+            [
+              0.051,
+              1.4935
+            ],
+            [
+              0.058,
+              1.5025
+            ],
+            [
+              0.058,
+              1.51
+            ],
+            [
+              0.051,
+              1.519
+            ],
+            [
+              0.051,
+              1.5235
+            ],
+            [
+              0.058,
+              1.5325
+            ],
+            [
+              0.058,
+              1.54
+            ],
+            [
+              0.051,
+              1.549
+            ],
+            [
+              0.051,
+              1.5535
+            ],
+            [
+              0.058,
+              1.5625
+            ],
+            [
+              0.058,
+              1.57
+            ],
+            [
+              0.051,
+              1.579
+            ],
+            [
+              0.051,
+              1.5835
+            ],
+            [
+              0.058,
+              1.5925
+            ],
+            [
+              0.058,
+              1.6
+            ],
+            [
+              0.051,
+              1.609
+            ],
+            [
+              0.051,
+              1.6135
+            ],
+            [
+              0.058,
+              1.6225
+            ],
+            [
+              0.058,
+              1.63
+            ],
+            [
+              0.051,
+              1.639
+            ],
+            [
+              0.051,
+              1.6435
+            ],
+            [
+              0.058,
+              1.6525
+            ],
+            [
+              0.058,
+              1.66
+            ],
+            [
+              0.051,
+              1.669
+            ],
+            [
+              0.051,
+              1.6735
+            ],
+            [
+              0.058,
+              1.6825
+            ],
+            [
+              0.058,
+              1.69
+            ],
+            [
+              0.051,
+              1.699
+            ],
+            [
+              0.051,
+              1.7035
+            ],
+            [
+              0.058,
+              1.7125
+            ],
+            [
+              0.058,
+              1.72
+            ],
+            [
+              0.051,
+              1.729
+            ],
+            [
+              0.051,
+              1.7335
+            ],
+            [
+              0.058,
+              1.7425
+            ],
+            [
+              0.058,
+              1.75
+            ],
+            [
+              0.051,
+              1.759
+            ],
+            [
+              0.051,
+              1.7635
+            ],
+            [
+              0.058,
+              1.7725
+            ],
+            [
+              0.058,
+              1.78
+            ],
+            [
+              0.058,
+              1.922
+            ],
+            [
+              0.05,
+              1.93
+            ],
+            [
+              0,
+              1.93
             ]
           ],
           "segments": 48
@@ -419,7 +774,7 @@
       "transform": {
         "position": [
           0,
-          1.13,
+          1.93,
           0
         ],
         "rotation": [
@@ -428,19 +783,19 @@
           0
         ],
         "scale": [
-          0.117,
-          0.65,
-          0.117
+          0.03,
+          0.004,
+          0.03
         ]
       },
-      "id": "shaft",
+      "id": "shaft-tip",
       "parent": "upper-can",
-      "material": "green-shaft",
+      "material": "hole-dark",
       "geometry": {
-        "topologyIntent": "Green anodised shaft with a threaded section, rising 0.65 D above the rim.",
+        "topologyIntent": "Dark centre hole in the shaft end.",
         "edgeTreatment": {
           "type": "none",
-          "bevelRadius": 0.0,
+          "bevelRadius": 0,
           "segments": 1
         },
         "deformationStack": [],
@@ -459,9 +814,9 @@
       "primitive": "cylinder",
       "material": "brass",
       "instanceScale": [
-        0.12,
-        0.1,
-        0.12
+        0.11,
+        0.07,
+        0.11
       ],
       "placement": {
         "mode": "radial",
@@ -471,13 +826,14 @@
           0
         ],
         "radius": 1.2,
-        "startAngleDeg": 300
+        "startAngleDeg": 300,
+        "y": 0.035
       },
       "distribution": "radial",
       "buildsGeometry": true,
       "variation": {
-        "scaleJitter": 0.0,
-        "rotationJitter": 0.0
+        "scaleJitter": 0,
+        "rotationJitter": 0
       },
       "evidenceRef": "zone-r1c0",
       "notes": "At r 0.6, 30/120/210/300 degrees from the front."
@@ -486,14 +842,14 @@
       "id": "flange-nuts",
       "name": "Brass nuts under the flange (4)",
       "level": "meso",
-      "parent": "lower-lip",
+      "parent": "flange",
       "count": 4,
       "primitive": "cylinder",
       "material": "brass",
       "instanceScale": [
-        0.115,
-        0.1,
-        0.115
+        0.105,
+        0.07,
+        0.105
       ],
       "placement": {
         "mode": "radial",
@@ -503,13 +859,14 @@
           0
         ],
         "radius": 1.2,
-        "startAngleDeg": 300
+        "startAngleDeg": 300,
+        "y": -0.058
       },
       "distribution": "radial",
       "buildsGeometry": true,
       "variation": {
-        "scaleJitter": 0.0,
-        "rotationJitter": 0.0
+        "scaleJitter": 0,
+        "rotationJitter": 0
       },
       "evidenceRef": "zone-r1c0",
       "notes": "Nuts and stud ends below the flange."
@@ -540,48 +897,127 @@
       "distribution": "radial",
       "buildsGeometry": true,
       "variation": {
-        "scaleJitter": 0.0,
-        "rotationJitter": 0.0
+        "scaleJitter": 0,
+        "rotationJitter": 0
       },
       "evidenceRef": "zone-r1c0",
       "notes": "Dark holes between the bolts at r 0.63."
+    },
+    {
+      "id": "flange-studs",
+      "name": "Threaded brass studs below the nuts (4)",
+      "level": "meso",
+      "parent": "flange",
+      "count": 4,
+      "primitive": "cylinder",
+      "material": "brass",
+      "instanceScale": [
+        0.045,
+        0.1,
+        0.045
+      ],
+      "placement": {
+        "mode": "radial",
+        "axis": [
+          0,
+          1,
+          0
+        ],
+        "radius": 1.2,
+        "startAngleDeg": 300,
+        "y": -0.11
+      },
+      "distribution": "radial",
+      "buildsGeometry": true,
+      "variation": {
+        "scaleJitter": 0,
+        "rotationJitter": 0
+      },
+      "evidenceRef": "zone-r1c0",
+      "notes": "Nuts and stud ends below the flange."
+    },
+    {
+      "id": "flange-washers",
+      "name": "Brass washers under the bolt heads (4)",
+      "level": "macro",
+      "parent": "flange",
+      "count": 4,
+      "primitive": "cylinder",
+      "material": "brass",
+      "instanceScale": [
+        0.14,
+        0.008,
+        0.14
+      ],
+      "placement": {
+        "mode": "radial",
+        "axis": [
+          0,
+          1,
+          0
+        ],
+        "radius": 1.2,
+        "startAngleDeg": 300,
+        "y": 0.004
+      },
+      "distribution": "radial",
+      "buildsGeometry": true,
+      "variation": {
+        "scaleJitter": 0,
+        "rotationJitter": 0
+      },
+      "evidenceRef": "zone-r1c0",
+      "notes": "At r 0.6, 30/120/210/300 degrees from the front."
     }
   ],
   "materials": [
     {
-      "metalness": 0.0,
-      "color": "#0e0e0e",
+      "metalness": 0,
+      "color": "#0a0a0a",
       "id": "gloss-coat",
-      "roughness": 0.2,
-      "clearcoat": 0.8
+      "roughness": 0.16,
+      "clearcoat": 1,
+      "clearcoatRoughness": 0.08,
+      "envMapIntensity": 0.22
     },
     {
-      "metalness": 1.0,
-      "color": "#c9a24a",
+      "metalness": 1,
+      "color": "#d4ad55",
       "id": "brass",
-      "roughness": 0.32,
-      "clearcoat": 0
-    },
-    {
-      "metalness": 0.6,
-      "color": "#178a4a",
-      "id": "green-shaft",
       "roughness": 0.3,
-      "clearcoat": 0
+      "clearcoat": 0,
+      "envMapIntensity": 0.9
     },
     {
-      "metalness": 1.0,
+      "metalness": 0.75,
+      "color": "#0d7a3e",
+      "id": "green-shaft",
+      "roughness": 0.28,
+      "clearcoat": 0,
+      "envMapIntensity": 0.8
+    },
+    {
+      "metalness": 1,
       "color": "#c7cacd",
       "id": "steel",
       "roughness": 0.2,
       "clearcoat": 0
     },
     {
-      "metalness": 0.0,
+      "metalness": 0,
       "color": "#050505",
       "id": "hole-dark",
       "roughness": 0.9,
       "clearcoat": 0
+    },
+    {
+      "metalness": 0,
+      "color": "#0b0b0b",
+      "id": "plate-coat",
+      "roughness": 0.32,
+      "clearcoat": 0.6,
+      "clearcoatRoughness": 0.3,
+      "envMapIntensity": 0.12
     }
   ]
 }
