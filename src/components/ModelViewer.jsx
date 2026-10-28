@@ -10,7 +10,7 @@ const disposeTree = (root) =>
     o.geometry?.dispose()
     const mats = Array.isArray(o.material) ? o.material : o.material ? [o.material] : []
     mats.forEach((m) => {
-      Object.values(m).forEach((v) => v?.isTexture && v.dispose())
+      Object.values(m).forEach((v) => v?.isTexture && !v.userData.shared && v.dispose())
       m.dispose()
     })
   })
@@ -21,6 +21,7 @@ export default function ModelViewer({ modelId, product, variants = [], photo, al
   const mountRef = useRef(null)
   const stageRef = useRef(null)
   const [status, setStatus] = useState('loading')
+  const [rotating, setRotating] = useState(false)
   const { theme } = useTheme()
   const entry = modelId ? MODELS[modelId] : null
   const variantKey = variants.join('|')
@@ -29,7 +30,6 @@ export default function ModelViewer({ modelId, product, variants = [], photo, al
   useEffect(() => {
     if (!entry) return
     const mount = mountRef.current
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     let renderer
     try {
       renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
@@ -46,24 +46,32 @@ export default function ModelViewer({ modelId, product, variants = [], photo, al
 
     const scene = new THREE.Scene()
     const pmrem = new THREE.PMREMGenerator(renderer)
-    scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture
+    const room = new RoomEnvironment()
+    const environment = pmrem.fromScene(room, 0.04)
+    scene.environment = environment.texture
+    room.dispose()
 
     const camera = new THREE.PerspectiveCamera(32, 1, 0.01, 100)
     const controls = new OrbitControls(camera, renderer.domElement)
     controls.enableDamping = true
     controls.enablePan = false
-    controls.autoRotate = !reduced
-    controls.autoRotateSpeed = 1.1
+    controls.autoRotate = false
+    controls.autoRotateSpeed = 0.65
+    controls.maxPolarAngle = Math.PI * .49
+    const stopRotation = () => { controls.autoRotate = false; setRotating(false) }
+    controls.addEventListener('start', stopRotation)
 
     const key = new THREE.DirectionalLight(0xffffff, 2.2)
     key.position.set(3, 5, 4)
     key.castShadow = true
     key.shadow.mapSize.set(1024, 1024)
     key.shadow.radius = 6
+    key.shadow.normalBias = .006
+    key.shadow.bias = -.0001
     // Low behind-left, so the teal edge rakes the sides of a black housing instead of tinting its top face.
-    const rim = new THREE.DirectionalLight(0x66a99e, 1.6)
+    const rim = new THREE.DirectionalLight(0xffffff, 1.6)
     rim.position.set(-4, 0.8, -3)
-    const fill = new THREE.HemisphereLight(0xf1f5f4, 0x0b1a18, 0.6)
+    const fill = new THREE.HemisphereLight(0xf1f5f4, 0x292521, 0.6)
     scene.add(key, rim, fill)
 
     const floor = new THREE.Mesh(new THREE.CircleGeometry(1, 64), new THREE.ShadowMaterial({ opacity: 0.35 }))
@@ -80,6 +88,15 @@ export default function ModelViewer({ modelId, product, variants = [], photo, al
       renderer.domElement.style.width = '100%'
       renderer.domElement.style.height = '100%'
       camera.aspect = w / Math.max(1, h)
+      if (state.fitRadius) {
+        const halfV = THREE.MathUtils.degToRad(camera.fov / 2)
+        const distance = state.fitRadius / Math.sin(Math.min(halfV, Math.atan(Math.tan(halfV) * camera.aspect))) * 1.16
+        const direction = camera.position.clone().sub(controls.target).normalize()
+        camera.position.copy(controls.target).addScaledVector(direction, distance)
+        controls.minDistance = distance * .5
+        controls.maxDistance = distance * 2
+        controls.saveState()
+      }
       camera.updateProjectionMatrix()
     }
     const loop = () => {
@@ -105,7 +122,7 @@ export default function ModelViewer({ modelId, product, variants = [], photo, al
       if (state.model) disposeTree(state.model)
       floor.geometry.dispose()
       floor.material.dispose()
-      scene.environment?.dispose()
+      environment.dispose()
       pmrem.dispose()
       renderer.dispose()
       renderer.domElement.remove()
@@ -148,24 +165,29 @@ export default function ModelViewer({ modelId, product, variants = [], photo, al
         state.key.shadow.camera.updateProjectionMatrix()
         // Fit the bounding sphere inside the narrower of the two view angles, from a three-quarter view 18 deg up.
         const sphere = box.getBoundingSphere(new THREE.Sphere())
+        state.fitRadius = sphere.radius
         const halfV = THREE.MathUtils.degToRad(state.camera.fov / 2)
         const halfFov = Math.min(halfV, Math.atan(Math.tan(halfV) * state.camera.aspect))
-        const distance = (sphere.radius / Math.sin(halfFov)) * 1.04
+        const distance = (sphere.radius / Math.sin(halfFov)) * 1.16
         const up = THREE.MathUtils.degToRad(18)
         state.controls.target.set(0, size.y / 2, 0)
         state.camera.position.set(
-          distance * Math.cos(up) * Math.SQRT1_2,
+          distance * Math.cos(up) * 0.30,
           size.y / 2 + distance * Math.sin(up),
-          distance * Math.cos(up) * Math.SQRT1_2,
+          distance * Math.cos(up) * Math.sqrt(1 - .30 ** 2),
         )
         state.controls.minDistance = distance * 0.5
         state.controls.maxDistance = distance * 2
         state.camera.near = radius / 100
         state.camera.far = radius * 20
         state.camera.updateProjectionMatrix()
+        state.controls.update()
+        state.controls.saveState()
+        state.controls.autoRotate = false
+        setRotating(false)
         setStatus('ready')
       })
-      .catch(() => !cancelled && setStatus('fallback'))
+      .catch((error) => { console.error('Product model failed to load', error); if (!cancelled) setStatus('fallback') })
     return () => {
       cancelled = true
     }
@@ -185,15 +207,24 @@ export default function ModelViewer({ modelId, product, variants = [], photo, al
 
   return (
     <div className="absolute inset-0">
-      {showPhoto ? (
+      <div ref={mountRef} className="absolute inset-0 cursor-grab active:cursor-grabbing" style={{ visibility: showPhoto ? 'hidden' : 'visible' }} aria-label={alt} role="img" />
+      {showPhoto && (
         <img
           key={photo}
           src={photo}
           alt={alt}
           className="absolute inset-0 w-full h-full object-contain p-10 sm:p-14 animate-dropdown drop-shadow-[0_24px_30px_rgba(0,0,0,0.45)] light:drop-shadow-[0_18px_24px_rgba(20,70,62,0.2)]"
         />
-      ) : (
-        <div ref={mountRef} className="absolute inset-0 cursor-grab active:cursor-grabbing" aria-label={alt} role="img" />
+      )}
+      {entry && status === 'ready' && (
+        <div className="absolute top-4 right-4 flex gap-2">
+          <button type="button" className="rounded-full border border-white/15 bg-page/80 px-3 py-2 text-xs text-white" aria-pressed={rotating}
+            onClick={() => { const next = !rotating; setRotating(next); if (stageRef.current) stageRef.current.controls.autoRotate = next }}>
+            {rotating ? 'Pause rotation' : 'Rotate'}
+          </button>
+          <button type="button" className="rounded-full border border-white/15 bg-page/80 px-3 py-2 text-xs text-white"
+            onClick={() => { stageRef.current?.controls.reset(); if (stageRef.current) stageRef.current.controls.autoRotate = false; setRotating(false) }}>Reset view</button>
+        </div>
       )}
       {entry && status === 'loading' && (
         <div className="absolute inset-0 flex items-center justify-center text-white/50 text-sm">Building the model…</div>

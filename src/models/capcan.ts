@@ -1,4 +1,4 @@
-import { createXingZCapcanMotorModel } from './generated/capcan'
-
-export const createModel = () => createXingZCapcanMotorModel({ castShadow: true, receiveShadow: true })
+import spec from './specs/capcan.json'
+import { createCatalogueModel } from './catalogue-model.js'
+export const createModel = () => createCatalogueModel(spec, 'capcan')
 

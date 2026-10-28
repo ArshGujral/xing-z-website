@@ -1,4 +1,4 @@
-import { createXingZExhaustMotorModel } from './generated/exhaust'
-
-export const createModel = () => createXingZExhaustMotorModel({ castShadow: true, receiveShadow: true })
+import spec from './specs/exhaust.json'
+import { createCatalogueModel } from './catalogue-model.js'
+export const createModel = () => createCatalogueModel(spec, 'exhaust')
 

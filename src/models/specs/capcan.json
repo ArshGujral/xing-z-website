@@ -1,0 +1,587 @@
+{
+  "components": [
+    {
+      "primitive": "lathe",
+      "transform": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "id": "lower-can",
+      "parent": null,
+      "material": "gloss-coat",
+      "geometry": {
+        "topologyIntent": "Glossy drawn-steel cup below the flange, slightly narrower than the upper can, rounded bottom edge.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry",
+        "latheProfile": {
+          "points": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.455,
+              0.0
+            ],
+            [
+              0.486,
+              0.01
+            ],
+            [
+              0.496,
+              0.04
+            ],
+            [
+              0.496,
+              0.05
+            ],
+            [
+              0.496,
+              0.57
+            ],
+            [
+              0.496,
+              0.58
+            ],
+            [
+              0.0,
+              0.58
+            ]
+          ],
+          "segments": 96
+        }
+      }
+    },
+    {
+      "primitive": "lathe",
+      "transform": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "id": "upper-can",
+      "parent": "lower-can",
+      "material": "gloss-coat",
+      "geometry": {
+        "topologyIntent": "Glossy upper can from the flange to a rolled top rim, two rolled beads on the wall, top face dished down to the hub.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry",
+        "latheProfile": {
+          "points": [
+            [
+              0.0,
+              0.585
+            ],
+            [
+              0.5,
+              0.585
+            ],
+            [
+              0.5,
+              0.595
+            ],
+            [
+              0.5,
+              0.65
+            ],
+            [
+              0.507,
+              0.66
+            ],
+            [
+              0.5,
+              0.67
+            ],
+            [
+              0.5,
+              0.77
+            ],
+            [
+              0.507,
+              0.78
+            ],
+            [
+              0.5,
+              0.79
+            ],
+            [
+              0.5,
+              0.8
+            ],
+            [
+              0.5,
+              1.0899999999999999
+            ],
+            [
+              0.5,
+              1.0999999999999999
+            ],
+            [
+              0.49,
+              1.1239999999999999
+            ],
+            [
+              0.465,
+              1.13
+            ],
+            [
+              0.43,
+              1.126
+            ],
+            [
+              0.2,
+              1.0499999999999998
+            ],
+            [
+              0.16,
+              1.045
+            ],
+            [
+              0.0,
+              1.045
+            ]
+          ],
+          "segments": 128
+        }
+      }
+    },
+    {
+      "primitive": "lathe",
+      "transform": {
+        "position": [
+          0,
+          0.615,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "id": "flange",
+      "parent": "lower-can",
+      "material": "gloss-coat",
+      "geometry": {
+        "topologyIntent": "Flat glossy circular plate (r 0.71) round the can at mid-height, carrying the bolts and fixing holes.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry",
+        "latheProfile": {
+          "points": [
+            [
+              0.49,
+              -0.022
+            ],
+            [
+              0.702,
+              -0.022
+            ],
+            [
+              0.71,
+              -0.014
+            ],
+            [
+              0.71,
+              -0.006
+            ],
+            [
+              0.702,
+              0.0
+            ],
+            [
+              0.495,
+              0.0
+            ]
+          ],
+          "segments": 128
+        }
+      }
+    },
+    {
+      "primitive": "lathe",
+      "transform": {
+        "position": [
+          0,
+          0.515,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "id": "lower-lip",
+      "parent": "lower-can",
+      "material": "gloss-coat",
+      "geometry": {
+        "topologyIntent": "Rolled lip round the lower can just under the flange.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry",
+        "latheProfile": {
+          "points": [
+            [
+              0.492,
+              0.025
+            ],
+            [
+              0.503,
+              0.032
+            ],
+            [
+              0.503,
+              0.05
+            ],
+            [
+              0.492,
+              0.057
+            ]
+          ],
+          "segments": 128
+        }
+      }
+    },
+    {
+      "primitive": "lathe",
+      "transform": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "id": "hub",
+      "parent": "upper-can",
+      "material": "gloss-coat",
+      "geometry": {
+        "topologyIntent": "Raised glossy hub in the dish holding the ball bearing round the shaft.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry",
+        "latheProfile": {
+          "points": [
+            [
+              0.06,
+              1.0399999999999998
+            ],
+            [
+              0.16,
+              1.0399999999999998
+            ],
+            [
+              0.16,
+              1.1099999999999999
+            ],
+            [
+              0.15,
+              1.1199999999999999
+            ],
+            [
+              0.06,
+              1.1199999999999999
+            ]
+          ],
+          "segments": 64
+        }
+      }
+    },
+    {
+      "primitive": "lathe",
+      "transform": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "id": "bearing",
+      "parent": "upper-can",
+      "material": "steel",
+      "geometry": {
+        "topologyIntent": "Bright steel bearing ring visible in the hub round the shaft.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry",
+        "latheProfile": {
+          "points": [
+            [
+              0.058,
+              1.1179999999999999
+            ],
+            [
+              0.1,
+              1.1179999999999999
+            ],
+            [
+              0.1,
+              1.134
+            ],
+            [
+              0.058,
+              1.134
+            ]
+          ],
+          "segments": 48
+        }
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          0,
+          1.13,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.117,
+          0.65,
+          0.117
+        ]
+      },
+      "id": "shaft",
+      "parent": "upper-can",
+      "material": "green-shaft",
+      "geometry": {
+        "topologyIntent": "Green anodised shaft with a threaded section, rising 0.65 D above the rim.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    }
+  ],
+  "repetitions": [
+    {
+      "id": "flange-bolts",
+      "name": "Brass hex bolt heads on the flange (4)",
+      "level": "macro",
+      "parent": "flange",
+      "count": 4,
+      "primitive": "cylinder",
+      "material": "brass",
+      "instanceScale": [
+        0.12,
+        0.1,
+        0.12
+      ],
+      "placement": {
+        "mode": "radial",
+        "axis": [
+          0,
+          1,
+          0
+        ],
+        "radius": 1.2,
+        "startAngleDeg": 300
+      },
+      "distribution": "radial",
+      "buildsGeometry": true,
+      "variation": {
+        "scaleJitter": 0.0,
+        "rotationJitter": 0.0
+      },
+      "evidenceRef": "zone-r1c0",
+      "notes": "At r 0.6, 30/120/210/300 degrees from the front."
+    },
+    {
+      "id": "flange-nuts",
+      "name": "Brass nuts under the flange (4)",
+      "level": "meso",
+      "parent": "lower-lip",
+      "count": 4,
+      "primitive": "cylinder",
+      "material": "brass",
+      "instanceScale": [
+        0.115,
+        0.1,
+        0.115
+      ],
+      "placement": {
+        "mode": "radial",
+        "axis": [
+          0,
+          1,
+          0
+        ],
+        "radius": 1.2,
+        "startAngleDeg": 300
+      },
+      "distribution": "radial",
+      "buildsGeometry": true,
+      "variation": {
+        "scaleJitter": 0.0,
+        "rotationJitter": 0.0
+      },
+      "evidenceRef": "zone-r1c0",
+      "notes": "Nuts and stud ends below the flange."
+    },
+    {
+      "id": "fixing-holes",
+      "name": "Fixing holes (4)",
+      "level": "micro",
+      "parent": "flange",
+      "count": 4,
+      "primitive": "cylinder",
+      "material": "hole-dark",
+      "instanceScale": [
+        0.055,
+        0.006,
+        0.055
+      ],
+      "placement": {
+        "mode": "radial",
+        "axis": [
+          0,
+          1,
+          0
+        ],
+        "radius": 1.26,
+        "startAngleDeg": 345
+      },
+      "distribution": "radial",
+      "buildsGeometry": true,
+      "variation": {
+        "scaleJitter": 0.0,
+        "rotationJitter": 0.0
+      },
+      "evidenceRef": "zone-r1c0",
+      "notes": "Dark holes between the bolts at r 0.63."
+    }
+  ],
+  "materials": [
+    {
+      "metalness": 0.0,
+      "color": "#0e0e0e",
+      "id": "gloss-coat",
+      "roughness": 0.2,
+      "clearcoat": 0.8
+    },
+    {
+      "metalness": 1.0,
+      "color": "#c9a24a",
+      "id": "brass",
+      "roughness": 0.32,
+      "clearcoat": 0
+    },
+    {
+      "metalness": 0.6,
+      "color": "#178a4a",
+      "id": "green-shaft",
+      "roughness": 0.3,
+      "clearcoat": 0
+    },
+    {
+      "metalness": 1.0,
+      "color": "#c7cacd",
+      "id": "steel",
+      "roughness": 0.2,
+      "clearcoat": 0
+    },
+    {
+      "metalness": 0.0,
+      "color": "#050505",
+      "id": "hole-dark",
+      "roughness": 0.9,
+      "clearcoat": 0
+    }
+  ]
+}

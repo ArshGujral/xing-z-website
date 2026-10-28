@@ -1,0 +1,657 @@
+{
+  "components": [
+    {
+      "primitive": "lathe",
+      "transform": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "id": "base-band",
+      "parent": null,
+      "material": "black-plastic",
+      "geometry": {
+        "topologyIntent": "Black moulded ring round the bowl top (r 0.507) with a closed top deck the teal housing sits on; a visible black ledge stays in front of the housing.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry",
+        "latheProfile": {
+          "points": [
+            [
+              0.0001,
+              0.155
+            ],
+            [
+              0.497,
+              0.155
+            ],
+            [
+              0.507,
+              0.161
+            ],
+            [
+              0.507,
+              0.22899999999999998
+            ],
+            [
+              0.5,
+              0.236
+            ],
+            [
+              0.0001,
+              0.236
+            ]
+          ],
+          "segments": 128
+        }
+      }
+    },
+    {
+      "primitive": "lathe",
+      "transform": {
+        "position": [
+          0,
+          0.09,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "id": "base-bowl",
+      "parent": "base-band",
+      "material": "black-plastic",
+      "geometry": {
+        "topologyIntent": "Black revolved bowl under the band: flat suction face, rounded bottom edge, near-vertical slotted wall.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry",
+        "latheProfile": {
+          "points": [
+            [
+              0.0001,
+              -0.09
+            ],
+            [
+              0.4,
+              -0.09
+            ],
+            [
+              0.44,
+              -0.075
+            ],
+            [
+              0.47,
+              -0.05
+            ],
+            [
+              0.49,
+              0.0
+            ],
+            [
+              0.5,
+              0.05
+            ],
+            [
+              0.5,
+              0.069
+            ],
+            [
+              0.0001,
+              0.069
+            ]
+          ],
+          "segments": 128
+        }
+      }
+    },
+    {
+      "primitive": "lathe",
+      "transform": {
+        "position": [
+          -0.15,
+          0.39,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "id": "impeller-dome",
+      "parent": "base-band",
+      "material": "teal-plastic",
+      "geometry": {
+        "topologyIntent": "Teal revolved dome over the impeller: near-vertical slotted wall (r 0.33) rounding into a flat top with a recess for the outlet collar.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry",
+        "latheProfile": {
+          "points": [
+            [
+              0.0001,
+              -0.156
+            ],
+            [
+              0.335,
+              -0.156
+            ],
+            [
+              0.33,
+              -0.06
+            ],
+            [
+              0.322,
+              0.05
+            ],
+            [
+              0.31,
+              0.11
+            ],
+            [
+              0.29,
+              0.155
+            ],
+            [
+              0.255,
+              0.195
+            ],
+            [
+              0.2,
+              0.225
+            ],
+            [
+              0.15,
+              0.235
+            ],
+            [
+              0.135,
+              0.22
+            ],
+            [
+              0.0001,
+              0.22
+            ]
+          ],
+          "segments": 96
+        }
+      }
+    },
+    {
+      "primitive": "extrude",
+      "transform": {
+        "position": [
+          -0.05,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          1.5708,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "id": "motor-block",
+      "parent": "base-band",
+      "material": "teal-plastic",
+      "geometry": {
+        "topologyIntent": "Teal block over the motor: side profile with a front face sloping back 15 degrees and rounded top edges, extruded 0.52 across x.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry",
+        "profile2D": {
+          "points": [
+            [
+              0.3,
+              0.23399999999999999
+            ],
+            [
+              0.3,
+              0.57
+            ],
+            [
+              0.285,
+              0.605
+            ],
+            [
+              0.25,
+              0.625
+            ],
+            [
+              -0.12,
+              0.625
+            ],
+            [
+              -0.165,
+              0.61
+            ],
+            [
+              -0.195,
+              0.575
+            ],
+            [
+              -0.29,
+              0.23399999999999999
+            ]
+          ],
+          "depth": 0.52
+        }
+      }
+    },
+    {
+      "primitive": "lathe",
+      "transform": {
+        "position": [
+          0,
+          0.22,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "id": "outlet-nozzle",
+      "parent": "impeller-dome",
+      "material": "nozzle-black",
+      "geometry": {
+        "topologyIntent": "Black revolved hose nozzle: collar flange in the dome recess, plain tube, three barbs narrowing upwards, open bore.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry",
+        "latheProfile": {
+          "points": [
+            [
+              0.0001,
+              0.0
+            ],
+            [
+              0.12,
+              0.0
+            ],
+            [
+              0.12,
+              0.012
+            ],
+            [
+              0.1,
+              0.025
+            ],
+            [
+              0.075,
+              0.025
+            ],
+            [
+              0.075,
+              0.09
+            ],
+            [
+              0.085,
+              0.092
+            ],
+            [
+              0.07,
+              0.135
+            ],
+            [
+              0.085,
+              0.137
+            ],
+            [
+              0.07,
+              0.19
+            ],
+            [
+              0.083,
+              0.192
+            ],
+            [
+              0.068,
+              0.245
+            ],
+            [
+              0.05,
+              0.245
+            ],
+            [
+              0.05,
+              0.17
+            ],
+            [
+              0.0001,
+              0.17
+            ]
+          ],
+          "segments": 64
+        }
+      }
+    },
+    {
+      "primitive": "box",
+      "transform": {
+        "position": [
+          0.2071,
+          0.19,
+          0.4441
+        ],
+        "rotation": [
+          0,
+          0.4363,
+          0
+        ],
+        "scale": [
+          0.1,
+          0.07,
+          0.04
+        ]
+      },
+      "id": "cable-boss",
+      "parent": "base-band",
+      "material": "black-plastic",
+      "geometry": {
+        "topologyIntent": "Black boss standing out of the band below the motor block front, where the cable leaves.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "box",
+      "transform": {
+        "position": [
+          -0.509,
+          0.19,
+          0.0
+        ],
+        "rotation": [
+          0,
+          -1.5708,
+          0
+        ],
+        "scale": [
+          0.085,
+          0.028,
+          0.016
+        ]
+      },
+      "id": "clip-left",
+      "parent": "base-band",
+      "material": "teal-plastic",
+      "geometry": {
+        "topologyIntent": "Small teal snap clip set into the black band, standing just proud of it.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "box",
+      "transform": {
+        "position": [
+          -0.1907,
+          0.19,
+          0.4719
+        ],
+        "rotation": [
+          0,
+          -0.384,
+          0
+        ],
+        "scale": [
+          0.085,
+          0.028,
+          0.016
+        ]
+      },
+      "id": "clip-front",
+      "parent": "base-band",
+      "material": "teal-plastic",
+      "geometry": {
+        "topologyIntent": "Small teal snap clip set into the black band, standing just proud of it.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "box",
+      "transform": {
+        "position": [
+          -0.1907,
+          0.19,
+          -0.4719
+        ],
+        "rotation": [
+          0,
+          -2.7576,
+          0
+        ],
+        "scale": [
+          0.085,
+          0.028,
+          0.016
+        ]
+      },
+      "id": "clip-back",
+      "parent": "base-band",
+      "material": "teal-plastic",
+      "geometry": {
+        "topologyIntent": "Small teal snap clip set into the black band, standing just proud of it.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "box",
+      "transform": {
+        "position": [
+          0.165,
+          0.4,
+          0.252
+        ],
+        "rotation": [
+          -0.258,
+          0,
+          0
+        ],
+        "scale": [
+          0.3,
+          0.32,
+          0.012
+        ]
+      },
+      "id": "xiing-panel",
+      "parent": "base-band",
+      "material": "teal-plastic",
+      "geometry": {
+        "topologyIntent": "Thin raised teal panel on the sloped block front; the embossed wordmark comes from the photo projection.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    }
+  ],
+  "repetitions": [
+    {
+      "id": "vent-slots",
+      "name": "Dome vent slots (32)",
+      "level": "meso",
+      "parent": "impeller-dome",
+      "count": 32,
+      "primitive": "box",
+      "material": "slot-shadow",
+      "instanceScale": [
+        0.022,
+        0.21,
+        0.022
+      ],
+      "placement": {
+        "mode": "radial",
+        "axis": [
+          0,
+          1,
+          0
+        ],
+        "radius": 0.652,
+        "startAngleDeg": 0
+      },
+      "distribution": "radial",
+      "buildsGeometry": true,
+      "variation": {
+        "scaleJitter": 0.0,
+        "rotationJitter": 0.0
+      },
+      "evidenceRef": "zone-r1c0",
+      "notes": "Vertical slots on the dome wall, h 0.285-0.495; the ones inside the motor block stay hidden in it."
+    },
+    {
+      "id": "intake-slots",
+      "name": "Base intake slots (48)",
+      "level": "meso",
+      "parent": "base-bowl",
+      "count": 48,
+      "primitive": "box",
+      "material": "slot-shadow",
+      "instanceScale": [
+        0.026,
+        0.09,
+        0.02
+      ],
+      "placement": {
+        "mode": "radial",
+        "axis": [
+          0,
+          1,
+          0
+        ],
+        "radius": 0.975,
+        "startAngleDeg": 3.75
+      },
+      "distribution": "radial",
+      "buildsGeometry": true,
+      "variation": {
+        "scaleJitter": 0.0,
+        "rotationJitter": 0.0
+      },
+      "evidenceRef": "zone-r2c1",
+      "notes": "Vertical slots round the bowl wall, h 0.045-0.135."
+    }
+  ],
+  "materials": [
+    {
+      "metalness": 0.0,
+      "color": "#2ccdb4",
+      "id": "teal-plastic",
+      "roughness": 0.42,
+      "clearcoat": 0.0
+    },
+    {
+      "metalness": 0.0,
+      "color": "#1b1b1b",
+      "id": "black-plastic",
+      "roughness": 0.5,
+      "clearcoat": 0.0
+    },
+    {
+      "metalness": 0.0,
+      "color": "#161616",
+      "id": "nozzle-black",
+      "roughness": 0.45,
+      "clearcoat": 0
+    },
+    {
+      "metalness": 0.0,
+      "color": "#070707",
+      "id": "slot-shadow",
+      "roughness": 0.8,
+      "clearcoat": 0
+    }
+  ]
+}

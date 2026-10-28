@@ -7,6 +7,7 @@ function logoTexture(url: string): THREE.Texture {
   let texture = textures.get(url)
   if (!texture) {
     texture = new THREE.TextureLoader().load(url)
+    texture.userData.shared = true
     texture.colorSpace = THREE.SRGBColorSpace
     texture.anisotropy = 8
     textures.set(url, texture)

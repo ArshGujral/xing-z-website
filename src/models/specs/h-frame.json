@@ -1,0 +1,905 @@
+{
+  "components": [
+    {
+      "primitive": "lathe",
+      "transform": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "id": "lower-cup",
+      "parent": null,
+      "material": "powder-coat",
+      "geometry": {
+        "topologyIntent": "Revolved drawn-steel cup with a deep rounded bottom; its lip sits just proud at the joint line.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry",
+        "latheProfile": {
+          "points": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.36,
+              0.0
+            ],
+            [
+              0.41,
+              0.012
+            ],
+            [
+              0.445,
+              0.03
+            ],
+            [
+              0.472,
+              0.058
+            ],
+            [
+              0.49,
+              0.092
+            ],
+            [
+              0.498,
+              0.13
+            ],
+            [
+              0.5,
+              0.17
+            ],
+            [
+              0.5,
+              0.49
+            ],
+            [
+              0.503,
+              0.496
+            ],
+            [
+              0.503,
+              0.505
+            ],
+            [
+              0.0,
+              0.505
+            ]
+          ],
+          "segments": 96
+        }
+      }
+    },
+    {
+      "primitive": "lathe",
+      "transform": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "id": "can-body",
+      "parent": "lower-cup",
+      "material": "powder-coat",
+      "geometry": {
+        "topologyIntent": "Revolved black can from the joint line up to the end-bell skirt; a small chamfer at the joint makes the groove.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry",
+        "latheProfile": {
+          "points": [
+            [
+              0.0,
+              0.505
+            ],
+            [
+              0.497,
+              0.505
+            ],
+            [
+              0.5,
+              0.511
+            ],
+            [
+              0.5,
+              1.065
+            ],
+            [
+              0.0,
+              1.065
+            ]
+          ],
+          "segments": 96
+        }
+      }
+    },
+    {
+      "primitive": "lathe",
+      "transform": {
+        "position": [
+          0,
+          1.169,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "id": "end-bell",
+      "parent": "can-body",
+      "material": "cast-aluminium",
+      "geometry": {
+        "topologyIntent": "Revolved cast cap: short skirt, rounded rim, raised rib annulus and a raised inner disc round the hub.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry",
+        "latheProfile": {
+          "points": [
+            [
+              0.0,
+              -0.10400000000000009
+            ],
+            [
+              0.502,
+              -0.10400000000000009
+            ],
+            [
+              0.502,
+              -0.02
+            ],
+            [
+              0.494,
+              -0.006
+            ],
+            [
+              0.48,
+              0.0
+            ],
+            [
+              0.44,
+              0.0
+            ],
+            [
+              0.44,
+              0.012
+            ],
+            [
+              0.3,
+              0.012
+            ],
+            [
+              0.29,
+              0.0
+            ],
+            [
+              0.27,
+              0.0
+            ],
+            [
+              0.26,
+              0.018
+            ],
+            [
+              0.12,
+              0.018
+            ],
+            [
+              0.12,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "segments": 128
+        }
+      }
+    },
+    {
+      "primitive": "lathe",
+      "transform": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "id": "hub",
+      "parent": "end-bell",
+      "material": "cast-aluminium",
+      "geometry": {
+        "topologyIntent": "Six-sided cast boss round the bearing, with an open bore round the shaft.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry",
+        "latheProfile": {
+          "points": [
+            [
+              0.065,
+              0.0
+            ],
+            [
+              0.115,
+              0.0
+            ],
+            [
+              0.115,
+              0.06
+            ],
+            [
+              0.105,
+              0.07
+            ],
+            [
+              0.065,
+              0.07
+            ],
+            [
+              0.065,
+              0.03
+            ]
+          ],
+          "segments": 6
+        }
+      }
+    },
+    {
+      "primitive": "lathe",
+      "transform": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "id": "bore",
+      "parent": "end-bell",
+      "material": "bore-dark",
+      "geometry": {
+        "topologyIntent": "Dark ring at the bottom of the bore.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry",
+        "latheProfile": {
+          "points": [
+            [
+              0.044,
+              0.03
+            ],
+            [
+              0.066,
+              0.03
+            ]
+          ],
+          "segments": 48
+        }
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          0,
+          0.03,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.094,
+          0.692,
+          0.094
+        ]
+      },
+      "id": "shaft",
+      "parent": "end-bell",
+      "material": "teal-paint",
+      "geometry": {
+        "topologyIntent": "Teal-painted steel shaft rising from the hub bore to 0.72 D above the top face.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          0,
+          0.722,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.032,
+          0.002,
+          0.032
+        ]
+      },
+      "id": "shaft-tip",
+      "parent": "end-bell",
+      "material": "bore-dark",
+      "geometry": {
+        "topologyIntent": "Dark centre hole on the shaft end.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "box",
+      "transform": {
+        "position": [
+          -0.3191,
+          0.7825,
+          0.2661
+        ],
+        "rotation": [
+          0,
+          -0.6981,
+          0
+        ],
+        "scale": [
+          0.3,
+          0.365,
+          0.18
+        ]
+      },
+      "id": "bracket-left",
+      "parent": "can-body",
+      "material": "bracket-coat",
+      "geometry": {
+        "topologyIntent": "Pressed-steel channel bracket welded to the can, its face turned toward the front to carry two bolts.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          -0.4569,
+          0.699,
+          0.2653
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.084,
+          0.01,
+          0.084
+        ]
+      },
+      "id": "washer-left-0",
+      "parent": "can-body",
+      "material": "brass",
+      "geometry": {
+        "topologyIntent": "Plated washer under the bolt head.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          -0.4621,
+          0.699,
+          0.2715
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.064,
+          0.034,
+          0.064
+        ]
+      },
+      "id": "bolt-left-0",
+      "parent": "can-body",
+      "material": "brass",
+      "geometry": {
+        "topologyIntent": "Brass hex bolt head standing out of the bracket face.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          -0.4569,
+          0.837,
+          0.2653
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.084,
+          0.01,
+          0.084
+        ]
+      },
+      "id": "washer-left-1",
+      "parent": "can-body",
+      "material": "brass",
+      "geometry": {
+        "topologyIntent": "Plated washer under the bolt head.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          -0.4621,
+          0.837,
+          0.2715
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.064,
+          0.034,
+          0.064
+        ]
+      },
+      "id": "bolt-left-1",
+      "parent": "can-body",
+      "material": "brass",
+      "geometry": {
+        "topologyIntent": "Brass hex bolt head standing out of the bracket face.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "box",
+      "transform": {
+        "position": [
+          0.3191,
+          0.7825,
+          0.2661
+        ],
+        "rotation": [
+          0,
+          0.6981,
+          0
+        ],
+        "scale": [
+          0.3,
+          0.365,
+          0.18
+        ]
+      },
+      "id": "bracket-right",
+      "parent": "can-body",
+      "material": "bracket-coat",
+      "geometry": {
+        "topologyIntent": "Pressed-steel channel bracket welded to the can, its face turned toward the front to carry two bolts.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          0.4569,
+          0.699,
+          0.2653
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.084,
+          0.01,
+          0.084
+        ]
+      },
+      "id": "washer-right-0",
+      "parent": "can-body",
+      "material": "brass",
+      "geometry": {
+        "topologyIntent": "Plated washer under the bolt head.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          0.4621,
+          0.699,
+          0.2715
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.064,
+          0.034,
+          0.064
+        ]
+      },
+      "id": "bolt-right-0",
+      "parent": "can-body",
+      "material": "brass",
+      "geometry": {
+        "topologyIntent": "Brass hex bolt head standing out of the bracket face.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          0.4569,
+          0.837,
+          0.2653
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.084,
+          0.01,
+          0.084
+        ]
+      },
+      "id": "washer-right-1",
+      "parent": "can-body",
+      "material": "brass",
+      "geometry": {
+        "topologyIntent": "Plated washer under the bolt head.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          0.4621,
+          0.837,
+          0.2715
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.064,
+          0.034,
+          0.064
+        ]
+      },
+      "id": "bolt-right-1",
+      "parent": "can-body",
+      "material": "brass",
+      "geometry": {
+        "topologyIntent": "Brass hex bolt head standing out of the bracket face.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    }
+  ],
+  "repetitions": [
+    {
+      "id": "screw-pads",
+      "name": "Cast screw pads (4)",
+      "level": "meso",
+      "parent": "end-bell",
+      "count": 4,
+      "primitive": "cylinder",
+      "material": "cast-aluminium",
+      "instanceScale": [
+        0.085,
+        0.03,
+        0.085
+      ],
+      "placement": {
+        "mode": "radial",
+        "axis": [
+          0,
+          1,
+          0
+        ],
+        "radius": 0.912,
+        "startAngleDeg": 16
+      },
+      "distribution": "radial",
+      "buildsGeometry": true,
+      "variation": {
+        "scaleJitter": 0.0,
+        "rotationJitter": 0.0
+      },
+      "evidenceRef": "zone-r1c1",
+      "notes": "Raised pads under the screws at r 0.456."
+    },
+    {
+      "id": "screw-heads",
+      "name": "Brass domed screws (4)",
+      "level": "meso",
+      "parent": "end-bell",
+      "count": 4,
+      "primitive": "sphere",
+      "material": "brass",
+      "instanceScale": [
+        0.05,
+        0.06,
+        0.05
+      ],
+      "placement": {
+        "mode": "radial",
+        "axis": [
+          0,
+          1,
+          0
+        ],
+        "radius": 0.912,
+        "startAngleDeg": 16
+      },
+      "distribution": "radial",
+      "buildsGeometry": true,
+      "variation": {
+        "scaleJitter": 0.0,
+        "rotationJitter": 0.0
+      },
+      "evidenceRef": "zone-r1c1",
+      "notes": "Domed heads on the pads at r 0.456, 90 degree spacing."
+    },
+    {
+      "id": "ribs",
+      "name": "Radial cast ribs (6)",
+      "level": "meso",
+      "parent": "end-bell",
+      "count": 6,
+      "primitive": "box",
+      "material": "cast-aluminium",
+      "instanceScale": [
+        0.2,
+        0.05,
+        0.025
+      ],
+      "placement": {
+        "mode": "radial",
+        "axis": [
+          0,
+          1,
+          0
+        ],
+        "radius": 0.72,
+        "startAngleDeg": 0
+      },
+      "distribution": "radial",
+      "buildsGeometry": true,
+      "variation": {
+        "scaleJitter": 0.0,
+        "rotationJitter": 0.0
+      },
+      "evidenceRef": "zone-r1c1",
+      "notes": "Ribs centred on r 0.36 crossing the raised annulus."
+    }
+  ],
+  "materials": [
+    {
+      "metalness": 0.0,
+      "color": "#151515",
+      "id": "powder-coat",
+      "roughness": 0.55,
+      "clearcoat": 0.0
+    },
+    {
+      "metalness": 0.0,
+      "color": "#121212",
+      "id": "bracket-coat",
+      "roughness": 0.5,
+      "clearcoat": 0
+    },
+    {
+      "metalness": 1.0,
+      "color": "#c4c6c6",
+      "id": "cast-aluminium",
+      "roughness": 0.45,
+      "clearcoat": 0
+    },
+    {
+      "metalness": 0.0,
+      "color": "#2f5c54",
+      "id": "teal-paint",
+      "roughness": 0.35,
+      "clearcoat": 0.4
+    },
+    {
+      "metalness": 1.0,
+      "color": "#c4a24c",
+      "id": "brass",
+      "roughness": 0.32,
+      "clearcoat": 0
+    },
+    {
+      "metalness": 0.0,
+      "color": "#0c0c0c",
+      "id": "bore-dark",
+      "roughness": 0.7,
+      "clearcoat": 0
+    }
+  ]
+}

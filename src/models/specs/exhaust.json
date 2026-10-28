@@ -1,0 +1,957 @@
+{
+  "components": [
+    {
+      "primitive": "lathe",
+      "transform": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "id": "lower-can",
+      "parent": null,
+      "material": "powder-coat",
+      "geometry": {
+        "topologyIntent": "Revolved drawn-steel can with a generously rounded bottom edge and a joint groove; its top runs up hidden inside the band.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry",
+        "latheProfile": {
+          "points": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.44,
+              0.0
+            ],
+            [
+              0.478,
+              0.008
+            ],
+            [
+              0.496,
+              0.03
+            ],
+            [
+              0.5,
+              0.065
+            ],
+            [
+              0.5,
+              0.665
+            ],
+            [
+              0.494,
+              0.67
+            ],
+            [
+              0.5,
+              0.675
+            ],
+            [
+              0.5,
+              0.84
+            ],
+            [
+              0.0,
+              0.84
+            ]
+          ],
+          "segments": 96
+        }
+      }
+    },
+    {
+      "primitive": "lathe",
+      "transform": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "id": "band-lip",
+      "parent": "lower-can",
+      "material": "powder-coat",
+      "geometry": {
+        "topologyIntent": "Plain lip ring under the fins, slightly proud of the can, chamfered top and bottom.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry",
+        "latheProfile": {
+          "points": [
+            [
+              0.499,
+              0.74
+            ],
+            [
+              0.52,
+              0.74
+            ],
+            [
+              0.527,
+              0.748
+            ],
+            [
+              0.527,
+              0.8029999999999999
+            ],
+            [
+              0.515,
+              0.815
+            ],
+            [
+              0.499,
+              0.815
+            ]
+          ],
+          "segments": 128
+        }
+      }
+    },
+    {
+      "primitive": "lathe",
+      "transform": {
+        "position": [
+          0,
+          1.0175,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "id": "stator-band",
+      "parent": "lower-can",
+      "material": "powder-coat",
+      "geometry": {
+        "topologyIntent": "Band core round the stator carrying 32 vertical fins; the cap wall hides its top edge.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry",
+        "latheProfile": {
+          "points": [
+            [
+              0.499,
+              -0.21750000000000003
+            ],
+            [
+              0.515,
+              -0.21750000000000003
+            ],
+            [
+              0.515,
+              0.21750000000000003
+            ],
+            [
+              0.499,
+              0.21750000000000003
+            ]
+          ],
+          "segments": 128
+        }
+      }
+    },
+    {
+      "primitive": "lathe",
+      "transform": {
+        "position": [
+          0,
+          1.46,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "id": "cap",
+      "parent": "lower-can",
+      "material": "powder-coat",
+      "geometry": {
+        "topologyIntent": "Revolved cap: wall down over the band top, rounded top rim, flat top face with a shallow dish round the boss.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry",
+        "latheProfile": {
+          "points": [
+            [
+              0.0,
+              -0.24
+            ],
+            [
+              0.535,
+              -0.24
+            ],
+            [
+              0.535,
+              -0.03
+            ],
+            [
+              0.525,
+              -0.008
+            ],
+            [
+              0.505,
+              0.0
+            ],
+            [
+              0.25,
+              0.0
+            ],
+            [
+              0.245,
+              -0.015
+            ],
+            [
+              0.0,
+              -0.015
+            ]
+          ],
+          "segments": 96
+        }
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          0,
+          0.1,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.09,
+          0.56,
+          0.09
+        ]
+      },
+      "id": "shaft",
+      "parent": "cap",
+      "material": "teal-paint",
+      "geometry": {
+        "topologyIntent": "Teal-painted steel shaft rising from the steel collar to 0.66 D above the top face.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          0,
+          0.06,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.094,
+          0.045,
+          0.094
+        ]
+      },
+      "id": "shaft-collar",
+      "parent": "cap",
+      "material": "ground-steel",
+      "geometry": {
+        "topologyIntent": "Bright ground-steel section of the shaft between the boss and the teal paint.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "lathe",
+      "transform": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "id": "bearing-boss",
+      "parent": "cap",
+      "material": "boss-black",
+      "geometry": {
+        "topologyIntent": "Raised black dome in the dish holding the bearing round the shaft.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry",
+        "latheProfile": {
+          "points": [
+            [
+              0.04,
+              -0.015
+            ],
+            [
+              0.15,
+              -0.015
+            ],
+            [
+              0.15,
+              0.0
+            ],
+            [
+              0.13,
+              0.03
+            ],
+            [
+              0.09,
+              0.06
+            ],
+            [
+              0.045,
+              0.068
+            ]
+          ],
+          "segments": 96
+        }
+      }
+    },
+    {
+      "primitive": "sphere",
+      "transform": {
+        "position": [
+          0.2516,
+          0.0,
+          0.3731
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.062,
+          0.032,
+          0.062
+        ]
+      },
+      "id": "screw-0",
+      "parent": "cap",
+      "material": "plated-steel",
+      "geometry": {
+        "topologyIntent": "Plated button-head screw seated on the top face.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "sphere",
+      "transform": {
+        "position": [
+          -0.2516,
+          0.0,
+          0.3731
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.062,
+          0.032,
+          0.062
+        ]
+      },
+      "id": "screw-1",
+      "parent": "cap",
+      "material": "plated-steel",
+      "geometry": {
+        "topologyIntent": "Plated button-head screw seated on the top face.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "sphere",
+      "transform": {
+        "position": [
+          0.2516,
+          0.0,
+          -0.3731
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.062,
+          0.032,
+          0.062
+        ]
+      },
+      "id": "screw-2",
+      "parent": "cap",
+      "material": "plated-steel",
+      "geometry": {
+        "topologyIntent": "Plated button-head screw seated on the top face.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "sphere",
+      "transform": {
+        "position": [
+          -0.2516,
+          0.0,
+          -0.3731
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.062,
+          0.032,
+          0.062
+        ]
+      },
+      "id": "screw-3",
+      "parent": "cap",
+      "material": "plated-steel",
+      "geometry": {
+        "topologyIntent": "Plated button-head screw seated on the top face.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "box",
+      "transform": {
+        "position": [
+          0.4477,
+          0.0,
+          0.302
+        ],
+        "rotation": [
+          0,
+          0.9774,
+          0
+        ],
+        "scale": [
+          0.15,
+          0.38,
+          0.07
+        ]
+      },
+      "id": "bracket-right",
+      "parent": "stator-band",
+      "material": "powder-coat",
+      "geometry": {
+        "topologyIntent": "Cast bracket block standing off the band among the fins to carry two bolts.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          0.4742,
+          -0.1125,
+          0.3199
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.1,
+          0.01,
+          0.1
+        ]
+      },
+      "id": "bracket-washer-right-0",
+      "parent": "stator-band",
+      "material": "zinc-washer",
+      "geometry": {
+        "topologyIntent": "Yellow-zinc washer under the bolt head.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          0.4808,
+          -0.1125,
+          0.3243
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.076,
+          0.038,
+          0.076
+        ]
+      },
+      "id": "bracket-bolt-right-0",
+      "parent": "stator-band",
+      "material": "plated-steel",
+      "geometry": {
+        "topologyIntent": "Plated hex bolt head standing out of the bracket face.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          0.4742,
+          0.0825,
+          0.3199
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.1,
+          0.01,
+          0.1
+        ]
+      },
+      "id": "bracket-washer-right-1",
+      "parent": "stator-band",
+      "material": "zinc-washer",
+      "geometry": {
+        "topologyIntent": "Yellow-zinc washer under the bolt head.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          0.4808,
+          0.0825,
+          0.3243
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.076,
+          0.038,
+          0.076
+        ]
+      },
+      "id": "bracket-bolt-right-1",
+      "parent": "stator-band",
+      "material": "plated-steel",
+      "geometry": {
+        "topologyIntent": "Plated hex bolt head standing out of the bracket face.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "box",
+      "transform": {
+        "position": [
+          -0.4477,
+          0.0,
+          0.302
+        ],
+        "rotation": [
+          0,
+          -0.9774,
+          0
+        ],
+        "scale": [
+          0.15,
+          0.38,
+          0.07
+        ]
+      },
+      "id": "bracket-left",
+      "parent": "stator-band",
+      "material": "powder-coat",
+      "geometry": {
+        "topologyIntent": "Cast bracket block standing off the band among the fins to carry two bolts.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          -0.4742,
+          -0.1125,
+          0.3199
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.1,
+          0.01,
+          0.1
+        ]
+      },
+      "id": "bracket-washer-left-0",
+      "parent": "stator-band",
+      "material": "zinc-washer",
+      "geometry": {
+        "topologyIntent": "Yellow-zinc washer under the bolt head.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          -0.4808,
+          -0.1125,
+          0.3243
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.076,
+          0.038,
+          0.076
+        ]
+      },
+      "id": "bracket-bolt-left-0",
+      "parent": "stator-band",
+      "material": "plated-steel",
+      "geometry": {
+        "topologyIntent": "Plated hex bolt head standing out of the bracket face.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          -0.4742,
+          0.0825,
+          0.3199
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.1,
+          0.01,
+          0.1
+        ]
+      },
+      "id": "bracket-washer-left-1",
+      "parent": "stator-band",
+      "material": "zinc-washer",
+      "geometry": {
+        "topologyIntent": "Yellow-zinc washer under the bolt head.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    },
+    {
+      "primitive": "cylinder",
+      "transform": {
+        "position": [
+          -0.4808,
+          0.0825,
+          0.3243
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.076,
+          0.038,
+          0.076
+        ]
+      },
+      "id": "bracket-bolt-left-1",
+      "parent": "stator-band",
+      "material": "plated-steel",
+      "geometry": {
+        "topologyIntent": "Plated hex bolt head standing out of the bracket face.",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      }
+    }
+  ],
+  "repetitions": [
+    {
+      "id": "fins",
+      "name": "Vertical stator fins (32)",
+      "level": "meso",
+      "parent": "stator-band",
+      "count": 32,
+      "primitive": "box",
+      "material": "powder-coat",
+      "instanceScale": [
+        0.05,
+        0.42500000000000004,
+        0.028
+      ],
+      "placement": {
+        "mode": "radial",
+        "axis": [
+          0,
+          1,
+          0
+        ],
+        "radius": 1.08,
+        "startAngleDeg": 0
+      },
+      "distribution": "radial",
+      "buildsGeometry": true,
+      "variation": {
+        "scaleJitter": 0.0,
+        "rotationJitter": 0.0
+      },
+      "evidenceRef": "zone-r1c1",
+      "notes": "Fin centres at r 0.54 (0.515 to 0.565), full band height, 11.25 degree pitch."
+    }
+  ],
+  "materials": [
+    {
+      "metalness": 0.0,
+      "color": "#141414",
+      "id": "powder-coat",
+      "roughness": 0.5,
+      "clearcoat": 0.0
+    },
+    {
+      "metalness": 0.0,
+      "color": "#1f8f80",
+      "id": "teal-paint",
+      "roughness": 0.3,
+      "clearcoat": 0.5
+    },
+    {
+      "metalness": 1.0,
+      "color": "#cdd0d4",
+      "id": "ground-steel",
+      "roughness": 0.2,
+      "clearcoat": 0
+    },
+    {
+      "metalness": 1.0,
+      "color": "#c3c6ca",
+      "id": "plated-steel",
+      "roughness": 0.28,
+      "clearcoat": 0
+    },
+    {
+      "metalness": 1.0,
+      "color": "#b8a06a",
+      "id": "zinc-washer",
+      "roughness": 0.32,
+      "clearcoat": 0
+    },
+    {
+      "metalness": 0.0,
+      "color": "#0f0f0f",
+      "id": "boss-black",
+      "roughness": 0.4,
+      "clearcoat": 0
+    }
+  ]
+}
