@@ -1,5 +1,6 @@
 import * as THREE from 'three'
-import { finishes, part, ring } from './product-geometry.js'
+import { finishes, part, ring, profile, box } from './product-geometry.js'
+import { asset } from '../content/site.js'
 
 // PUMP BODY.pdf: the body envelope is 80 x 87.39 x 70.82 mm.
 // Normalize by the 80 mm width; undimensioned mould details follow the orthographic views.
@@ -100,12 +101,40 @@ export function createModel() {
   }
   part(root,'rim-shoulder',deck(a=>outline(a),.326,.009,shoulderHoles),m.polymer)
   part(root,'closed-intake-floor',deck(a=>{const p=bowlPoint(a,0);return[p[0],p[2]]},.013,.013),m.polymer)
-  // The drawing has a flush outlet opening, not the tall hose fitting in the photo.
+  // Fit the photographed hose adapter into the drawing-based outlet.
   const outlet=new THREE.Path();outlet.absarc(0,-.205,.069,0,Math.PI*2,true)
   part(root,'flat-rounded-top',deck(a=>topOutline(a),HEIGHT,.014,[outlet]),m.teal)
   const port=new THREE.Group();port.position.set(0,HEIGHT-.054,.205);root.add(port)
   ring(port,'outlet-bore',.070,.055,.054,0,m.teal)
   part(port,'dark-outlet-depth',new THREE.CircleGeometry(.055,48),m.black,[0,.002,0]).rotation.x=-Math.PI/2
+  const nozzle=new THREE.Group();nozzle.name='hose-adapter';nozzle.position.set(0,HEIGHT,.205);root.add(nozzle)
+  ring(nozzle,'sealing-gasket',.088,.052,.009,-.003,m.black)
+  ring(nozzle,'adapter-flange',.085,.052,.019,.006,m.polymer)
+  ring(nozzle,'adapter-shoulder',.077,.052,.012,.025,m.polymer)
+  // Four tapered hose-retaining barbs, with a real continuous bore and rounded top lip.
+  const nozzleProfile=[[.052,.025],[.069,.025]]
+  for(let i=0;i<4;i++){
+    const y=.037+i*.061,r=.071-i*.002
+    nozzleProfile.push([r,y],[r,y+.004],[r-.009,y+.058])
+  }
+  nozzleProfile.push([.058,.282],[.057,.287],[.051,.287],[.049,.283],[.049,.025],[.052,.025])
+  part(nozzle,'hollow-four-barb-nozzle',profile(nozzleProfile,96),m.polymer)
+  for(const a of [-.76,.76,Math.PI]){
+    const [x,z]=outline(a),clip=new THREE.Group();clip.position.set(x,.303,z);clip.rotation.y=a;root.add(clip)
+    part(clip,'clip-socket',box(.105,.035,.019,.005),m.black,[0,0,.004])
+    part(clip,'teal-release-catch',box(.071,.018,.021,.004),m.teal,[0,0,.014])
+  }
+  // Follow the side pocket so the mark stays seated on the curved moulding.
+  const positions=[],uv=[],indices=[],nx=40,ny=12
+  for(let y=0;y<=ny;y++)for(let x=0;x<=nx;x++){
+    positions.push(...coverPoint(1.24+x/nx*.62,.45+y/ny*.19,-.002))
+    uv.push(x/nx,y/ny)
+    if(x<nx&&y<ny){const i=y*(nx+1)+x;indices.push(i,i+1,i+nx+1,i+1,i+nx+2,i+nx+1)}
+  }
+  const markGeometry=new THREE.BufferGeometry()
+  markGeometry.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));markGeometry.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));markGeometry.setIndex(indices);markGeometry.computeVertexNormals()
+  const markTexture=new THREE.TextureLoader().load(asset('xingz-logo-white.png'));markTexture.colorSpace=THREE.SRGBColorSpace;markTexture.anisotropy=8
+  part(root,'moulded-side-wordmark',markGeometry,new THREE.MeshPhysicalMaterial({map:markTexture,color:'#006e60',roughness:.34,transparent:true,depthWrite:false,side:THREE.DoubleSide,polygonOffset:true,polygonOffsetFactor:-2}))
   for(const side of [-1,1]){
     const tab=mountingTab(side,m.polymer);tab.name='two-slot-mounting-tab';tab.castShadow=tab.receiveShadow=true;root.add(tab)
   }
