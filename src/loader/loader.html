@@ -1,0 +1,46 @@
+<!-- Loading screen, injected into every page by vite.config.js so it paints before any JS or CSS loads.
+     Colours are inlined because index.css arrives with the bundle. Only transform and opacity animate. -->
+<style>
+  #xz-loader {
+    --bg: #050a0a; --base: rgba(255, 255, 255, .14); --lit: #a0d5cd; --hot: #fff; --line: rgba(255, 255, 255, .1);
+    position: fixed; inset: 0; z-index: 9999; display: grid; place-items: center; background: var(--bg);
+    transition: opacity .45s ease, visibility .45s;
+    /* Failsafe: if the app never starts, step aside anyway rather than cover the page forever. */
+    animation: xz-out .4s 10s forwards;
+  }
+  [data-theme='light'] #xz-loader { --bg: #f3fbfa; --base: rgba(10, 31, 28, .12); --lit: #1a7a6b; --hot: #229784; --line: rgba(10, 31, 28, .1); }
+  #xz-loader.is-done { opacity: 0; visibility: hidden; }
+  #xz-loader.is-done .xz-stack { transform: scale(1.04); }
+  .xz-stack { display: grid; justify-items: center; gap: 28px; transition: transform .45s ease; }
+  .xz-mark {
+    position: relative; overflow: hidden; width: min(56vw, 230px); aspect-ratio: 873 / 357; background: var(--base);
+    -webkit-mask: url(./xingz-logo-white.png) center / contain no-repeat; mask: url(./xingz-logo-white.png) center / contain no-repeat;
+  }
+  /* Current runs through the letters, then the whole mark sparks as it reaches the bolt. */
+  .xz-current {
+    position: absolute; inset: 0; width: 45%; will-change: transform;
+    background: linear-gradient(90deg, transparent, var(--lit) 40%, var(--hot) 50%, var(--lit) 60%, transparent);
+    animation: xz-run 1.8s cubic-bezier(.6, 0, .3, 1) infinite;
+  }
+  .xz-spark { position: absolute; inset: 0; background: var(--lit); opacity: 0; animation: xz-spark 1.8s ease-out infinite; }
+  .xz-line { position: relative; overflow: hidden; width: 96px; height: 2px; border-radius: 2px; background: var(--line); }
+  .xz-line::after {
+    content: ''; position: absolute; inset: 0; width: 40%; border-radius: inherit; background: var(--lit); will-change: transform;
+    animation: xz-line 1.8s cubic-bezier(.6, 0, .3, 1) infinite;
+  }
+  @keyframes xz-run { from { transform: translateX(-110%); } 70%, to { transform: translateX(240%); } }
+  @keyframes xz-spark { 0%, 62% { opacity: 0; } 72% { opacity: .85; } 100% { opacity: 0; } }
+  @keyframes xz-line { from { transform: translateX(-100%); } 70%, to { transform: translateX(250%); } }
+  @keyframes xz-out { to { opacity: 0; visibility: hidden; } }
+  @media (prefers-reduced-motion: reduce) {
+    .xz-current, .xz-line::after { display: none; }
+    .xz-spark { animation: xz-breathe 2.4s ease-in-out infinite alternate; }
+    @keyframes xz-breathe { from { opacity: .35; } to { opacity: .75; } }
+  }
+</style>
+<div id="xz-loader" role="status" aria-label="Loading Xing-Z">
+  <div class="xz-stack">
+    <div class="xz-mark"><div class="xz-current"></div><div class="xz-spark"></div></div>
+    <div class="xz-line"></div>
+  </div>
+</div>
