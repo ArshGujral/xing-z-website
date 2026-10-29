@@ -58,7 +58,7 @@ export default function Configurator() {
   const product = catalogue?.products.find((p) => p.code === code)
   const family = catalogue?.families.find((f) => f.id === product?.family)
   const familyProducts = useMemo(() => (catalogue && family ? productsOf(catalogue, family.id) : []), [catalogue, family])
-  const groups = useMemo(() => optionGroups(familyProducts), [familyProducts])
+  const groups = useMemo(() => optionGroups(familyProducts, family?.options), [familyProducts, family])
   const available = family && product ? variantsFor(family, product) : []
 
   // Keep the link shareable: ?code= always names the build on screen.

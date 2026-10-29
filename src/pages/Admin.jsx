@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { ExternalLink, LogOut, Pencil, Plus, Search, Trash2, X } from 'lucide-react'
+import { ChevronDown, ChevronUp, ExternalLink, LogOut, Pencil, Plus, Search, Trash2, X } from 'lucide-react'
 import PageHeader from '../components/PageHeader.jsx'
 import { container } from '../components/SectionHeading.jsx'
 import { asset } from '../content/site.js'
@@ -174,7 +174,8 @@ function ProductEditor({ catalogue, initial, onCancel, onSave, busy }) {
   const [description, setDescription] = useState(initial?.description ?? '')
   const [variants, setVariants] = useState((initial?.variants ?? []).join(', '))
   const [file, setFile] = useState(null)
-  const groups = useMemo(() => optionGroups(productsOf(catalogue, family)), [catalogue, family])
+  const familyOptions = (id) => catalogue.families.find((f) => f.id === id)?.options
+  const groups = useMemo(() => optionGroups(productsOf(catalogue, family), familyOptions(family)), [catalogue, family])
   const suggestions = Object.fromEntries(groups.map((g) => [g.key, g.values]))
   const [rows, setRows] = useState(() =>
     initial
@@ -186,7 +187,7 @@ function ProductEditor({ catalogue, initial, onCancel, onSave, busy }) {
   const changeFamily = (id) => {
     setFamily(id)
     if (isNew && rows.every((r) => !r.value)) {
-      setRows(optionGroups(productsOf(catalogue, id)).map((g) => ({ key: g.key, value: '' })))
+      setRows(optionGroups(productsOf(catalogue, id), familyOptions(id)).map((g) => ({ key: g.key, value: '' })))
     }
   }
 
@@ -268,6 +269,76 @@ function ProductEditor({ catalogue, initial, onCancel, onSave, busy }) {
   )
 }
 
+const move = (list, i, by) => {
+  const next = [...list]
+  const j = i + by
+  if (j < 0 || j >= next.length) return list
+  ;[next[i], next[j]] = [next[j], next[i]]
+  return next
+}
+
+function OrderButtons({ list, i, onMove, what }) {
+  const btn = 'w-8 h-8 rounded-lg text-white/50 hover:text-white hover:bg-white/[0.06] disabled:opacity-25 disabled:hover:bg-transparent'
+  return (
+    <span className="flex flex-none">
+      <button type="button" disabled={i === 0} onClick={() => onMove(-1)} className={btn} aria-label={`Move ${what} up`}>
+        <ChevronUp className="w-4 h-4 mx-auto" />
+      </button>
+      <button type="button" disabled={i === list.length - 1} onClick={() => onMove(1)} className={btn} aria-label={`Move ${what} down`}>
+        <ChevronDown className="w-4 h-4 mx-auto" />
+      </button>
+    </span>
+  )
+}
+
+// A range's options, edited for every product in it at once. Each entry remembers what it was (`from`), so a
+// rename can be applied to the products that use the old name. New options start with one value for all products.
+function OptionsEditor({ groups, setGroups, count }) {
+  const set = (i, patch) => setGroups(groups.map((g, j) => (j === i ? { ...g, ...patch } : g)))
+  const remove = (i) => {
+    const g = groups[i]
+    if (g.from === null || window.confirm(`Remove "${g.from}" from all ${count} products in this range?`)) setGroups(groups.filter((_, j) => j !== i))
+  }
+  return (
+    <div className="flex flex-col gap-3">
+      {groups.map((g, i) => (
+        <div key={g.id} className="rounded-2xl border border-white/10 bg-white/[0.02] p-3">
+          <div className="flex items-center gap-2">
+            <input value={g.key} onChange={(e) => set(i, { key: e.target.value })} className={`${field} font-medium`} aria-label="Option name" />
+            <OrderButtons list={groups} i={i} onMove={(by) => setGroups(move(groups, i, by))} what="option" />
+            <button type="button" onClick={() => remove(i)} className="w-8 h-8 flex-none rounded-lg text-white/50 hover:text-white hover:bg-white/[0.06]" aria-label={`Remove ${g.key}`}>
+              <Trash2 className="w-4 h-4 mx-auto" />
+            </button>
+          </div>
+          <div className="mt-2 flex flex-col gap-1.5 pl-3 border-l border-white/10">
+            {g.values.map((v, k) => (
+              <div key={v.from ?? k} className="flex items-center gap-2">
+                <input
+                  value={v.value}
+                  onChange={(e) => set(i, { values: g.values.map((x, n) => (n === k ? { ...x, value: e.target.value } : x)) })}
+                  className={field}
+                  aria-label={`${g.key} value`}
+                />
+                {g.from !== null && (
+                  <OrderButtons list={g.values} i={k} onMove={(by) => set(i, { values: move(g.values, k, by) })} what="value" />
+                )}
+              </div>
+            ))}
+          </div>
+          {g.from === null && <p className="mt-2 text-white/45 text-xs">Every product in this range gets this value; change single products afterwards.</p>}
+        </div>
+      ))}
+      <button
+        type="button"
+        onClick={() => setGroups([...groups, { id: `new-${Date.now()}`, from: null, key: '', values: [{ from: null, value: '' }] }])}
+        className={`${quiet} self-start`}
+      >
+        <Plus className="w-4 h-4 inline -mt-0.5 mr-1" /> Add option to the whole range
+      </button>
+    </div>
+  )
+}
+
 function FamilyEditor({ catalogue, initial, onCancel, onSave, busy }) {
   const isNew = !initial
   const [name, setName] = useState(initial?.name ?? '')
@@ -276,6 +347,27 @@ function FamilyEditor({ catalogue, initial, onCancel, onSave, busy }) {
   const [file, setFile] = useState(null)
   const id = initial?.id ?? slug(name)
   const taken = isNew && catalogue.families.some((f) => f.id === id)
+  const products = isNew ? [] : productsOf(catalogue, initial.id)
+  const [groups, setGroups] = useState(() =>
+    optionGroups(products, initial?.options).map((g) => ({ id: g.key, from: g.key, key: g.key, values: g.values.map((v) => ({ from: v, value: v })) })),
+  )
+  const keys = groups.map((g) => g.key.trim())
+  const badOptions =
+    keys.some((k, i) => !k || keys.indexOf(k) !== i) ||
+    groups.some((g) => g.values.some((v) => !v.value.trim()) || new Set(g.values.map((v) => v.value.trim())).size !== g.values.length)
+
+  // Rewrite one product's options to match the edited list: renames, new options, removed ones and the order.
+  const rewrite = (p) => {
+    const attributes = {}
+    for (const g of groups) {
+      if (g.from === null) attributes[g.key.trim()] = g.values[0].value.trim()
+      else if (p.attributes?.[g.from] !== undefined) {
+        const was = p.attributes[g.from]
+        attributes[g.key.trim()] = (g.values.find((v) => v.from === was)?.value ?? was).trim()
+      }
+    }
+    return { ...p, attributes }
+  }
 
   const submit = (e) => {
     e.preventDefault()
@@ -288,8 +380,10 @@ function FamilyEditor({ catalogue, initial, onCancel, onSave, busy }) {
         photo: initial?.photo ?? '',
         model: initial?.model ?? id,
         variants: variants.split(',').map((v) => v.trim()).filter(Boolean),
+        ...(groups.length ? { options: groups.map((g) => ({ key: g.key.trim(), values: g.values.map((v) => v.value.trim()) })) } : {}),
       },
       file,
+      products.length ? rewrite : null,
     )
   }
 
@@ -316,11 +410,20 @@ function FamilyEditor({ catalogue, initial, onCancel, onSave, busy }) {
         <input id="fvariants" value={variants} onChange={(e) => setVariants(e.target.value)} className={field} placeholder="Without ring" />
       </div>
       <div>
+        <span className={label}>Options visitors choose between, in the order the configurator shows them</span>
+        {products.length ? (
+          <OptionsEditor groups={groups} setGroups={setGroups} count={products.length} />
+        ) : (
+          <p className="text-white/50 text-sm">Add a product to this range first; its options then show up here.</p>
+        )}
+        {badOptions && <p className="mt-2 text-[#ff8a8a] text-xs">Every option and value needs a name, with no repeats.</p>}
+      </div>
+      <div>
         <span className={label}>Range photo{isNew ? ' (shown until its 3D model is made)' : ''}</span>
         <PhotoInput current={initial?.photo} file={file} setFile={setFile} />
       </div>
       <div className="flex items-center gap-3 pt-2">
-        <button type="submit" disabled={busy || taken || !name.trim() || (isNew && !file)} className={primary}>
+        <button type="submit" disabled={busy || taken || badOptions || !name.trim() || (isNew && !file)} className={primary}>
           {busy ? 'Saving…' : isNew ? 'Add range' : 'Save changes'}
         </button>
         <button type="button" onClick={onCancel} className={quiet}>
@@ -350,7 +453,7 @@ function Dashboard({ token, login, onSignOut }) {
   }
   useEffect(() => {
     load()
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [])
 
   const commit = async (next, message) => {
     setBusy(true)
@@ -391,14 +494,16 @@ function Dashboard({ token, login, onSignOut }) {
     }
   }
 
-  const saveFamily = async (family, file) => {
+  const saveFamily = async (family, file, rewrite) => {
     setBusy(true)
     try {
       const photo = await withPhoto(file, family.id)
       const item = photo ? { ...family, photo } : family
       const exists = state.catalogue.families.some((f) => f.id === item.id)
       const families = exists ? state.catalogue.families.map((f) => (f.id === item.id ? item : f)) : [...state.catalogue.families, item]
-      await commit({ ...state.catalogue, families }, `Admin: ${exists ? 'update' : 'add'} range ${item.name}`)
+      // Option renames and additions apply to every product in the range.
+      const products = rewrite ? state.catalogue.products.map((p) => (p.family === item.id ? rewrite(p) : p)) : state.catalogue.products
+      await commit({ ...state.catalogue, families, products }, `Admin: ${exists ? 'update' : 'add'} range ${item.name}`)
     } catch (e) {
       setError(e.message)
       setBusy(false)

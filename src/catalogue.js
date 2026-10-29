@@ -10,8 +10,9 @@ export async function loadCatalogue() {
 
 export const productsOf = (catalogue, familyId) => catalogue.products.filter((p) => p.family === familyId)
 
-// Option groups for a family, in the order they first appear, each with its values in that order.
-export function optionGroups(products) {
+// Option groups for a family, each with its values. A family's `options` list (set in the admin panel) fixes the
+// order; anything it doesn't name follows in the order it first appears on the products.
+export function optionGroups(products, order = []) {
   const groups = new Map()
   for (const p of products) {
     for (const [key, value] of Object.entries(p.attributes ?? {})) {
@@ -19,7 +20,15 @@ export function optionGroups(products) {
       if (!groups.get(key).includes(value)) groups.get(key).push(value)
     }
   }
-  return [...groups].map(([key, values]) => ({ key, values })).filter((g) => g.values.length > 0)
+  const rank = (list, item) => (list.indexOf(item) + 1 || list.length + 1)
+  const keys = order.map((o) => o.key)
+  return [...groups]
+    .map(([key, values]) => {
+      const set = order.find((o) => o.key === key)?.values ?? []
+      return { key, values: values.map((v, i) => [v, i]).sort((a, b) => rank(set, a[0]) - rank(set, b[0]) || a[1] - b[1]).map(([v]) => v) }
+    })
+    .sort((a, b) => rank(keys, a.key) - rank(keys, b.key))
+    .filter((g) => g.values.length > 0)
 }
 
 const sameOn = (a, b, keys) => keys.filter((k) => a.attributes?.[k] === b.attributes?.[k]).length
