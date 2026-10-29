@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 import { finishes, part, ring, profile, box } from './product-geometry.js'
-import { asset } from '../content/site.js'
+import lettering from './pump-lettering.json'
 
 // PUMP BODY.pdf: the body envelope is 80 x 87.39 x 70.82 mm.
 // Normalize by the 80 mm width; undimensioned mould details follow the orthographic views.
@@ -124,17 +124,49 @@ export function createModel() {
     part(clip,'clip-socket',box(.105,.035,.019,.005),m.black,[0,0,.004])
     part(clip,'teal-release-catch',box(.071,.018,.021,.004),m.teal,[0,0,.014])
   }
-  // Follow the side pocket so the mark stays seated on the curved moulding.
-  const positions=[],uv=[],indices=[],nx=40,ny=12
-  for(let y=0;y<=ny;y++)for(let x=0;x<=nx;x++){
-    positions.push(...coverPoint(1.24+x/nx*.62,.45+y/ny*.19,-.002))
-    uv.push(x/nx,y/ny)
-    if(x<nx&&y<ny){const i=y*(nx+1)+x;indices.push(i,i+1,i+nx+1,i+1,i+nx+2,i+nx+1)}
+  // The product uses serif lettering and a tall lightning mark moulded into the pocket.
+  const letters=new THREE.ShapePath()
+  // The outline is stored flat as x, y, command triples.
+  const points=[]
+  for(let i=0;i<lettering.length;i+=3)points.push(lettering.slice(i,i+3))
+  for(let i=0;i<points.length;i++){
+    const [x,y,type]=points[i],kind=type&7
+    if(kind===0)letters.moveTo(x*.205,y*.205)
+    else if(kind===1)letters.lineTo(x*.205,y*.205)
+    else if(kind===3){
+      const b=points[++i],c=points[++i]
+      letters.bezierCurveTo(x*.205,y*.205,b[0]*.205,b[1]*.205,c[0]*.205,c[1]*.205)
+      if(c[2]&128)letters.currentPath.closePath()
+    }
+    if(type&128)letters.currentPath.closePath()
   }
-  const markGeometry=new THREE.BufferGeometry()
-  markGeometry.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));markGeometry.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));markGeometry.setIndex(indices);markGeometry.computeVertexNormals()
-  const markTexture=new THREE.TextureLoader().load(asset('xingz-logo-white.png'));markTexture.colorSpace=THREE.SRGBColorSpace;markTexture.anisotropy=8
-  part(root,'moulded-side-wordmark',markGeometry,new THREE.MeshPhysicalMaterial({map:markTexture,color:'#006e60',roughness:.34,transparent:true,depthWrite:false,side:THREE.DoubleSide,polygonOffset:true,polygonOffsetFactor:-2}))
+  const bolt=new THREE.Shape()
+  const boltPoints=[[.246,.153],[.203,.055],[.232,.061],[.199,-.041],[.269,.082],[.239,.075]]
+  boltPoints.forEach(([x,y],i)=>i?bolt.lineTo(x,y):bolt.moveTo(x,y));bolt.closePath()
+  const logoGeometry=new THREE.ExtrudeGeometry([...letters.toShapes(),bolt],{depth:.0018,bevelEnabled:true,bevelSize:.0006,bevelThickness:.0006,bevelSegments:2,curveSegments:12,steps:1})
+  // Parameterize by physical arc length, rather than stretching a rectangle over the panel.
+  const midT=.57,arc=[]
+  let distance=0,previous=coverPoint(1.20,midT)
+  for(let i=0;i<=160;i++){
+    const a=1.20+i/160*.80,p=coverPoint(a,midT)
+    distance+=new THREE.Vector3(...p).distanceTo(new THREE.Vector3(...previous));arc.push({a,distance});previous=p
+  }
+  const angleAt=(u)=>{
+    const target=distance/2+(u-.1345)
+    const i=arc.findIndex(v=>v.distance>=target)
+    if(i<=0)return arc[0].a
+    const l=arc[i-1],r=arc[i];return THREE.MathUtils.lerp(l.a,r.a,(target-l.distance)/(r.distance-l.distance))
+  }
+  const vertices=logoGeometry.attributes.position
+  for(let i=0;i<vertices.count;i++){
+    const a=angleAt(vertices.getX(i)),t=midT+(vertices.getY(i)-.045)/(HEIGHT-.326),depth=vertices.getZ(i)
+    const p=new THREE.Vector3(...coverPoint(a,t)),along=new THREE.Vector3(...coverPoint(a+.0001,t)).sub(p),up=new THREE.Vector3(...coverPoint(a,t+.0001)).sub(p)
+    const normal=along.cross(up).normalize();p.addScaledVector(normal,.0008+depth)
+    vertices.setXYZ(i,p.x,p.y,p.z)
+  }
+  logoGeometry.computeVertexNormals()
+  const mouldedInk=m.teal.clone();mouldedInk.roughness=.35
+  part(root,'raised-serif-wordmark-and-lightning',logoGeometry,mouldedInk)
   for(const side of [-1,1]){
     const tab=mountingTab(side,m.polymer);tab.name='two-slot-mounting-tab';tab.castShadow=tab.receiveShadow=true;root.add(tab)
   }
