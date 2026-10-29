@@ -1,7 +1,8 @@
 import { ArrowUpRight } from 'lucide-react'
 import Motor from './Motor.jsx'
 import SectionHeading, { container } from './SectionHeading.jsx'
-import { categories, external, whatsappLink } from '../content/site.js'
+import { external, whatsappLink } from '../content/site.js'
+import { countWord, useRanges } from '../ranges.js'
 
 function RangeCard({ category }) {
   return (
@@ -46,13 +47,14 @@ function RangeCard({ category }) {
 }
 
 export default function RangeGrid() {
+  const ranges = useRanges()
   return (
     <section id="range" className="pt-24 pb-20 md:py-28">
       <div className={container}>
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <SectionHeading
             eyebrow="The range"
-            title="Eight product lines."
+            title={`${countWord(ranges.length)} product line${ranges.length === 1 ? '' : 's'}.`}
             muted="One standard of build."
             intro="From high-speed motors to submersible pumps. Pick a category and we'll send models, sizes and prices on WhatsApp."
           />
@@ -66,7 +68,7 @@ export default function RangeGrid() {
         </div>
 
         <div className="mt-12 grid gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {categories.map((category) => (
+          {ranges.map((category) => (
             <RangeCard key={category.slug} category={category} />
           ))}
         </div>

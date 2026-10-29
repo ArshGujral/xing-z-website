@@ -49,6 +49,14 @@
       "variants": []
     },
     {
+      "id": "blower",
+      "name": "Blower Motors",
+      "summary": "Drives blower wheels in centrifugal-blower coolers.",
+      "photo": "",
+      "model": "blower",
+      "variants": []
+    },
+    {
       "id": "pump",
       "name": "Submersible Pumps",
       "summary": "Sit in the cooler tank and push water to the pads.",

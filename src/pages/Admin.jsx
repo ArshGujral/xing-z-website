@@ -4,6 +4,7 @@ import PageHeader from '../components/PageHeader.jsx'
 import { container } from '../components/SectionHeading.jsx'
 import { asset } from '../content/site.js'
 import { optionGroups, productsOf } from '../catalogue.js'
+import { hasModel } from '../models/registry.js'
 import {
   forgetToken,
   preparePhoto,
@@ -482,7 +483,9 @@ function Dashboard({ token, login, onSignOut }) {
                     </span>
                     <span className="min-w-0">
                       <span className="block text-white text-sm font-medium truncate">{f.name}</span>
-                      <span className="block text-white/50 text-xs">{productsOf(catalogue, f.id).length} products</span>
+                      <span className="block text-white/50 text-xs">
+                        {productsOf(catalogue, f.id).length} products · {hasModel(f.model) ? '3D model' : 'photo only'}
+                      </span>
                     </span>
                   </button>
                 </li>

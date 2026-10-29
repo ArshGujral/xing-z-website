@@ -4,6 +4,7 @@ import { ShaderBackground } from './ui/hero-shader.jsx'
 import ThemeToggle from './ThemeToggle.jsx'
 import { brand, contact, external, nav, whatsappLink } from '../content/site.js'
 import { useTheme } from '../theme.jsx'
+import { rangeMenu, useRanges } from '../ranges.js'
 
 // The hero's mesh-gradient backdrop in the logo's teals, on ink (dark theme) or pale aqua (light theme).
 const TEAL_MESH = {
@@ -186,6 +187,9 @@ export default function Hero() {
   const closeMobile = () => setMobileOpen(false)
   const { theme } = useTheme()
   const logoSrc = theme === 'light' ? brand.logoOnLight : brand.logoSrc
+  // The Range menu lists whatever ranges the catalogue holds.
+  const ranges = useRanges()
+  const menu = nav.map((item) => (item.href === '#range' ? { ...item, items: rangeMenu(ranges) } : item))
 
   const logoRef = useRef(null)
   const heroSlotRef = useRef(null)
@@ -207,7 +211,7 @@ export default function Hero() {
             <span ref={navSlotRef} aria-hidden="true" className="h-9 sm:h-10 aspect-[873/357] shrink-0" />
 
             <div className="hidden lg:flex items-center gap-6 xl:gap-8">
-              {nav.map((item) => (
+              {menu.map((item) => (
                 <NavItem
                   key={item.label}
                   item={item}
@@ -278,7 +282,7 @@ export default function Hero() {
           }`}
         >
           <div className="flex flex-col gap-4">
-            {nav.map((item) => (
+            {menu.map((item) => (
               <div key={item.label}>
                 <a href={item.href} onClick={closeMobile} className="block text-white text-base font-medium">
                   {item.label}
