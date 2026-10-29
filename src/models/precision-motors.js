@@ -84,7 +84,7 @@ export function createMotor(family, options = {}) {
   }
   if(family==='h-frame'||family==='exhaust') {
     const y=family==='h-frame'?.82:.83
-    for(const a of [-1.05,1.05])bracket(root,a,y,.22,.32,true)
+    for(const a of [-1.05,1.05,Math.PI-1.05,Math.PI+1.05])bracket(root,a,y,.22,.32,true)
     ring(root,'housing-joint',.499,.49,.022,family==='h-frame'?.46:.45,coat)
     if(family==='exhaust') {
       ring(root,'stator-belt',.503,.494,.33,.65,m.cast)
