@@ -56,7 +56,7 @@ export function createMotor(family, options = {}) {
     const band=new THREE.Group();band.name='mounting-ring';root.add(band)
     part(band,'continuous-cast-band',profile([[.496,y],[.525,y],[.54,y+.012],[.54,y+height-.012],[.527,y+height],[.496,y+height],[.496,y]]),m.cast)
     ring(band,'upper-ring-shoulder',.516,.495,.015,y+height,m.cast)
-    for(const angle of [-.92,.92,Math.PI-.92,Math.PI+.92]) {const lug=bracket(band,angle,y+height/2,.22,height*.94,false);lug.position.x*=1.065;lug.position.z*=1.065}
+    for(let i=0;i<4;i++) {const angle=Math.PI/4+i*Math.PI/2;const lug=bracket(band,angle,y+height/2,.22,height*.94,false);lug.position.x*=1.065;lug.position.z*=1.065}
     part(band,'front-casting-notch',box(.012,.065,.008,.003),m.cast,[0,y+.033,.544])
   } else if(family==='high-speed' && options.ring !== false) {
     const y=h*.32
