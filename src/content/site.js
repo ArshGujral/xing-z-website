@@ -210,7 +210,7 @@ export const partnerOffers = [
     points: [
       'Volume supply scheduled with your production',
       'Mount, speed and finish matched to your cooler',
-      'The same copper-wound build, batch after batch',
+      'The same build, batch after batch',
       'A direct line to our technical team',
     ],
     cta: { label: 'Discuss OEM supply', message: "Hi Xing-Z, I'd like to discuss OEM supply." },
