@@ -99,6 +99,7 @@ export default function ModelViewer({ modelId, product, variants = [], photo, al
     scene.add(floor)
 
     const state = { renderer, scene, camera, controls, key, rim, fill, floor, model: null, fan: null, spinFan: false, frame: 0, visible: true }
+    state.fitPadding = preview ? 1.38 : 1.16
     stageRef.current = state
 
     const resize = () => {
@@ -110,7 +111,7 @@ export default function ModelViewer({ modelId, product, variants = [], photo, al
       camera.aspect = w / Math.max(1, h)
       if (state.fitRadius) {
         const halfV = THREE.MathUtils.degToRad(camera.fov / 2)
-        const distance = state.fitRadius / Math.sin(Math.min(halfV, Math.atan(Math.tan(halfV) * camera.aspect))) * 1.16
+        const distance = state.fitRadius / Math.sin(Math.min(halfV, Math.atan(Math.tan(halfV) * camera.aspect))) * state.fitPadding
         const direction = camera.position.clone().sub(controls.target).normalize()
         camera.position.copy(controls.target).addScaledVector(direction, distance)
         controls.minDistance = distance * .5
@@ -199,9 +200,9 @@ export default function ModelViewer({ modelId, product, variants = [], photo, al
         state.fitRadius = preview ? radius / 2 : sphere.radius
         const halfV = THREE.MathUtils.degToRad(state.camera.fov / 2)
         const halfFov = Math.min(halfV, Math.atan(Math.tan(halfV) * state.camera.aspect))
-        const distance = (state.fitRadius / Math.sin(halfFov)) * 1.16
+        const distance = (state.fitRadius / Math.sin(halfFov)) * state.fitPadding
         const up = THREE.MathUtils.degToRad(18)
-        const viewX = preview ? 0.48 : 0.30
+        const viewX = preview ? 0.50 : 0.30
         state.controls.target.set(0, size.y / 2, 0)
         state.camera.position.set(
           distance * Math.cos(up) * viewX,
@@ -271,7 +272,7 @@ export default function ModelViewer({ modelId, product, variants = [], photo, al
         />
       )}
       {entry && status === 'ready' && (
-        <div className={`absolute right-4 flex gap-2 ${preview ? 'top-3' : 'top-14 sm:top-4'}`}>
+        <div className={`absolute flex gap-2 ${preview ? 'left-3 top-3' : 'right-4 top-14 sm:top-4'}`}>
           <button type="button" className="rounded-full border border-white/15 bg-page/80 px-3 py-2 text-xs text-white" aria-pressed={rotating}
             onClick={toggleRotation}>
             {rotationLabel}
