@@ -45,7 +45,14 @@ page ends in a WhatsApp conversation. Read these before any design or copy chang
 
 ## Working together (Claude Code + Codex)
 
-The two agents must never edit the same files at the same time.
+The two agents must never edit the same files at the same time. Both work in this folder (`D:\CLAUDE WEBSITE`); the
+other agent's changes reach you only through git and `HANDOFF.md`.
+
+- **At the start of every task:** run `git status` and `git log --oneline -5` to see what the other agent did since
+  your last session, read `HANDOFF.md` if it exists, and switch to `main` if you're on a branch whose work is already
+  merged. Don't start on top of a stale branch.
+- **At the end of every task:** commit your work, then add a dated line to `HANDOFF.md` saying what changed, which
+  branch it's on, and what's left.
 
 - **One task, one branch.** Start each task on its own branch (`claude/<task>` or `codex/<task>`), or in its own git
   worktree for parallel work: `git worktree add ../xingz-<task> -b codex/<task>`. Merge into `main` when it's done.
