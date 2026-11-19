@@ -51,9 +51,8 @@ export default function ConfiguratorTeaser() {
         <div>
           <SectionHeading
             eyebrow="3D configurator"
-            title="See the 996 Exhaust in 3D."
-            muted="Build it before you order."
-            intro="Choose a catalogue variant in the configurator, then send the exact build to us on WhatsApp for a quote."
+            title="Explore our range in 3D."
+            intro="View motors and pumps from every angle, choose your options, and request a quote on WhatsApp."
           />
           <div className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
             <a
@@ -61,13 +60,13 @@ export default function ConfiguratorTeaser() {
               {...external}
               className="px-5 sm:px-6 py-2.5 sm:py-3 bg-white text-page text-sm font-semibold rounded-full hover:bg-white/90 transition-colors"
             >
-              Quote this build
+              Quote the 996 Exhaust
             </a>
             <a
-              href={configuratorHref}
+              href={asset(pages.configurator)}
               className="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 liquid-glass rounded-full text-white text-sm font-semibold hover:bg-white/10 transition-colors"
             >
-              Open configurator
+              Explore 3D models
               <ArrowRight className="w-4 h-4" aria-hidden="true" />
             </a>
           </div>
@@ -76,9 +75,9 @@ export default function ConfiguratorTeaser() {
         <div className="min-w-0 rounded-3xl border border-white/10 bg-[radial-gradient(ellipse_at_50%_35%,rgba(34,151,132,0.16),rgba(255,255,255,0.02)_65%)] p-5 sm:p-8">
           <p className="flex items-center gap-1.5 text-xs text-white/60">
             <Box className="w-3.5 h-3.5" aria-hidden="true" />
-            {name}
+            <a href={configuratorHref} className="hover:text-white underline-offset-4 hover:underline">{name}</a>
           </p>
-          <div ref={stageRef} className="relative mt-2 aspect-square sm:aspect-[4/3] max-h-[25rem] overflow-hidden rounded-2xl">
+          <div ref={stageRef} className="relative mt-2 aspect-[4/3] md:aspect-[3/2] max-h-[25rem] overflow-hidden rounded-2xl">
             {product && nearStage ? (
               <Suspense fallback={poster}>
                 <ModelViewer modelId={featured.family.model} product={product} photo={photo} alt={`Xing-Z ${name}`} preview />

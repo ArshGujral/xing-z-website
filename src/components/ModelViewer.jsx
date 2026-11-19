@@ -3,6 +3,7 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js'
 import { MODELS } from '../models/registry.js'
+import { attachPreviewFan } from '../models/exhaust-preview.js'
 import { useTheme } from '../theme.jsx'
 
 const disposeTree = (root) => {
@@ -61,12 +62,12 @@ export default function ModelViewer({ modelId, product, variants = [], photo, al
     controls.enableDamping = true
     controls.enablePan = false
     controls.autoRotate = false
-    controls.autoRotateSpeed = preview ? 2 : 0.65
+    controls.autoRotateSpeed = 0.65
     controls.enableZoom = !preview
     if (preview) renderer.domElement.style.touchAction = 'pan-y'
     controls.maxPolarAngle = Math.PI * .49
     const stopRotation = () => { controls.autoRotate = false; setRotating(false) }
-    controls.addEventListener('start', stopRotation)
+    if (!preview) controls.addEventListener('start', stopRotation)
 
     const key = new THREE.DirectionalLight(0xffffff, 2.2)
     key.position.set(3, 5, 4)
@@ -97,7 +98,7 @@ export default function ModelViewer({ modelId, product, variants = [], photo, al
     floor.receiveShadow = true
     scene.add(floor)
 
-    const state = { renderer, scene, camera, controls, key, rim, fill, floor, model: null, frame: 0, visible: true, pmrem }
+    const state = { renderer, scene, camera, controls, key, rim, fill, floor, model: null, fan: null, spinFan: false, frame: 0, visible: true }
     stageRef.current = state
 
     const resize = () => {
@@ -118,7 +119,13 @@ export default function ModelViewer({ modelId, product, variants = [], photo, al
       }
       camera.updateProjectionMatrix()
     }
-    const loop = () => {
+    let lastFrame = null
+    const loop = (time) => {
+      if (state.spinFan && lastFrame !== null) {
+        const elapsed = Math.min((time - lastFrame) / 1000, 0.05)
+        state.fan.rotation.y = (state.fan.rotation.y + elapsed * 8) % (Math.PI * 2)
+      }
+      lastFrame = state.visible ? time : null
       controls.update()
       renderer.render(scene, camera)
       state.frame = state.visible ? requestAnimationFrame(loop) : 0
@@ -163,6 +170,7 @@ export default function ModelViewer({ modelId, product, variants = [], photo, al
       .then((mod) => {
         if (cancelled) return
         const group = mod.createModel(entry.params ? entry.params(product, variantKey ? variantKey.split('|') : []) : {})
+        const fan = preview ? attachPreviewFan(group) : null
         group.traverse((o) => {
           if (o.isMesh) {
             o.castShadow = true
@@ -180,6 +188,7 @@ export default function ModelViewer({ modelId, product, variants = [], photo, al
         group.position.sub(new THREE.Vector3(center.x, box.min.y, center.z))
         state.scene.add(group)
         state.model = group
+        state.fan = fan
         const radius = Math.max(size.x, size.y, size.z)
         state.floor.scale.setScalar(Math.max(size.x, size.z) * .85)
         state.key.shadow.camera.left = state.key.shadow.camera.bottom = -radius
@@ -187,16 +196,17 @@ export default function ModelViewer({ modelId, product, variants = [], photo, al
         state.key.shadow.camera.updateProjectionMatrix()
         // Fit the bounding sphere inside the narrower of the two view angles, from a three-quarter view 18 deg up.
         const sphere = box.getBoundingSphere(new THREE.Sphere())
-        state.fitRadius = sphere.radius
+        state.fitRadius = preview ? radius / 2 : sphere.radius
         const halfV = THREE.MathUtils.degToRad(state.camera.fov / 2)
         const halfFov = Math.min(halfV, Math.atan(Math.tan(halfV) * state.camera.aspect))
-        const distance = (sphere.radius / Math.sin(halfFov)) * 1.16
+        const distance = (state.fitRadius / Math.sin(halfFov)) * 1.16
         const up = THREE.MathUtils.degToRad(18)
+        const viewX = preview ? 0.48 : 0.30
         state.controls.target.set(0, size.y / 2, 0)
         state.camera.position.set(
-          distance * Math.cos(up) * 0.30,
+          distance * Math.cos(up) * viewX,
           size.y / 2 + distance * Math.sin(up),
-          distance * Math.cos(up) * Math.sqrt(1 - .30 ** 2),
+          distance * Math.cos(up) * Math.sqrt(1 - viewX ** 2),
         )
         state.controls.minDistance = distance * 0.5
         state.controls.maxDistance = distance * 2
@@ -205,9 +215,9 @@ export default function ModelViewer({ modelId, product, variants = [], photo, al
         state.camera.updateProjectionMatrix()
         state.controls.update()
         state.controls.saveState()
-        const autoRotate = preview && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
-        state.controls.autoRotate = autoRotate
-        setRotating(autoRotate)
+        state.controls.autoRotate = false
+        state.spinFan = Boolean(fan) && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        setRotating(state.spinFan)
         setStatus('ready')
       })
       .catch((error) => { console.error('Product model failed to load', error); if (!cancelled) setStatus('fallback') })
@@ -228,6 +238,27 @@ export default function ModelViewer({ modelId, product, variants = [], photo, al
 
   const showPhoto = !entry || status === 'fallback'
 
+  const toggleRotation = () => {
+    const state = stageRef.current
+    if (!state) return
+    const next = !rotating
+    if (preview) state.spinFan = next
+    else state.controls.autoRotate = next
+    setRotating(next)
+  }
+
+  const resetView = () => {
+    const state = stageRef.current
+    if (!state) return
+    state.controls.autoRotate = false
+    state.controls.reset()
+    if (!preview) setRotating(false)
+  }
+
+  const rotationLabel = preview
+    ? (rotating ? 'Pause fan' : 'Spin fan')
+    : (rotating ? 'Pause rotation' : 'Rotate')
+
   return (
     <div className="absolute inset-0">
       <div ref={mountRef} className="absolute inset-0 cursor-grab active:cursor-grabbing" style={{ visibility: showPhoto ? 'hidden' : 'visible' }} aria-label={alt} role="img" />
@@ -242,11 +273,11 @@ export default function ModelViewer({ modelId, product, variants = [], photo, al
       {entry && status === 'ready' && (
         <div className={`absolute right-4 flex gap-2 ${preview ? 'top-3' : 'top-14 sm:top-4'}`}>
           <button type="button" className="rounded-full border border-white/15 bg-page/80 px-3 py-2 text-xs text-white" aria-pressed={rotating}
-            onClick={() => { const next = !rotating; setRotating(next); if (stageRef.current) stageRef.current.controls.autoRotate = next }}>
-            {rotating ? 'Pause rotation' : 'Rotate'}
+            onClick={toggleRotation}>
+            {rotationLabel}
           </button>
           <button type="button" className="rounded-full border border-white/15 bg-page/80 px-3 py-2 text-xs text-white"
-            onClick={() => { stageRef.current?.controls.reset(); if (stageRef.current) stageRef.current.controls.autoRotate = false; setRotating(false) }}>Reset view</button>
+            onClick={resetView}>Reset view</button>
         </div>
       )}
       {entry && status === 'loading' && (
