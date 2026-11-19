@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react'
-import { loadCatalogue } from './catalogue.js'
+import { loadCatalogue, productsOf } from './catalogue.js'
 import { asset, categories } from './content/site.js'
 
 // The home page's ranges come from public/catalogue.json, so a range added in the admin panel appears here too.
 // `categories` in site.js paints first and stays as the fallback if the catalogue can't load.
 // A range is matched and anchored by its catalogue id, which never changes, so renaming it keeps its links working.
-const fromFamily = (family) => {
+const fromFamily = (catalogue, family) => {
   const known = categories.find((c) => c.family === family.id)
   return {
     slug: known?.slug ?? family.id,
     name: family.name,
+    productCode: productsOf(catalogue, family.id)[0]?.code,
     use: family.summary,
     image: family.photo ? asset(family.photo) : null,
     // A range without a photo is drawn as an illustration until one is uploaded.
@@ -22,7 +23,7 @@ export function useRanges() {
   const [ranges, setRanges] = useState(categories)
   useEffect(() => {
     let live = true
-    pending ??= loadCatalogue().then((c) => c.families.map(fromFamily))
+    pending ??= loadCatalogue().then((c) => c.families.map((family) => fromFamily(c, family)))
     pending.then((r) => live && r.length && setRanges(r)).catch(() => {})
     return () => {
       live = false

@@ -1,16 +1,26 @@
 import { ArrowUpRight } from 'lucide-react'
 import Motor from './Motor.jsx'
 import SectionHeading, { container } from './SectionHeading.jsx'
-import { external, whatsappLink } from '../content/site.js'
+import { asset, external, pages, whatsappLink } from '../content/site.js'
 import { countWord, useRanges } from '../ranges.js'
 
 function RangeCard({ category }) {
+  const href = category.productCode
+    ? asset(`${pages.configurator}?code=${encodeURIComponent(category.productCode)}`)
+    : undefined
+  const Preview = href ? 'a' : 'div'
   return (
     <article
       id={category.slug}
       className="group relative rounded-2xl border border-white/10 bg-white/[0.02] overflow-hidden scroll-mt-24 transition-colors hover:border-[#229784]/50"
     >
-      <div className="relative aspect-[4/3] bg-[radial-gradient(ellipse_at_50%_62%,rgba(34,151,132,0.2),transparent_65%)]">
+      <Preview
+        href={href}
+        aria-label={href ? `Configure ${category.name}` : undefined}
+        className={`block relative aspect-[4/3] bg-[radial-gradient(ellipse_at_50%_62%,rgba(34,151,132,0.2),transparent_65%)] ${
+          href ? 'focus-visible:z-10 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-accent' : ''
+        }`}
+      >
         {category.image ? (
           <>
             {/* Spotlight and floor shadow so black housings read against the dark card */}
@@ -29,7 +39,7 @@ function RangeCard({ category }) {
             className="absolute inset-0 w-full h-full p-6 sm:p-8 transition-transform duration-500 group-hover:scale-[1.04]"
           />
         )}
-      </div>
+      </Preview>
       <div className="p-5 sm:p-6 border-t border-white/5">
         <h3 className="text-white text-lg font-medium tracking-tight">{category.name}</h3>
         <p className="mt-1.5 text-white/60 text-sm leading-relaxed">{category.use}</p>
