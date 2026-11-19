@@ -115,6 +115,38 @@ html.theme-switching *::before {
 /* In-page links are scrolled by Hero's useAnchorScroll, which measures the bar; this covers everything else. */
 html { scroll-behavior: smooth; }
 
+/* A short pulse connects the two wordmarks during the homepage handoff. */
+.logo-charge {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  opacity: 0;
+  filter: drop-shadow(0 0 5px rgb(var(--accent) / 0.65));
+}
+.logo-charge::before,
+.logo-charge::after {
+  content: '';
+  position: absolute;
+  border-radius: 9999px;
+}
+.logo-charge::before {
+  width: clamp(2rem, 6vw, 4.5rem);
+  height: 3px;
+  right: 0;
+  top: -1.5px;
+  background: linear-gradient(90deg, transparent, rgb(var(--accent) / 0.7) 65%, rgb(var(--accent-hi)));
+}
+.logo-charge::after {
+  width: 4px;
+  height: 4px;
+  top: -2px;
+  left: -2px;
+  background: #d5fff6;
+  box-shadow: 0 0 0 1px rgb(var(--accent) / 0.75), 0 0 9px 2px rgb(var(--accent) / 0.75);
+}
+
 /* The fixed nav bar: clear glass over the hero, tinted once the logo has docked so content scrolling under it stays quiet. */
 .nav-glass {
   transition: background-color 0.6s ease, backdrop-filter 0.6s ease, -webkit-backdrop-filter 0.6s ease, box-shadow 0.6s ease;
