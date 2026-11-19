@@ -22,7 +22,7 @@ const disposeTree = (root) => {
 
 // Product inspection stage: drag to orbit, optional rotation and a soft studio contact shadow.
 // With no model for the family it shows the photo instead, so every product always has a picture.
-export default function ModelViewer({ modelId, product, variants = [], photo, alt }) {
+export default function ModelViewer({ modelId, product, variants = [], photo, alt, preview = false }) {
   const mountRef = useRef(null)
   const stageRef = useRef(null)
   const [status, setStatus] = useState('loading')
@@ -61,7 +61,9 @@ export default function ModelViewer({ modelId, product, variants = [], photo, al
     controls.enableDamping = true
     controls.enablePan = false
     controls.autoRotate = false
-    controls.autoRotateSpeed = 0.65
+    controls.autoRotateSpeed = preview ? 2 : 0.65
+    controls.enableZoom = !preview
+    if (preview) renderer.domElement.style.touchAction = 'pan-y'
     controls.maxPolarAngle = Math.PI * .49
     const stopRotation = () => { controls.autoRotate = false; setRotating(false) }
     controls.addEventListener('start', stopRotation)
@@ -148,7 +150,7 @@ export default function ModelViewer({ modelId, product, variants = [], photo, al
       renderer.domElement.remove()
       stageRef.current = null
     }
-  }, [entry])
+  }, [entry, preview])
 
   // Build (or rebuild) the model for the current product, then frame it.
   useEffect(() => {
@@ -203,15 +205,16 @@ export default function ModelViewer({ modelId, product, variants = [], photo, al
         state.camera.updateProjectionMatrix()
         state.controls.update()
         state.controls.saveState()
-        state.controls.autoRotate = false
-        setRotating(false)
+        const autoRotate = preview && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        state.controls.autoRotate = autoRotate
+        setRotating(autoRotate)
         setStatus('ready')
       })
       .catch((error) => { console.error('Product model failed to load', error); if (!cancelled) setStatus('fallback') })
     return () => {
       cancelled = true
     }
-  }, [entry, product, variantKey])
+  }, [entry, product, variantKey, preview])
 
   // Lighting follows the theme: brighter rim on the dark stage, softer on the light one.
   useEffect(() => {
@@ -237,7 +240,7 @@ export default function ModelViewer({ modelId, product, variants = [], photo, al
         />
       )}
       {entry && status === 'ready' && (
-        <div className="absolute top-14 sm:top-4 right-4 flex gap-2">
+        <div className={`absolute right-4 flex gap-2 ${preview ? 'top-3' : 'top-14 sm:top-4'}`}>
           <button type="button" className="rounded-full border border-white/15 bg-page/80 px-3 py-2 text-xs text-white" aria-pressed={rotating}
             onClick={() => { const next = !rotating; setRotating(next); if (stageRef.current) stageRef.current.controls.autoRotate = next }}>
             {rotating ? 'Pause rotation' : 'Rotate'}
