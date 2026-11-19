@@ -115,10 +115,13 @@ export function NeuralNoise({ className = 'absolute inset-0 w-full h-full', base
     const pointer = { x: 0.5, y: 0.5, tx: 0.5, ty: 0.5 }
     let frame = 0
     let visible = true
-    let start = performance.now()
+    const start = performance.now()
+    let lastDraw = -Infinity
 
     const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 1.5)
+      // The soft background can use a smaller buffer on high-resolution displays.
+      const area = Math.max(1, canvas.clientWidth * canvas.clientHeight)
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5, Math.sqrt(950000 / area))
       canvas.width = Math.max(1, Math.round(canvas.clientWidth * dpr))
       canvas.height = Math.max(1, Math.round(canvas.clientHeight * dpr))
       gl.viewport(0, 0, canvas.width, canvas.height)
@@ -127,6 +130,7 @@ export function NeuralNoise({ className = 'absolute inset-0 w-full h-full', base
     }
 
     const draw = (now) => {
+      lastDraw = now
       pointer.x += (pointer.tx - pointer.x) * 0.1
       pointer.y += (pointer.ty - pointer.y) * 0.1
       const { base: b, glow: g, strength: s } = colorsRef.current
@@ -141,12 +145,13 @@ export function NeuralNoise({ className = 'absolute inset-0 w-full h-full', base
     }
 
     const loop = (now) => {
-      draw(now)
+      if (now - lastDraw >= 31) draw(now)
       frame = visible && !reduced ? requestAnimationFrame(loop) : 0
     }
 
     // The pointer pulls the filaments towards it; coordinates are relative to the canvas.
     const onPointer = (e) => {
+      if (!visible || reduced) return
       const r = canvas.getBoundingClientRect()
       pointer.tx = (e.clientX - r.left) / r.width
       pointer.ty = 1 - (e.clientY - r.top) / r.height

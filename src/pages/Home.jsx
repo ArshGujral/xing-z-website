@@ -8,8 +8,10 @@ import Testimonials from '../components/Testimonials.jsx'
 import FinalCta from '../components/FinalCta.jsx'
 import Footer from '../components/Footer.jsx'
 import WhatsAppFab from '../components/WhatsAppFab.jsx'
+import { useSmoothWheelScroll } from '../useSmoothWheelScroll.js'
 
 export default function Home() {
+  useSmoothWheelScroll()
   return (
     <>
       <Hero />

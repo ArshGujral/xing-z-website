@@ -136,7 +136,7 @@ function useAnchorScroll(barRef) {
         top = window.scrollY + mark.getBoundingClientRect().top - barRef.current.getBoundingClientRect().bottom - 20
       }
       history.pushState(null, '', link.hash)
-      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' })
+      window.scrollTo({ top: Math.max(0, top) })
     }
     document.addEventListener('click', onClick)
     return () => document.removeEventListener('click', onClick)
