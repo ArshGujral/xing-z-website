@@ -31,7 +31,7 @@ export function attachPreviewFan(motor) {
   })
   bladeGeometry.rotateX(-Math.PI / 2)
 
-  const graphite = new THREE.MeshStandardMaterial({ color: '#434b51', metalness: 0.38, roughness: 0.42 })
+  const coat = housing.material
   const ribGeometry = new THREE.CapsuleGeometry(0.018, 0.16, 4, 12)
   ribGeometry.rotateZ(Math.PI / 2)
   const brass = new THREE.MeshStandardMaterial({ color: '#8c7953', metalness: 0.68, roughness: 0.38 })
@@ -42,11 +42,11 @@ export function attachPreviewFan(motor) {
 
     const paddle = new THREE.Group()
     paddle.rotation.x = BLADE_PITCH
-    const mesh = new THREE.Mesh(bladeGeometry, graphite)
+    const mesh = new THREE.Mesh(bladeGeometry, coat)
     mesh.name = 'fan-blade'
     paddle.add(mesh)
 
-    const rib = new THREE.Mesh(ribGeometry, graphite)
+    const rib = new THREE.Mesh(ribGeometry, coat)
     rib.position.set(0.415, 0.016, -0.045)
     rib.rotation.y = -0.37
     rib.scale.y = 0.32
@@ -65,7 +65,7 @@ export function attachPreviewFan(motor) {
     [0.228, 0.043], [0.22, 0.05], [0.207, 0.044], [0.169, 0.018],
     [0.09, 0.004], [0, 0.004],
   ].map(([radius, height]) => new THREE.Vector2(radius, height))
-  const hub = new THREE.Mesh(new THREE.LatheGeometry(hubProfile, 64), graphite)
+  const hub = new THREE.Mesh(new THREE.LatheGeometry(hubProfile, 64), coat)
   fan.add(hub)
 
   const steel = new THREE.MeshStandardMaterial({ color: '#596267', metalness: 0.62, roughness: 0.38 })
