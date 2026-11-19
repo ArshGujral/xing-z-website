@@ -52,13 +52,13 @@ Selling is seasonal around the Indian summer cooler market. Orders, replacements
 
 The owner has, but has not yet supplied:
 - real numbers (years in business, motors made, cities served);
-- dealer and OEM quotes or names that may be shown, with permission;
 - specifications for each model.
 
 Until they arrive, the site must not show invented numbers, quotes, partner logos or specs. Contact details (phone, WhatsApp number, email, address, GSTIN) are placeholders in `src/content/site.js`.
 
 ## Product Principles
 
+- Keep customer identities private. Do not publish customer names, logos or testimonials.
 - Every path ends in a WhatsApp conversation.
 - Show only real claims, numbers and quotes; leave gaps visible to the owner rather than filled with invented ones.
 - Serve the trade (dealers and OEMs) first, without shutting out a single-motor buyer.

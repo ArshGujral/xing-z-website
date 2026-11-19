@@ -232,31 +232,6 @@ export const partnerSteps = [
   { title: 'Place your order', text: 'Motors are tested on our line and dispatched to you.' },
 ]
 
-// Replace with real, attributable quotes (with permission) before launch.
-export const testimonials = [
-  {
-    quote: '[Quote from a dealer — e.g. what changed in returns or repeat orders after stocking Xing-Z.]',
-    name: '[Name]',
-    role: 'Dealer',
-    place: '[City]',
-  },
-  {
-    quote: '[Quote from an OEM — e.g. supply consistency through the season.]',
-    name: '[Name]',
-    role: 'Cooler manufacturer',
-    place: '[City]',
-  },
-  {
-    quote: '[Quote from a repairer — e.g. fit, finish and how long motors last.]',
-    name: '[Name]',
-    role: 'Repair shop',
-    place: '[City]',
-  },
-]
-
-// `src`: path to a dealer/OEM logo in /public (with their permission), or null for an empty slot.
-export const partnerLogos = Array.from({ length: 6 }, () => ({ name: null, src: null }))
-
 export const footerLinks = [
   {
     title: 'Range',
