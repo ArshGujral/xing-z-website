@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { ArrowRight, Box } from 'lucide-react'
 import SectionHeading, { container } from './SectionHeading.jsx'
+import PreviewStatus from './PreviewStatus.jsx'
 import { asset, external, pages, whatsappLink } from '../content/site.js'
 import { loadCatalogue, productsOf, quoteMessage } from '../catalogue.js'
 
@@ -11,7 +12,7 @@ const MARUTI_996_CODE = '996 (1 14)(M)'
 export default function ConfiguratorTeaser() {
   const stageRef = useRef(null)
   const [nearStage, setNearStage] = useState(false)
-  const [featured, setFeatured] = useState(null)
+  const [featured, setFeatured] = useState()
 
   useEffect(() => {
     let active = true
@@ -21,10 +22,10 @@ export default function ConfiguratorTeaser() {
         const products = productsOf(catalogue, EXHAUST_FAMILY)
         const product = products.find(({ code }) => code === MARUTI_996_CODE)
           ?? products.find(({ name }) => /^996\b/.test(name))
-        if (active && family && product) setFeatured({ family, product })
+        if (active) setFeatured(family && product ? { family, product } : null)
       })
       .catch(() => {
-        // The product photo and general configurator link still work without the catalogue.
+        if (active) setFeatured(null)
       })
     return () => { active = false }
   }, [])
@@ -34,16 +35,14 @@ export default function ConfiguratorTeaser() {
       if (!entry.isIntersecting) return
       setNearStage(true)
       observer.disconnect()
-    }, { rootMargin: '120px' })
+    }, { rootMargin: '300px 0px' })
     observer.observe(stageRef.current)
     return () => observer.disconnect()
   }, [])
 
   const product = featured?.product
   const name = product?.name ?? '996 Exhaust'
-  const photo = asset(product?.photo ?? featured?.family.photo ?? 'products/exhaust-motors.webp')
   const configuratorHref = asset(pages.configurator + (product ? `?code=${encodeURIComponent(product.code)}` : ''))
-  const poster = <img src={photo} alt={`Xing-Z ${name}`} loading="lazy" className="absolute inset-0 h-full w-full object-contain p-5 sm:p-8" />
 
   return (
     <section id="configurator" className="pt-24 pb-20 md:py-28 lg:pt-24 border-t border-white/5">
@@ -79,10 +78,10 @@ export default function ConfiguratorTeaser() {
           </p>
           <div ref={stageRef} className="relative mt-2 aspect-[4/3] md:aspect-[3/2] max-h-[25rem] overflow-hidden rounded-2xl">
             {product && nearStage ? (
-              <Suspense fallback={poster}>
-                <ModelViewer modelId={featured.family.model} product={product} photo={photo} alt={`Xing-Z ${name}`} preview />
+              <Suspense fallback={<PreviewStatus />}>
+                <ModelViewer modelId={featured.family.model} product={product} alt={`Xing-Z ${name}`} preview />
               </Suspense>
-            ) : poster}
+            ) : <PreviewStatus unavailable={featured === null} />}
           </div>
         </div>
       </div>

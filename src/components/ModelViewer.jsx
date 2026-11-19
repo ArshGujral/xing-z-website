@@ -5,6 +5,7 @@ import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment
 import { MODELS } from '../models/registry.js'
 import { attachPreviewFan } from '../models/exhaust-preview.js'
 import { useTheme } from '../theme.jsx'
+import PreviewStatus from './PreviewStatus.jsx'
 
 const disposeTree = (root) => {
   const resources = new Set()
@@ -219,6 +220,7 @@ export default function ModelViewer({ modelId, product, variants = [], photo, al
         state.controls.autoRotate = false
         state.spinFan = Boolean(fan) && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
         setRotating(state.spinFan)
+        if (preview) state.renderer.render(state.scene, state.camera)
         setStatus('ready')
       })
       .catch((error) => { console.error('Product model failed to load', error); if (!cancelled) setStatus('fallback') })
@@ -237,7 +239,9 @@ export default function ModelViewer({ modelId, product, variants = [], photo, al
     state.floor.material.opacity = light ? 0.18 : 0.35
   }, [theme, status])
 
-  const showPhoto = !entry || status === 'fallback'
+  const unavailable = !entry || status === 'fallback'
+  const showPhoto = !preview && unavailable
+  const hideCanvas = unavailable || (preview && status !== 'ready')
 
   const toggleRotation = () => {
     const state = stageRef.current
@@ -262,7 +266,7 @@ export default function ModelViewer({ modelId, product, variants = [], photo, al
 
   return (
     <div className="absolute inset-0">
-      <div ref={mountRef} className="absolute inset-0 cursor-grab active:cursor-grabbing" style={{ visibility: showPhoto ? 'hidden' : 'visible' }} aria-label={alt} role="img" />
+      <div ref={mountRef} className="absolute inset-0 cursor-grab active:cursor-grabbing" style={{ visibility: hideCanvas ? 'hidden' : 'visible' }} aria-label={alt} role="img" />
       {showPhoto && (
         <img
           key={photo}
@@ -281,7 +285,8 @@ export default function ModelViewer({ modelId, product, variants = [], photo, al
             onClick={resetView}>Reset view</button>
         </div>
       )}
-      {entry && status === 'loading' && (
+      {preview && (unavailable || status === 'loading') && <PreviewStatus unavailable={unavailable} />}
+      {!preview && entry && status === 'loading' && (
         <div className="absolute inset-0 flex items-center justify-center text-white/50 text-sm">Building the model…</div>
       )}
     </div>
