@@ -201,6 +201,9 @@ export const parts = [
 ]
 
 // Dealers & OEM section. Check these points match your actual terms before launch.
+// Confirmed raw material brands only. Entries use { name, material, logo }; logo is a path in public/.
+export const rawMaterialBrands = []
+
 export const partnerOffers = [
   {
     icon: 'store',

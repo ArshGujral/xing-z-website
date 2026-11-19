@@ -4,6 +4,7 @@ import RangeGrid from '../components/RangeGrid.jsx'
 import ConfiguratorTeaser from '../components/ConfiguratorTeaser.jsx'
 import WhyXingZ from '../components/WhyXingZ.jsx'
 import InsideTheMotor from '../components/InsideTheMotor.jsx'
+import RawMaterialBrands from '../components/RawMaterialBrands.jsx'
 import FinalCta from '../components/FinalCta.jsx'
 import Footer from '../components/Footer.jsx'
 import WhatsAppFab from '../components/WhatsAppFab.jsx'
@@ -20,6 +21,7 @@ export default function Home() {
         <ConfiguratorTeaser />
         <WhyXingZ />
         <InsideTheMotor />
+        <RawMaterialBrands />
         <FinalCta />
       </main>
       <Footer />
