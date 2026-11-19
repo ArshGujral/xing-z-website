@@ -14,114 +14,103 @@ const LOGO = { width: 873, height: 357 }
 const clamp01 = (t) => Math.min(1, Math.max(0, t))
 const lerp = (a, b, t) => a + (b - a) * t
 
-const smoothStep = (value) => {
-  const t = clamp01(value)
-  return t * t * (3 - 2 * t)
-}
-
-function useLogoDock(heroRef, headerRef, chargeRef) {
+// Animate the single logo from the hero slot to the header slot as the page scrolls.
+function useLogoDock(logoRef, heroSlotRef, navSlotRef) {
   const [docked, setDocked] = useState(false)
 
   useLayoutEffect(() => {
-    const hero = heroRef.current
-    const header = headerRef.current
-    const charge = chargeRef.current
+    const logo = logoRef.current
+    const heroSlot = heroSlotRef.current
+    const navSlot = navSlotRef.current
     const motion = window.matchMedia('(prefers-reduced-motion: reduce)')
-    let launch
-    let dock
-    let threshold
+    let start
+    let end
+    let distance
     let progress = 0
-    let target = 0
-    let atHeader = false
+    let isDocked = false
     let frame = 0
     let previousTime = 0
+    let active = true
+
+    const goal = () => motion.matches ? 1 : clamp01(window.scrollY / distance)
 
     const draw = () => {
-      const reveal = smoothStep((progress - 0.58) / 0.34)
-      hero.style.opacity = motion.matches ? '1' : String(1 - smoothStep((progress - 0.09) / 0.43))
-      header.style.opacity = String(reveal)
-      const slant = Math.sin(Math.PI * reveal) * 0.16
-      const upper = clamp01(1 - reveal + slant) * 100
-      const lower = clamp01(1 - reveal - slant) * 100
-      header.style.clipPath = reveal === 1 ? 'none' : `polygon(${upper}% 0, 100% 0, 100% 100%, ${lower}% 100%)`
-      header.style.visibility = reveal > 0 ? 'visible' : 'hidden'
+      const travel = progress + progress ** 2 * (1 - progress)
+      // The logo starts drifting left as it rises so it clears the navigation on arrival.
+      const slide = travel + 0.25 * travel * (1 - travel)
+      const width = lerp(start.width, end.width, travel)
+      const height = width * LOGO.height / LOGO.width
+      const left = lerp(start.x, end.x, slide) - width / 2
+      const top = lerp(start.y, end.y, travel) - height / 2
+      logo.style.transform = `translate3d(${left}px, ${top}px, 0) scale(${width / start.width})`
 
-      const flight = clamp01((progress - 0.06) / 0.74)
-      const intensity = flight > 0 && flight < 1 ? Math.sin(Math.PI * flight) ** 0.45 : 0
-      charge.style.opacity = motion.matches ? '0' : String(intensity)
-      if (!motion.matches && intensity) {
-        // Start on the hero bolt even while its image is moving with the page.
-        const from = { x: launch.x, y: Math.max(dock.y + 34, launch.y - window.scrollY) }
-        const bend = { x: lerp(from.x, dock.x, 0.64), y: lerp(from.y, dock.y, 0.28) }
-        const a = { x: lerp(from.x, bend.x, flight), y: lerp(from.y, bend.y, flight) }
-        const b = { x: lerp(bend.x, dock.x, flight), y: lerp(bend.y, dock.y, flight) }
-        const angle = Math.atan2(b.y - a.y, b.x - a.x) + (target ? 0 : Math.PI)
-        charge.style.transform = `translate3d(${lerp(a.x, b.x, flight)}px, ${lerp(a.y, b.y, flight)}px, 0) rotate(${angle}rad)`
-      }
-
-      const next = progress >= 0.72
-      if (atHeader !== next) {
-        atHeader = next
-        setDocked(next)
+      const atHeader = progress >= 0.96
+      if (isDocked !== atHeader) {
+        isDocked = atHeader
+        setDocked(atHeader)
       }
     }
 
     const tick = (now) => {
-      const elapsed = previousTime ? Math.min(now - previousTime, 48) : 16
+      const target = goal()
+      const elapsed = previousTime ? Math.min(now - previousTime, 50) : 16
       previousTime = now
-      progress = clamp01(progress + (target ? elapsed : -elapsed) / 650)
+      progress += (target - progress) * (1 - Math.exp(-elapsed / 64))
+      if (Math.abs(target - progress) < 0.002) progress = target
       draw()
+
       frame = progress === target ? 0 : requestAnimationFrame(tick)
       if (!frame) previousTime = 0
     }
 
-    const settle = () => {
-      cancelAnimationFrame(frame)
-      frame = 0
-      previousTime = 0
-      progress = target
-      draw()
+    const onScroll = () => {
+      if (!frame && progress !== goal()) frame = requestAnimationFrame(tick)
     }
 
     const measure = () => {
-      const source = hero.getBoundingClientRect()
-      const destination = header.getBoundingClientRect()
-      // Use the lightning bolt at the right of each wordmark as the handoff point.
-      launch = { x: source.left + source.width * 0.91, y: source.top + source.height * 0.51 + window.scrollY }
-      dock = { x: destination.left + destination.width * 0.91, y: destination.top + destination.height * 0.51 }
-      threshold = Math.max(36, Math.min(72, source.height * 0.7))
-      target = motion.matches || window.scrollY >= threshold ? 1 : 0
-      settle()
-    }
+      if (!active) return
+      const heroBox = heroSlot.getBoundingClientRect()
+      const navBox = navSlot.getBoundingClientRect()
+      const origin = logo.offsetParent.getBoundingClientRect()
+      const center = (box) => ({
+        x: box.left + box.width / 2 - origin.left,
+        y: box.top + box.height / 2 - origin.top,
+        width: box.width,
+      })
 
-    const onScroll = () => {
-      if (motion.matches) return
-      // Separate arrival and return thresholds prevent rapid replays around one scroll step.
-      const next = window.scrollY >= threshold * (target ? 0.28 : 1) ? 1 : 0
-      if (next !== target) {
-        target = next
-        const skippedHero = next && launch.y - window.scrollY < dock.y
-        if (skippedHero) settle()
-        else if (!frame) frame = requestAnimationFrame(tick)
-      }
+      start = center(heroBox)
+      start.y += window.scrollY
+      end = center(navBox)
+      distance = Math.max(96, (start.y - end.y) * 1.08)
+
+      cancelAnimationFrame(frame)
+      frame = 0
+      previousTime = 0
+      progress = goal()
+      logo.style.width = `${start.width}px`
+      draw()
     }
 
     measure()
+    logo.style.opacity = '1'
+
     const observer = new ResizeObserver(measure)
-    observer.observe(hero)
-    observer.observe(hero.parentElement)
-    observer.observe(header)
+    observer.observe(heroSlot)
+    observer.observe(heroSlot.parentElement)
+    observer.observe(navSlot)
+    document.fonts?.ready.then(measure)
     window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('resize', measure)
     motion.addEventListener('change', measure)
     return () => {
+      active = false
       cancelAnimationFrame(frame)
       observer.disconnect()
       window.removeEventListener('scroll', onScroll)
       window.removeEventListener('resize', measure)
       motion.removeEventListener('change', measure)
     }
-  }, [heroRef, headerRef, chargeRef])
+  }, [logoRef, heroSlotRef, navSlotRef])
 
   return docked
 }
@@ -202,11 +191,11 @@ export default function Hero() {
   const ranges = useRanges()
   const menu = nav.map((item) => (item.href === '#range' ? { ...item, items: rangeMenu(ranges) } : item))
 
-  const chargeRef = useRef(null)
+  const logoRef = useRef(null)
   const heroSlotRef = useRef(null)
   const navSlotRef = useRef(null)
   const barRef = useRef(null)
-  const docked = useLogoDock(heroSlotRef, navSlotRef, chargeRef)
+  const docked = useLogoDock(logoRef, heroSlotRef, navSlotRef)
   useAnchorScroll(barRef)
 
   return (
@@ -219,14 +208,7 @@ export default function Hero() {
           <div aria-hidden="true" data-solid={docked} className="nav-glass liquid-glass !absolute inset-0 rounded-2xl" />
 
           <div className="relative flex items-center justify-between gap-6 h-14 sm:h-16 px-4 sm:px-5 md:px-8 lg:px-10">
-            <a
-              ref={navSlotRef}
-              href="#top"
-              aria-label={`${brand.name} home`}
-              className="block h-9 sm:h-10 aspect-[873/357] shrink-0 opacity-0 motion-reduce:opacity-100"
-            >
-              <img src={logoSrc} alt="" {...LOGO} draggable="false" className="block w-full h-auto" />
-            </a>
+            <span ref={navSlotRef} aria-hidden="true" className="h-9 sm:h-10 aspect-[873/357] shrink-0" />
 
             <div className="hidden lg:flex items-center gap-6 xl:gap-8">
               {menu.map((item) => (
@@ -281,7 +263,15 @@ export default function Hero() {
           </div>
         </nav>
 
-        <span ref={chargeRef} aria-hidden="true" className="logo-charge" />
+        {/* Positioned and scaled by useLogoDock, in the header's coordinates. */}
+        <a
+          ref={logoRef}
+          href="#top"
+          aria-label={`${brand.name} home`}
+          className="absolute left-0 top-0 block origin-top-left opacity-0 transition-opacity duration-700 motion-reduce:transition-none"
+        >
+          <img src={logoSrc} alt={brand.name} {...LOGO} draggable="false" className="block w-full h-auto" />
+        </a>
 
         {/* Mobile menu */}
         <div
@@ -341,14 +331,14 @@ export default function Hero() {
         <div className="absolute inset-0 bg-hush" />
 
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-5 sm:px-6 md:px-12 lg:px-16 pt-[calc(6rem+env(safe-area-inset-top))] pb-10">
-          {/* The hero wordmark keeps its natural size throughout the handoff. */}
+          {/* Where the flying logo starts. Shown as-is only when motion is reduced and the logo stays docked. */}
           <img
             ref={heroSlotRef}
             src={logoSrc}
             alt=""
             aria-hidden="true"
             {...LOGO}
-            className="w-[min(58vw,16rem,32vh)] h-auto"
+            className="invisible motion-reduce:visible w-[min(58vw,16rem,32vh)] h-auto"
           />
 
           {/* The tagline sits under the logo as a two-line caption about the logo's width, so the pair reads as one lockup. */}
