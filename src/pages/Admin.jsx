@@ -3,7 +3,7 @@ import { ChevronDown, ChevronUp, ExternalLink, LogOut, Pencil, Plus, Search, Tra
 import PageHeader from '../components/PageHeader.jsx'
 import { container } from '../components/SectionHeading.jsx'
 import { asset } from '../content/site.js'
-import { optionGroups, productsOf } from '../catalogue.js'
+import { NO_RING, RING, optionGroups, productsOf } from '../catalogue.js'
 import { hasModel } from '../models/registry.js'
 import {
   forgetToken,
@@ -293,6 +293,10 @@ function OrderButtons({ list, i, onMove, what }) {
 
 // A range's options, edited for every product in it at once. Each entry remembers what it was (`from`), so a
 // rename can be applied to the products that use the old name. New options start with one value for all products.
+// The ring option and its "Without ring" value are read by name elsewhere, so they can be reordered but not renamed.
+const lockedKey = (g) => g.from === RING
+const lockedValue = (g, v) => g.from === RING && v.from === NO_RING
+
 function OptionsEditor({ groups, setGroups, count }) {
   const set = (i, patch) => setGroups(groups.map((g, j) => (j === i ? { ...g, ...patch } : g)))
   const remove = (i) => {
@@ -304,7 +308,14 @@ function OptionsEditor({ groups, setGroups, count }) {
       {groups.map((g, i) => (
         <div key={g.id} className="rounded-2xl border border-white/10 bg-white/[0.02] p-3">
           <div className="flex items-center gap-2">
-            <input value={g.key} onChange={(e) => set(i, { key: e.target.value })} className={`${field} font-medium`} aria-label="Option name" />
+            <input
+              value={g.key}
+              onChange={(e) => set(i, { key: e.target.value })}
+              readOnly={lockedKey(g)}
+              title={lockedKey(g) ? 'The 3D models use this name, so it stays as it is.' : undefined}
+              className={`${field} font-medium${lockedKey(g) ? ' opacity-60' : ''}`}
+              aria-label="Option name"
+            />
             <OrderButtons list={groups} i={i} onMove={(by) => setGroups(move(groups, i, by))} what="option" />
             <button type="button" onClick={() => remove(i)} className="w-8 h-8 flex-none rounded-lg text-white/50 hover:text-white hover:bg-white/[0.06]" aria-label={`Remove ${g.key}`}>
               <Trash2 className="w-4 h-4 mx-auto" />
@@ -316,7 +327,9 @@ function OptionsEditor({ groups, setGroups, count }) {
                 <input
                   value={v.value}
                   onChange={(e) => set(i, { values: g.values.map((x, n) => (n === k ? { ...x, value: e.target.value } : x)) })}
-                  className={field}
+                  readOnly={lockedValue(g, v)}
+                  title={lockedValue(g, v) ? 'The 3D models use this value, so it stays as it is.' : undefined}
+                  className={`${field}${lockedValue(g, v) ? ' opacity-60' : ''}`}
                   aria-label={`${g.key} value`}
                 />
                 {g.from !== null && (

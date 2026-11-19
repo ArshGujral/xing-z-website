@@ -48,9 +48,11 @@ export const stats = [
   { value: 'XX,000+', label: 'Test hours logged' },
 ]
 
+// `family`: the range's id in public/catalogue.json. `slug`: its anchor on the home page, kept when the range is renamed.
 // `image`: path to a real product photo in /public. Until then an illustration is drawn from `motor`.
 export const categories = [
   {
+    family: 'high-speed',
     slug: 'high-speed-motors',
     name: 'High-Speed Motors',
     use: 'Higher RPM for stronger air throw in smaller coolers.',
@@ -58,6 +60,7 @@ export const categories = [
     motor: { attachment: 'blades', fast: true },
   },
   {
+    family: 'kit',
     slug: 'kit-motors',
     name: 'Kit Motors',
     use: 'Ready-to-fit kits for cooler assemblers and repairers.',
@@ -65,6 +68,7 @@ export const categories = [
     motor: { attachment: 'blades', clamp: true },
   },
   {
+    family: '110',
     slug: '110-motors',
     name: '110 Motors',
     use: 'The 110 size for standard room and desert coolers.',
@@ -72,6 +76,7 @@ export const categories = [
     motor: { attachment: 'blades', plate: '110' },
   },
   {
+    family: 'h-frame',
     slug: 'h-frame-motors',
     name: 'H Frame Motors',
     use: 'H-frame Motors for rigid, low-vibration & Tent Coolers.',
@@ -79,6 +84,7 @@ export const categories = [
     motor: { attachment: 'blades', mount: 'hframe' },
   },
   {
+    family: 'exhaust',
     slug: 'exhaust-motors',
     name: 'Exhaust Motors',
     use: 'For exhaust fans in kitchens, bathrooms and workshops.',
@@ -86,6 +92,7 @@ export const categories = [
     motor: { attachment: 'blades', finish: 'Silver' },
   },
   {
+    family: 'blower',
     slug: 'blower-motors',
     name: 'Blower Motors',
     use: 'Drives blower wheels in centrifugal-blower coolers.',
@@ -93,6 +100,7 @@ export const categories = [
     motor: { attachment: 'blower' },
   },
   {
+    family: 'capcan',
     slug: 'capcan-motors',
     name: 'Capcan Motors',
     use: 'Capcan Motors, for more durable and noiseless concealed motors.',
@@ -100,6 +108,7 @@ export const categories = [
     motor: { attachment: 'blades', cap: true },
   },
   {
+    family: 'pump',
     slug: 'submersible-pumps',
     name: 'Submersible Pumps',
     use: 'Sit in the cooler tank and push water to the pads.',

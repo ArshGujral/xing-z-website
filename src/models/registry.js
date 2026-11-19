@@ -2,9 +2,9 @@
 // `load` returns a module whose `createModel(params)` gives a THREE.Group; `params(product, variants)` turns a
 // catalogue product and its chosen optional changes into that model's options (stack length, ring, finish...).
 // A family without an entry shows its photo.
+import { NO_RING, RING } from '../catalogue.js'
 
-
-const hasRing = (product, variants) => !variants.includes('Without ring') && product.attributes.Ring !== 'Without ring'
+const hasRing = (product, variants) => !variants.includes(NO_RING) && product.attributes[RING] !== NO_RING
 
 export const MODELS = {
   capcan: { load: () => import('./capcan.ts') },

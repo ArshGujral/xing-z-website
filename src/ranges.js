@@ -4,13 +4,11 @@ import { asset, categories } from './content/site.js'
 
 // The home page's ranges come from public/catalogue.json, so a range added in the admin panel appears here too.
 // `categories` in site.js paints first and stays as the fallback if the catalogue can't load.
-const slugify = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
-
+// A range is matched and anchored by its catalogue id, which never changes, so renaming it keeps its links working.
 const fromFamily = (family) => {
-  const slug = slugify(family.name)
-  const known = categories.find((c) => c.slug === slug)
+  const known = categories.find((c) => c.family === family.id)
   return {
-    slug,
+    slug: known?.slug ?? family.id,
     name: family.name,
     use: family.summary,
     image: family.photo ? asset(family.photo) : null,
@@ -33,7 +31,8 @@ export function useRanges() {
   return ranges
 }
 
-export const rangeMenu = (ranges) => [...ranges.map((c) => ({ label: c.name, href: `#${c.slug}` })), { label: 'View all', href: '#range' }]
+export const rangeLinks = (ranges) => ranges.map((c) => ({ label: c.name, href: `#${c.slug}` }))
+export const rangeMenu = (ranges) => [...rangeLinks(ranges), { label: 'View all', href: '#range' }]
 
 const words = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve']
 export const countWord = (n) => words[n] ?? String(n)

@@ -2,8 +2,13 @@ import { FileText, Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
 import XingZLogo from './XingZLogo.jsx'
 import { container } from './SectionHeading.jsx'
 import { brand, contact, external, footerLinks, whatsappLink } from '../content/site.js'
+import { rangeLinks, useRanges } from '../ranges.js'
 
 export default function Footer() {
+  // The Range column follows the admin catalogue, like the nav menu and the range cards.
+  const ranges = useRanges()
+  const columns = footerLinks.map((column) => (column.title === 'Range' ? { ...column, links: rangeLinks(ranges) } : column))
+
   const details = [
     { icon: MapPin, content: contact.address.map((line) => <span key={line} className="block">{line}</span>) },
     { icon: Phone, content: contact.phone, href: `tel:${contact.phone.replace(/\s/g, '')}` },
@@ -35,7 +40,7 @@ export default function Footer() {
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-8">
-          {footerLinks.map((column) => (
+          {columns.map((column) => (
             <div key={column.title}>
               <h3 className="text-white text-sm font-medium">{column.title}</h3>
               <ul className="mt-4 space-y-2.5">

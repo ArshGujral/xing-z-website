@@ -46,10 +46,14 @@ export function isDirect(products, current, key, value) {
   return products.some((p) => p.attributes?.[key] === value && sameOn(p, current, keys) === keys.length)
 }
 
+// The 3D models and the optional changes read the ring option by these exact names, so the admin panel won't rename them.
+export const RING = 'Ring'
+export const NO_RING = 'Without ring'
+
 // Optional changes for a product: its own list if it has one, else its family's; "Without ring" only where it has a ring.
 export function variantsFor(family, product) {
   const list = product.variants ?? family.variants ?? []
-  return list.filter((v) => !(v === 'Without ring' && /without ring/i.test(product.attributes?.Ring ?? '')))
+  return list.filter((v) => !(v === NO_RING && product.attributes?.[RING] === NO_RING))
 }
 
 export const quoteMessage = (product, variants) =>
