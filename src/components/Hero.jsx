@@ -2,6 +2,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { ChevronDown, Menu, Phone, X } from 'lucide-react'
 import { NeuralNoise } from './ui/neural-noise.jsx'
 import ThemeToggle from './ThemeToggle.jsx'
+import AluRatesLink from './AluRatesLink.jsx'
 import { brand, contact, external, nav, whatsappLink } from '../content/site.js'
 import { useTheme } from '../theme.jsx'
 import { rangeMenu, useRanges } from '../ranges.js'
@@ -223,6 +224,7 @@ export default function Hero() {
             </div>
 
             <div className="hidden lg:flex items-center gap-5">
+              <AluRatesLink />
               <ThemeToggle />
               <a
                 href={tel}
@@ -240,7 +242,8 @@ export default function Hero() {
               </a>
             </div>
 
-            <div className="lg:hidden flex items-center gap-3">
+            <div className="lg:hidden flex items-center gap-2 sm:gap-3">
+              <AluRatesLink />
               <ThemeToggle />
               <button
                 className="relative w-9 h-9 flex items-center justify-center text-white"

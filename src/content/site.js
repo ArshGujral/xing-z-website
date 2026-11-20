@@ -27,6 +27,9 @@ export const whatsappLink = (message = "Hi Xing-Z, I'd like a quote.") =>
 
 export const external = { target: '_blank', rel: 'noopener noreferrer' }
 
+// The owner's aluminium rate tracker (its own repo, aluminium-rate-tracker), linked from the top bar.
+export const aluTracker = 'https://arshgujral.github.io/aluminium-rate-tracker/'
+
 // Future routes from the site map. Only the home page exists so far.
 export const pages = {
   configurator: 'configurator.html',

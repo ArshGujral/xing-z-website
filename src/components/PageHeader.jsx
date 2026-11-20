@@ -1,5 +1,6 @@
 import { ArrowLeft } from 'lucide-react'
 import ThemeToggle from './ThemeToggle.jsx'
+import AluRatesLink from './AluRatesLink.jsx'
 import { brand, external, whatsappLink } from '../content/site.js'
 import { useTheme } from '../theme.jsx'
 
@@ -26,7 +27,8 @@ export default function PageHeader({ links = [], action = true }) {
             ))}
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <AluRatesLink />
             <ThemeToggle />
             {action && (
               <a
